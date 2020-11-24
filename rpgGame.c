@@ -33,7 +33,8 @@ void main(void)
 			{
 				while(choice != 99)
 				{
-
+					printf("hello you have entered room 1 \n");
+					scanf("%d",choice);
 				}
 				break;
 			}
