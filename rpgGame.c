@@ -269,11 +269,116 @@ void main(void)
 					}
 					break;
 
-
-
-
+			}
+			case 26:
+			{
+					while(choice != 99)
+					{
+							puts("you open the door and find ........");
+							scanf("%d",&choice);
+					}
+					break;
+			}
+			case 27:
+			{
+					while(choice != 99)
+					{
+							puts("you open the door and find ........");
+							scanf("%d",&choice);
+					}
+					break;
+			}
+			case 28:
+			{
+					while(choice != 99)
+					{
+							puts("you open the door and find ........");
+							scanf("%d",&choice);
+					}
+					break;
+			}
+			case 29:
+			{
+					while(choice != 99)
+					{
+							puts("you open the door and find ........");
+							scanf("%d",&choice);
+					}
+					break;
+			}
+			case 30:
+			{
+					while(choice != 99)
+					{
+							puts("you open the door and find ........");
+							scanf("%d",&choice);
+					}
+					break;
+			}
+			case 31:
+			{
+					while(choice != 99)
+					{
+							puts("you open the door and find ........");
+							scanf("%d",&choice);
+					}
+					break;
+			}
+			case 32:
+			{
+					while(choice != 99)
+					{
+							puts("you open the door and find ........");
+							scanf("%d",&choice);
+					}
+					break;
+			}
+			case 33:
+			{
+					while(choice != 99)
+					{
+							puts("you open the door and find ........");
+							scanf("%d",&choice);
+					}
+					break;
+			}
+			case 34:
+			{
+					while(choice != 99)
+					{
+							puts("you open the door and find ........");
+							scanf("%d",&choice);
+					}
+					break;
+			}
+			case 35:
+			{
+					while(choice != 99)
+					{
+							puts("you open the door and find ........");
+							scanf("%d",&choice);
+					}
+					break;
+			}
+			case 36:
+			{
+					while(choice != 99)
+					{
+							puts("you open the door and find ........");
+							scanf("%d",&choice);
+					}
+					break;
+			}
+			case 37:
+			{
+					while(choice != 99)
+					{
+							puts("you open the door and find ........");
+							scanf("%d",&choice);
+					}
+					break;
 			}
 		}	
 	}
-    }
+}
 
