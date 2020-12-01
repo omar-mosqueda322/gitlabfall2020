@@ -1736,7 +1736,8 @@ int main(void)
 			{
 					while(choice != 99)
 					{
-							puts("you open the door and find ........");
+							puts("you open the door and find a book. \n");
+							puts("Room for Andrea \n"); 
 							scanf("%d",&choice);
 					}
 					break;
