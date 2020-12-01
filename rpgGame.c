@@ -6,9 +6,13 @@
 #include <string.h>
 #include <time.h>
 #include <stdio.h>
+#include <math.h>
 
+int choice1(int number);
+int choice2(char *ptr);
+int choice3(int number1);
 
-void main(void)
+int main(void)
 {
 	int x,y,z,i,h,g,k,choice=0;
 	char name[256];
@@ -33,12 +37,82 @@ void main(void)
 		switch(choice)
 		{
 			case 1:
-			{
+			{	
+				int length = 0, num = 0, magicNum = 0;
+				char word[40] = "sacramento";
+				char *ptr;
+				ptr = word;
+								
+				srand(time(NULL));	
+				
+				length = strlen(name);
+
+				for(i = 0; i < length;i++)
+				{
+					if(isupper(name[i]))
+					{
+						name[i] = tolower(name[i]);
+					}
+				}
+				
+				name[0] = toupper(name[0]);	//Making sure the name is written correctly with uppercase first letter
+				printf("Hello %s, you have entered the room 1.\n", name);
+				puts("You have survived the first part of your adventure..the Drowning.\n");
+				puts("You have 5 choices to make in order to escape this horror adventure. \n");
+
+				printf(	"1. You have to solve a math problem for survival. \n"
+					"2. You have to guess the word for survival. \n"
+					"3. You have to find the magic number for survival. \n"
+					"4. Guess the word for survival. \n"
+					"5. Try to make a run for it. \n");
+
 				while(choice != 99)
 				{
-					printf("hello you have entered room 1 \n");
-					printf("Room for Sheron\n");
-					scanf("%d",&choice);
+					puts("Make a choice(99 to quit): ");
+					scanf(" %d", &choice);
+
+					switch(choice)
+					{
+						case 1:
+						{
+						puts("You have chosen to solve the math problem. Don't forget you have one chance. Now choose a number between 1-10: ");
+						scanf(" %d", &num);
+						choice1(num);
+						return EXIT_SUCCESS;
+						break;
+						}
+				
+						case 2:
+						{
+						puts("You have chosen to guess the word. What is the capital of California?\n");
+						choice2(ptr);
+						return EXIT_SUCCESS;
+						break;
+						}
+			
+						case 3:
+						{
+						puts("Enter the magic number(between 1 - 20) from the following math problems: ");
+						magicNum = 1 + rand() % 20;
+						choice3(magicNum);
+						return EXIT_SUCCESS; 	
+						break;
+						}
+
+						case 4:
+						{
+						puts("Choice 4.");
+						break;
+						}
+
+						case 5:
+						{
+						puts("This was the wrong choice to be made. Now you have ended up in a room with nowhere to go....");
+						return EXIT_SUCCESS;
+						break;
+						}
+					}
+
 				}
 				break;
 			}
@@ -593,4 +667,88 @@ void main(void)
 		}	
 	}
 }
+
+int choice1(int number)
+{
+	int answer = 0;
+	int guess = 0;
+
+	printf(" %d + (%d^2) - (%d) = ?", number, 8, 6);
+	scanf(" %d", &guess);
+
+	answer = (number + (pow(8, 2)) - 6);
+	
+	if(answer == guess)
+	{
+		puts("\nYou have guessed the anwer correctly. You may get the map to get out of the mansion...Good Job!\n");
+		return EXIT_SUCCESS;
+	}
+	else
+	{
+		printf("\nThe answer was %d. You guessed it wrong. You have failed...\n", answer);
+		return EXIT_SUCCESS;
+	}
+}
+
+int choice2(char *ptr)
+{
+	int size = 40, i, length = 0;
+
+ 	char copy[size];
+	char guess[size];
+
+	strcpy(copy, ptr);
+
+	puts("Please enter your guess(one chance):");
+	scanf(" %s", guess);
+	
+	length = strlen(guess);
+
+	for(i = 0; i < length;i++)
+	{
+		if(isupper(guess[i]))
+		{
+			guess[i] = tolower(guess[i]);
+		}
+	}
+	
+
+	if(!strcmp(copy, guess))
+	{
+		puts("Guessed correctly!\n");
+	}
+	else
+	{
+		puts("Guess was incorrect!\n");
+	}
+	
+	return EXIT_SUCCESS;
+
+}
+
+int choice3(int number1)
+{
+	int answer = 0;
+
+	printf("magic number is : %d\n", number1);	
+	
+	printf("10 + magic number = %d\n", (10 + number1));
+	printf("5 * magic number  = %d\n", (5 * number1));
+	printf("20 - magic number = %d\n", (20 - number1));
+	
+	printf("What is your guess? ");
+	scanf(" %d", &answer);
+	
+	if(answer == number1)
+	{
+	puts("You guessed it correctly!"); 
+	return EXIT_SUCCESS;
+	}
+	else
+	{
+	puts("You guessed it wrong!");
+	return EXIT_SUCCESS;
+	}	
+	
+}	
 
