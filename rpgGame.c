@@ -857,12 +857,47 @@ int main(void)
 					}
 					break;
 			}
-			case 18:			
+			case 18:
 			{
-					while(choice != 99)
+				while(choice != 99)
+				{
+					puts("you open the door and seem safe from the previous... ");
+					puts("you find a kitten in the room, along with some cabinets, and another door\n");
+					puts("With this you are left with some options, 3 to be exact:");
+					puts("1. Pet the kitten");
+					puts("2. Examine the room");
+					puts("3. Open the next door");
+					scanf("%d",&choice);
+					switch (choice)
 					{
+						case 1:
+							puts("you get closer to pet the kitten it enjoyed that");
+							break;
+						case 2:
+							puts("you decide to examine the cabinets, but they're all empty... why is that?");
+							break;
+						case 3:
+							puts("you decide to open the next door and see a long tunnel, you see a modified motorcycle aligned to a track with some pickaxes...");
+							puts("your curiosity is leaving you with 2 more choices");
+							puts("1. Walk and see where the tunnel leads");
+	                                                puts("2. Go back inside the room");
+							scanf("%d", &choice);
+							if(choice==1)
+							{
+								puts("you decide to journey along the tunnels path, you hear a faint meow behind you... you feel a bit empty...");
+								puts("\nEnter 99");
+								break;
+							}
+							else if(choice==2)
+							{
+								puts("you decided to investigate the room first before leaving");
+								break;
+							}
+
+						default:
+							puts("");
 					}
-					break;
+				}
 			}
 			case 19:
 			{
