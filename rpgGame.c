@@ -1063,11 +1063,13 @@ int main(void)
 					}
 					break;
 			}
-			case 21:
+			case 21:  //Michael Morgan's room
 			{
 					while(choice != 99)
 					{
 							puts("you open the door and find ........");
+							puts("A penguin drinking a been");
+
 							scanf("%d",&choice);
 					}
 					break;
