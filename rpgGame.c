@@ -628,12 +628,335 @@ void main(void)
 			}
 			case 28:
 			{
-					while(choice != 99)
+					//Room #28 for Shane Cortez *so far unfinished*
+				while (choice != 99)
+				{
+					srand(time(NULL));
+					int randNum=rand()%2;
+
+					puts("you enter the room marked 28");
+					puts("As the panic of drowning subsides you look up to notice that the room is shaking and the ground splitting in half revealing a pit to nothingness you have to act fast or risk missing the jump across!");
+					puts("What do you do:");
+					puts("1. JUMP!");
+					puts("2. Quickly look around and reassess the situation");
+					puts("99. At any time to End Game");
+					scanf("%d", &choice);
+					if (choice == 1)
 					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
+						puts("in a panic you jump across the pit and make it safely to the other side.");
+						puts("As you made your jump you noticed that there was a key dangling on a string over the midde of the pit, but missed your opportunity to grab it.");
+						puts("As you look around you notice a door sealed shut by vines, and there is a locked chest right next to it");
+						puts("You suspect that the key will open the chest, but you have to get it first...");
+						puts("What do you do:");
+						puts("1. Try to jump across and jump back to grab the key");
+						puts("2. Check inventory");
+						scanf("%d", &choice);
+						if (choice == 1)
+						{
+							puts("You attempt the first jump and realize too late that the pit is far too wide to jump across, you fall into the darkness and are never seen again....");
+							puts("Game Over");
+							choice = 99;
+							break;
+						}
+						else if (choice == 2)
+						{
+							puts("you check your inventory and notice that you packed your trusty hook attached to a long stick, you can use this to get the key.");
+							puts("you reach across the pit with your hook and grab the key, unfortunatly in the action you drop the hook while just barely being able to hang onto the key");
+							puts("You say your farewells to the hook and put the key in your inventory.");
+							puts("Key added to inventory");
+							puts("You are now faced with a locked chest and a vine covered door");
+							puts("What do you do:");
+							puts("1. inspect door.");
+							puts("2. open chest with key");
+							scanf("%d", &choice);
+							if (choice == 1)
+							{
+								puts("upon further inspection you notice that the vines appear flamable...");
+								puts("you then turn your attention to the chest, you pull out the key and unlock the chest, inside you find a scroll which reads:");
+								puts("write a spell and this scroll will grant you power...");
+								puts("Unfortunately you only studied one year of spellcasting in highschool and the only three spells you remember from back then are:");
+								puts("1. fire");
+								puts("2. water");
+								puts("3. earth");
+								puts("What will you write:");
+								scanf("%d", &choice);
+								if (choice == 1)
+								{
+									puts("you write the ancient runes of fire onto the page.");
+									puts("The scroll flashes bright red with fiery power, suddenly your hands begin to feel hot, when suddenly they light ablaze! with this power you can shoot fire out of your hand!");
+									puts("You strike an agressive pose and engulf the vine covered door in flames.");
+									puts("As the fire and smoke subside, the door sits ajar with a light shining through.");
+									puts("What will you do:");
+									puts("1. walk through the door");
+									puts("2. Turn around and jump into the pit");
+									scanf("%d", &choice);
+
+									if (choice == 1)
+									{
+										//Victory!
+										puts("You open the door and are blinded by light, as your vision returns you realize you are in the middle of nowhere in the desert, and the door magically dissapears");
+										puts("You escaped, but now what?");
+										puts("Congrats you finished the game. Thank you for playing!");
+										choice = 99;
+										break;
+									}
+									else if (choice == 2)
+									{
+										puts("I'm not sure why you chose this, but you turn around and jump into the pit, you are never seen again....");
+										puts("Game Over...");
+										choice = 99;
+										break;
+									}
+								}
+								else if (choice == 2)
+								{
+									puts("You write down the ancient runes of water onto the page.");
+									puts("the scroll glows a conforting blue color, suddenly your hands feel damp, you can now use this on the door.");
+									puts("You ready yourself and shoot a powerful stream of water on the vines.");
+									puts("You stare at the vines as they grow greener and stronger from the water, the vines then grow at a rapid rate engulfing the narrow walkway that you stand on.");
+									puts("You find yourself losing balance on the decreasing surface, eventually falling into the pit...");
+									puts("You are never seen again...");
+									puts("Game Over");
+									choice = 99;
+									break;
+								}
+								else if (choice == 3)
+								{
+									puts("You write the ancient rune of earth.");
+									puts("suddenly the scroll glows emerald green, as your hands begin to feel one with the earth, you can use this on the door.");
+									puts("You ground yourself, and use your new powers on the vines.");
+									puts("To your suprise, the earth spell you wrote only makes the vines stronger, so much so that they begin to grow wildly out of control!");
+									puts("The vines begin to take up most of the surface you stand on...");
+									puts("You find yourself losing balance on the decreasing space, eventually falling into the pit...");
+									puts("You are never seen again...");
+									puts("Game Over");
+									choice = 99;
+									break;
+								}
+							}
+							else if (choice == 2)
+							{
+								puts("you turn your attention to the chest, you pull out the key and unlock the chest, inside you find a scroll which reads:");
+								puts("write a spell and this scroll will grant you power...");
+								puts("Unfortunately you only studied one year of spellcasting in highschool and the only three spells you remember from back then are:");
+								puts("1. fire");
+								puts("2. water");
+								puts("3. earth");
+								puts("What will you write:");
+								scanf("%d", &choice);
+								if (choice == 1)
+								{
+									puts("you write the ancient runes onto the page.");
+									puts("The scroll flashes bright red with fiery power, suddenly your hands begin to feel hot, when suddenly they light ablaze! with this power you can shoot fire out of your hand!");
+									puts("You strike an agressive pose and engulf the vine covered door in flames.");
+									puts("As the fire and smoke subside, the door sits ajar with a light shining through.");
+									puts("What will you do:");
+									puts("1. walk through the door");
+									puts("2. Turn around and jump into the pit");
+									scanf("%d", &choice);
+
+									if (choice == 1)
+									{
+										//Victory!
+										puts("You open the door and are blinded by light, as your vision returns you realize you are in the middle of nowhere in the desert, and the door magically dissapears");
+										puts("You escaped, but now what?");
+										puts("Congrats you finished the game. Thank you for playing!");
+										choice = 99;
+										break;
+									}
+									else if (choice == 2)
+									{
+										puts("I'm not sure why you chose this, but you turn around and jump into the pit, you are never seen again....");
+										puts("Game Over...");
+										choice = 99;
+										break;
+									}
+								}
+								else if (choice == 2)
+								{
+									puts("You write down the ancient runes of water onto the page.");
+									puts("the scroll glows a conforting blue color, suddenly your hands feel damp, you can now use this on the door.");
+									puts("You ready yourself and shoot a powerful stream of water on the vines.");
+									puts("You stare at the vines as they grow greener and stronger from the water, the vines then grow at a rapid rate engulfing the narrow walkway that you stand on.");
+									puts("You find yourself losing balance on the decreasing surface, eventually falling into the pit...");
+									puts("You are never seen again...");
+									puts("Game Over");
+									choice = 99;
+									break;
+								}
+								else if (choice == 3)
+								{
+									puts("You write the ancient rune of earth.");
+									puts("suddenly the scroll glows emerald green, as your hands begin to feel one with the earth, you can use this on the door.");
+									puts("You ground yourself, and use your new powers on the vines.");
+									puts("To your suprise, the earth spell you wrote only makes the vines stronger, so much so that they begin to grow wildly out of control!");
+									puts("The vines begin to take up most of the surface you stand on...");
+									puts("You find yourself losing balance on the decreasing space, eventually falling into the pit...");
+									puts("You are never seen again...");
+									puts("Game Over");
+									choice = 99;
+									break;
+								}
+							}
+						}
 					}
+					else if (choice == 2)
+					{
+						puts("As you look around frantically you notice a chest on the other side next to a door and a key dangling over the ever growing death pit on a string.... now is the time to jump");
+						puts("As you make your jump you take the time to aim for grabbing the key on the way over.... It's going to be close, lets see if you can make it.");
+						if (randNum == 0)
+						{
+							puts("You leap through the air and grab the other side, when suddenly the ledge gives way, leaving you to fall into the darkness never to be seen again....");
+							puts("Game Over");
+							choice = 99;
+							break;
+						}
+						else
+						{
+							puts("You jump with all your might, and land on the other side barely missing the fall by an inch.");
+						}
+
+						if (randNum == 1 && choice == 2)
+						{
+							puts("You made it across! now before you sits a door closed off by vines and a locked chest that you suspect will be unlocked by the key...");
+							puts("What is your next move:");
+							puts("1. Open the chest");
+							puts("2. Further inspect the door");
+							scanf("%d", &choice);
+							if (choice == 1)
+							{
+								puts("upon further inspection you notice that the vines appear flamable...");
+								puts("you then turn your attention to the chest, you pull out the key and unlock the chest, inside you find a scroll which reads:");
+								puts("write a spell and this scroll will grant you power...");
+								puts("Unfortunately you only studied one year of spellcasting in highschool and the only three spells you remember from back then are:");
+								puts("1. fire");
+								puts("2. water");
+								puts("3. earth");
+								puts("What will you write:");
+								scanf("%d", &choice);
+								if (choice == 1)
+								{
+									puts("you write the ancient runes of fire onto the page.");
+									puts("The scroll flashes bright red with fiery power, suddenly your hands begin to feel hot, when suddenly they light ablaze! with this power you can shoot fire out of your hand!");
+									puts("You strike an agressive pose and engulf the vine covered door in flames.");
+									puts("As the fire and smoke subside, the door sits ajar with a light shining through.");
+									puts("What will you do:");
+									puts("1. walk through the door");
+									puts("2. Turn around and jump into the pit");
+									scanf("%d", &choice);
+
+									if (choice == 1)
+									{
+										//Victory!
+										puts("You open the door and are blinded by light, as your vision returns you realize you are in the middle of nowhere in the desert, and the door magically dissapears");
+										puts("You escaped, but now what?");
+										puts("Congrats you finished the game. Thank you for playing!");
+										choice = 99;
+										break;
+									}
+									else if (choice == 2)
+									{
+										puts("I'm not sure why you chose this, but you turn around and jump into the pit, you are never seen again....");
+										puts("Game Over...");
+										choice = 99;
+										break;
+									}
+								}
+								else if (choice == 2)
+								{
+									puts("You write down the ancient runes of water onto the page.");
+									puts("the scroll glows a conforting blue color, suddenly your hands feel damp, you can now use this on the door.");
+									puts("You ready yourself and shoot a powerful stream of water on the vines.");
+									puts("You stare at the vines as they grow greener and stronger from the water, the vines then grow at a rapid rate engulfing the narrow walkway that you stand on.");
+									puts("You find yourself losing balance on the decreasing surface, eventually falling into the pit...");
+									puts("You are never seen again...");
+									puts("Game Over");
+									choice = 99;
+									break;
+								}
+								else if (choice == 3)
+								{
+									puts("You write the ancient rune of earth.");
+									puts("suddenly the scroll glows emerald green, as your hands begin to feel one with the earth, you can use this on the door.");
+									puts("You ground yourself, and use your new powers on the vines.");
+									puts("To your suprise, the earth spell you wrote only makes the vines stronger, so much so that they begin to grow wildly out of control!");
+									puts("The vines begin to take up most of the surface you stand on...");
+									puts("You find yourself losing balance on the decreasing space, eventually falling into the pit...");
+									puts("You are never seen again...");
+									puts("Game Over");
+									choice = 99;
+									break;
+								}
+							}
+							else if (choice == 2)
+							{
+								puts("you turn your attention to the chest, you pull out the key and unlock the chest, inside you find a scroll which reads:");
+								puts("write a spell and this scroll will grant you power...");
+								puts("Unfortunately you only studied one year of spellcasting in highschool and the only three spells you remember from back then are:");
+								puts("1. fire");
+								puts("2. water");
+								puts("3. earth");
+								puts("What will you write:");
+								scanf("%d", &choice);
+								if (choice == 1)
+								{
+									puts("you write the ancient runes onto the page.");
+									puts("The scroll flashes bright red with fiery power, suddenly your hands begin to feel hot, when suddenly they light ablaze! with this power you can shoot fire out of your hand!");
+									puts("You strike an agressive pose and engulf the vine covered door in flames.");
+									puts("As the fire and smoke subside, the door sits ajar with a light shining through.");
+									puts("What will you do:");
+									puts("1. walk through the door");
+									puts("2. Turn around and jump into the pit");
+									scanf("%d", &choice);
+
+									if (choice == 1)
+									{
+										//Victory!
+										puts("You open the door and are blinded by light, as your vision returns you realize you are in the middle of nowhere in the desert, and the door magically dissapears");
+										puts("You escaped, but now what?");
+										puts("Congrats you finished the game. Thank you for playing!");
+										choice = 99;
+										break;
+									}
+									else if (choice == 2)
+									{
+										puts("I'm not sure why you chose this, but you turn around and jump into the pit, you are never seen again....");
+										puts("Game Over...");
+										choice = 99;
+										break;
+									}
+								}
+								else if (choice == 2)
+								{
+									puts("You write down the ancient runes of water onto the page.");
+									puts("the scroll glows a conforting blue color, suddenly your hands feel damp, you can now use this on the door.");
+									puts("You ready yourself and shoot a powerful stream of water on the vines.");
+									puts("You stare at the vines as they grow greener and stronger from the water, the vines then grow at a rapid rate engulfing the narrow walkway that you stand on.");
+									puts("You find yourself losing balance on the decreasing surface, eventually falling into the pit...");
+									puts("You are never seen again...");
+									puts("Game Over");
+									choice = 99;
+									break;
+								}
+								else if (choice == 3)
+								{
+									puts("You write the ancient rune of earth.");
+									puts("suddenly the scroll glows emerald green, as your hands begin to feel one with the earth, you can use this on the door.");
+									puts("You ground yourself, and use your new powers on the vines.");
+									puts("To your suprise, the earth spell you wrote only makes the vines stronger, so much so that they begin to grow wildly out of control!");
+									puts("The vines begin to take up most of the surface you stand on...");
+									puts("You find yourself losing balance on the decreasing space, eventually falling into the pit...");
+									puts("You are never seen again...");
+									puts("Game Over");
+									choice = 99;
+									break;
+								}
+							}
+						}
+					}
+					choice = 99;
 					break;
+				}
 			}
 			case 29:
 			{
