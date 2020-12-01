@@ -5,8 +5,8 @@
 #include <ctype.h>
 #include <string.h>
 #include <time.h>
-#include <stdio.h>
 #include <math.h>
+#include <stdio.h>
 
 int choice1(int number);
 int choice2(char *ptr);
