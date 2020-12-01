@@ -225,6 +225,47 @@ void main(void)
 			}
 			case 24:
 			{
+				#include <time.h>
+
+
+                                 int choice = 0,
+                                     turn = 0,
+                                     bananaAmount = 0,
+                                     orangeAmount = 0;
+
+
+                                 puts("As you open the door, you notice a sign reading: \"This is Phillip F. Aguilera's room\".\n"
+                                      "You enter the room and close the door behind you, noticing the choice of more doors. There are three more doors to choose.\n"
+                                      "A sheet of paper is lying on the floor. You pick it up and begin to read what has been written.\n"
+                                      "It states:\n");
+                                 printf("You have %d bananas and %d oranges.\n", bananaAmount, orangeAmount);
+                                 puts("Enter the rooms and try to escape with the highest amount of bananas and oranges as possible!\n");
+                                 puts("You must have XXX amount of bananas and oranges in XXX amount of turns or you lose!\n");
+
+
+                                 for (turn = 0; turn < 4; turn++)
+                                 {
+                                         puts("Main Menu:\n"
+                                              "1) Enter Room 1.\n"
+                                              "2) Enter Room 2.\n"
+                                              "3) Enter Room 3.\n");
+                                         printf("Enter the Room you wish to enter: ");
+                                         scanf("%d", &choice);
+
+                                         switch(choice)
+                                         {
+                                                 case 1:
+                                                         puts("You are in Room 1.\n");
+                                                         break;
+                                                 case 2:
+                                                         puts("You are in Room 2.\n");
+                                                         break;
+                                                 case 3:
+                                                         puts("You are in Room 3.\n");
+                                         }
+
+                                 }
+
 					while(choice != 99)
 					{
 							puts("you open the door and find ........");
@@ -382,4 +423,3 @@ void main(void)
 		}	
 	}
 }
-
