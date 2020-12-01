@@ -707,6 +707,7 @@ void main(void)
 					while(choice != 99)
 					{
 							puts("you open the door and find ........");
+                            printf("Mauro Badillo, the 1st test");
 							scanf("%d",&choice);
 					}
 					break;
