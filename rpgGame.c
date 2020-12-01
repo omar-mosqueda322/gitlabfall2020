@@ -89,15 +89,70 @@ void main(void)
 				}
 					break;
 			}
-			case 8:
-			{
-					while(choice != 99)
-					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
-					}
-					break;
-			}
+			 case 8:
+                        {
+                                        while(choice != 99)
+                                        {
+                                                        puts("Erick Vargas' Door\n"); //I'll remove this once we submit the final product, it's just a reminder for me
+                                                        puts("You enter door 8 and you find yourself on a tropical island. You see a small group of people running around collecting materials, what do you do?\n");
+                                                        printf("1) Introduce yourself 2) Ask where you are 3) Just watch them 4) Ignore them 5) Try to avoid them\n");
+                                                        scanf("%d",&choice);
+                                                        switch(choice)
+                                                        {
+                                                                case 1:
+                                                                {
+                                                                        while(choice != 99)
+                                                                        {
+                                                                                puts("You walk up to them and introduce yourself to them, they happily greet you and introduce themselves to you. They ask where you are from, how do you respond?\n");
+                                                                                printf(" choose \n"); //prompt choices about how to answer.
+                                                                                scanf("%d",&choice);
+                                                                        }
+                                                                        break;
+                                                                }
+                                                                case 2:
+                                                                {
+                                                                        while(choice != 99)
+                                                                        {
+                                                                                puts("You walk up to them and ask where you are, they look at you confusingly and tell you that the island your on is named Destiny Island. Still looking confused they ask where you came from, how do you respond?");
+                                                                                printf(" choose \n"); //prompt choices about how to answer.
+                                                                                scanf("%d",&choice);
+                                                                        }
+                                                                        break;
+                                                                }
+                                                                case 3:
+                                                                {
+                                                                        while(choice != 99)
+                                                                        {
+                                                                                puts("From a distance you stay watching them, you just see that they continue running around collecting materials for some reason. As you keep watching them you notice that once they huddled up the girl of the group starts marking off on a checklist. You start to wonder more what they're trying to do, what do you do?");
+                                                                                printf(" choose \n"); //prompt choices about what to do.
+                                                                                scanf("%d",&choice);
+                                                                        }
+                                                                        break;
+                                                                }
+                                                                case 4:
+                                                                {
+                                                                        while(choice != 99)
+                                                                        {
+                                                                                puts("You decide to just ignore them, what do you do instead?");
+                                                                                printf(" choose \n"); //prompt choices about what to do instead
+                                                                                scanf("%d",&choice);
+                                                                        }
+                                                                        break;
+                                                                }
+                                                                case 5:
+                                                                {
+                                                                        while(choice != 99)
+                                                                        {
+                                                                                puts("Panicked, you decide to hide from them. Where do you choose to hide?");
+                                                                                printf(" choose \n"); //prompt choices of where to hide
+                                                                                scanf("%d",&choice);
+                                                                        }
+                                                                        break;
+                                                                }
+                                                        }
+                                                        break;
+                                        }
+                        }
 			case 9:
 			{
 					while(choice != 99)
