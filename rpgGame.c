@@ -1,6 +1,6 @@
 //Contributors
 //G. Poppe
-//
+//Shane Cortez
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
@@ -502,7 +502,7 @@ void main(void)
 			}
 			case 28:
 			{
-					//Room #28 for Shane Cortez *so far unfinished*
+					//Room #28 for Shane Cortez
 				while (choice != 99)
 				{
 					srand(time(NULL));
