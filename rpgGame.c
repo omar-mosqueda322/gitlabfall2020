@@ -713,10 +713,230 @@ void main(void)
 			}
 			case 20:
 			{
+					int level = 0,attack = 0,magic = 0,health = 0,defense = 0,totalHP = 0;
+					bool NEW = true;
+					srand(time(NULL));
+					
 					while(choice != 99)
 					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
+							/*puts("you open the door and find ........");
+							scanf("%d",&choice);*/
+								
+							bool gameLoop = false;
+							int option = 0;
+							int levelF = level;
+							int healthPOT = 3;
+							int damage = 0;
+
+							bool magician = false;
+							bool warrior = false;
+
+							bool loss = false;
+
+							int multiplier = 0;
+							
+							char goblin[10] = "Goblin";
+							char zombie[10] = "Zombie";
+							char giant[10] = "Giant";
+							char highSumm[25] = "High Summoner";
+							char quetzal[25] = "God Quetzalcoatl";
+
+							char goblinATT[50] = "The Goblin takes his tiny shiv and cuts you.";
+							char zombieATT[50] = "The Zombie lunges forward and bites you.";
+							char giantATT[80] = "The Giant takes his club and strikes you in the chest";
+							char highATT[100] = "The High Summoner casts a large cloud above you and calls down a bolt of lightning.";
+							char quetzalATT[100] = "Quetzalcoatl, The Creator, blasts you with a blue stream of fire.";
+
+							while(NEW)
+							{
+								puts("Pick your class.");
+								puts("_________________________________________");
+								puts("1. Warrior.");
+								puts("2. Magician.");
+								puts("3. Exit.");
+								
+								scanf(" %d",&option);
+
+								switch(option)
+								{
+									case 1: level = 1;
+											attack = 5;
+											magic = 1;
+											health = 15;
+											defense = 2;
+											totalHP = 15;
+											warrior = true;
+											puts("You have selected Warrior.");
+											gameLoop = true;
+											NEW = false;
+											break;
+											
+									case 2: level = 1;
+											attack = 1;
+											magic = 10;
+											health = 10;
+											totalHP = 10;
+											defense = 1;
+											magician = true;
+											puts("You have selected Magician.");
+											gameLoop = true;
+											NEW = false;
+											break;
+
+									case 3: gameLoop = false;
+											puts("Heading back to the main menu!");
+											NEW = false;
+											break;
+
+									default:
+											puts("Please select a valid option");
+											break;
+								};
+							}
+							if(gameLoop==false)
+								break;
+							levelF = level;
+							if(gameLoop == true)
+								puts("You will be given 3 health potions that heal \"20%\" of your health.\nUse them wisely.");
+							
+							puts("_________________________________________");
+							puts("");
+							
+							for(levelF; ((gameLoop == true)&&(levelF <= 5)); levelF++)
+							{
+								int monsterHP = 8;
+								int monsterATT = 5;
+								
+								multiplier = levelF*3;
+								
+								if(warrior == true)
+								{
+									totalHP += multiplier;
+									health += multiplier;
+									attack += multiplier;
+									defense += (multiplier/3);
+								}
+								else if(magician == true)
+								{	
+									totalHP +=(3*(multiplier/2));
+									health +=(3*(multiplier/2));
+									magic += (multiplier+8);
+									defense += (multiplier/4);
+								}
+								else
+									puts("Something went wrong with warrior/magician boolean");
+
+								monsterHP+=(multiplier*2);
+								monsterATT+=(multiplier*2);
+
+								while(monsterHP > 0)
+								{	
+									if(levelF==1)
+										printf("%s HP: %d DMG: %d \n", goblin,monsterHP,monsterATT);
+									else if(levelF==2)
+										printf("%s HP: %d DMG: %d \n", zombie,monsterHP,monsterATT);
+									else if(levelF==3)
+										printf("%s HP: %d DMG: %d \n", giant,monsterHP,monsterATT);
+									else if(levelF==4)
+										printf("%s HP: %d DMG: %d \n", highSumm,monsterHP,monsterATT);
+									else if(levelF==5)
+										printf("%s HP: %d DMG: %d \n", quetzal,monsterHP,monsterATT);
+									else
+										puts("Something went wrong calculating string name.");
+									if(warrior == true)	
+										printf("Warrior: %s HP: %d DMG: %d \n",name,health,attack);
+									else
+										printf("Magician: %s HP: %d DMG: %d \n",name,health,magic);
+									puts("_________________________________________");
+									puts("1. Attack.");
+									puts("2. Magic.");
+									puts("3. Health Potion.");
+
+									scanf(" %d",&option);
+									
+									int charATT = (rand()%attack);
+									int charMAG = (rand()%magic);
+									
+									switch(option)
+									{
+										case 1: printf("You've attacked for %d.\n",charATT);
+											monsterHP -= charATT;
+											break;
+										case 2: printf("You've attacked for %d.\n",charMAG);
+											monsterHP -= charMAG;
+											break;
+										case 3: if(healthPOT <= 0)
+											{
+												puts("You have no more potions left!");
+												break;
+											}
+											else
+											{
+												health +=(.20*(totalHP));
+												healthPOT--;
+											}
+											break;
+										default:
+											break;
+									};
+
+									if(monsterHP > 0)
+									{
+										damage = ((rand()%monsterATT) - defense);
+										if(damage > 0)
+										{
+											if(levelF==1)
+												printf("%s\n", goblinATT);
+											else if(levelF==2)
+												printf("%s\n", zombieATT);
+											else if(levelF==3)
+												printf("%s\n", giantATT);
+											else if(levelF==4)
+												printf("%s\n", highATT);
+											else if(levelF==5)
+												printf("%s\n", quetzalATT);
+											else
+												puts("Something went wrong calculating attack string.");
+
+											health -= damage;
+											printf("You took %d damage.\n",damage);
+										}
+										else
+											puts("Their attempt to attack you has failed.");
+									}
+
+									else
+									{
+										if(levelF==1)
+											printf("You have defeated the %s\n",goblin);
+										else if(levelF==2)
+											printf("You have defeated the %s\n",zombie);
+										else if(levelF==3)
+											printf("You have defeated the %s\n",giant);
+										else if(levelF==4)
+											printf("You have defeated the %s\n",highSumm);
+										else if(levelF==5)
+											printf("You have defeated the %s\n",quetzal);
+										else
+											puts("Something went wrong calculating the defeat string.");
+									}
+
+									if(health<=0)
+									{
+										puts("You lose.");
+										loss=true;
+										break;
+									}
+									puts("________________________________________________________________");
+								}	
+								if(loss == true)
+									gameLoop=false;
+
+								level = levelF;
+							}
+						if(level==5&&health>0)
+							printf("Congratulations %s, you defeated all the bosses in Room 20!\n",name);
+						puts("________________________________________________________________");
 					}
 					break;
 			}
