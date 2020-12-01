@@ -235,7 +235,22 @@ void main(void)
 			case 25:
 			{
 					while(choice != 99)
-					{
+					{		printf("Room for Richmond Laureta AKA (rlaureta)\n");
+							/*ROUGH DRAFT OF MY GAME:
+							The title of my game is: "The King's Tyrant"
+							I will create an rpg game that will start in a 
+							ruined dungeon and you wake up from your sleep.
+						       	You then go and pick your class and weapon.
+							You can either be a warrior or mage class. 
+							Then you pick your weapon and your path.
+							You will also have skills and you will spend 
+							points to level them up when you gain experience.
+							My game will have a karma effect for good and bad. 
+							The more you choose to be bad the choices will 
+							be more bad. If you choose to be good then your path 
+							will be more good. Its up to you who you want to be.
+							At the end of the game you will see what you become.*/
+
 							puts("You open the door and close it behind you.");
 							puts("After you overcome the panic from almost drowning, you look around and You find yourself in a cave, the air is damp and you smell mold.");
 							puts("You notice a skeleton at your feet with it's right hand clenched around something. The cave ahead leads to a tunnel and you see a door to your right.");
