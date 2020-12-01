@@ -163,96 +163,13 @@ int main(void)
 			break;
 			}
 			case 4:
-                        {
-                                        while(choice != 99)
-                                        {
-                                                        char decision4[30];
-                                                        puts("In your adventure please make sure to enter your decision exactly as stated in the 'quote'.");
-                                                        puts("\n");
-                                                        puts("you open the door and find two more doors.");
-                                                        puts("the left one is covered in dirt,moss, and other unknown substances.");
-                                                        puts("the right one is sparkling clean and there seems to be white light leaking out from under.");
-                                                        puts("Do you go left or right?");
-                                                        scanf("%s", decision4);
-                                                        if(strcmp(decision4, "left") == 0)
-                                                        {
-                                                                printf("You open the door slowly, scared of what could be behind it. But to your surprise the door leads to a clean school classroom. You sigh in relief of what could have happen. But then you hear a scream of pain in the hallway. Do you 'check it out' or 'hide' in the classroom.");
-                                                                scanf("%s", decision4);
-                                                                if(strcmp(decision4, "check it out") == 0)
-                                                                {
-                                                                        printf("You walk over to the door connecting to the hallway.You open it and step a foot into the hallway. It seems clear until you look to the right see a man holding a woman up by her hair at the end of hallway. Do you 'run' to the left to try to escape the man or 'approach' him to try to save the woman?");
-                                                                        scanf("%s", decision4);
-                                                                        if(strcmp(decision4, "run") == 0)
-                                                                        {
-                                                                                printf("You run as quickly as can for the door hoping it's an exit. The man notices you and drops the women and starts chasing you. Luckily, the door does lead to outside but it appears you are in some kind of forest. There is a car running and long dirt road that you can't see the end of. Do you 'get into the car'? Or do you 'hide on the side' of the door and try to ambush him.");
-                                                                                scanf("%s", decision4);
-                                                                                if(strcmp(decision4, "get into the car") == 0)
-                                                                                {
-                                                                                        printf("You get into the car. Put it into drive and make a U-turn for the road. The man exits the building and begins chasing the car. It's speeding up and you left him in the dust. It seems all clear but he starts shooting at you. You swerve left and right trying to dodge his bullets. You feel your shoulder burning and you look down at and notice you've been hit. You continue driving on the road and it finally leads to a paved road. You have been driving for a couple of miles now and tried your best to help your wound but you lost a lot of blood. You see a gas station in the distance but you still have half the tank left. Do you 'stop' at the gas station for help? Or do you 'keep driving' hoping you can get to a city?");
-                                                                                        scanf("%s", decision4);
-                                                                                        if(strcmp(decision4, "stop") == 0)
-                                                                                        {
-                                                                                                printf("fill");
-                                                                                        }
-                                                                                        else if(strcmp(decision4, "keep driving") == 0)
-                                                                                        {
-                                                                                                printf("fill");
-                                                                                        }
-                                                                                }
-                                                                                else if(strcmp(decision4, "hide on the side") == 0)
-                                                                                {
-                                                                                        printf("You stand to the side of the door. Getting ready to suprise attack the guy. He runs out a little but is confused on where you went. You lunge at him and tackle him to the floor. He is a equal match in strength and you are struggling to keep him down. You punch him in the face. He begins to try to reach for his hip and you notice he has a gun. You quickly try to stop his hand from grabbing it but it's too late, it's in his hands. You try your best to keep the gun pointed to the side but he gets a sudden burst of strength and overwhlems you. The gun is pointed at your face. BANG!");
-                                                                                        printf("GAME OVER.");
-
-                                                                //                      return EXIT_SUCCESS;
-                                                                                }
-                                                                        }
-                                                                        else if(strcmp(decision4, "approach") == 0)
-                                                                        {
-                                                                                printf("fill");
-                                                                        }
-                                                                }
-                                                                else if(strcmp(decision4, "hide") == 0)
-                                                                {
-                                                                        printf("You hide in the back of the classroom behind some desk. NOOO PLEASE DONT is heard from the hallway and then there is silence. You hear heavy footsteps from the hallway. You get ready for the situation if the door would swing open but it doesn't. The heavy footsteps get more distant then you hear the slam of a door.Do you 'go out' into the hallway since you believe it's safe? Or do you continue to 'hide' in the classroom.");
-                                                                        scanf("%s", decision4);
-                                                                        if(strcmp(decision4, "go out") == 0)
-                                                                        {
-                                                                                printf("fill");
-                                                                        }
-                                                                        else if(strcmp(decision4, "hide") == 0)
-                                                                        {
-                                                                                printf("fill");
-                                                                        }
-                                                                }
-
-                                                        }
-                                                        else if(strcmp(decision4, "right") == 0)
-                                                        {
-                                                                printf("You open the door hoping it will take you to back to where you came from. As you open the door you are greeted with angelic voices singing. It's so white you can't even see a couple of feet in front of you. You take a few steps out and it all changes. Fire and stone replace the white all around. The angelic voices are replaced with screaming. YOU FOOL! is heard in the distance. Do you 'venture' into the dark stone path infront of you? Or do you 'stay' where you are at?");
-                                                                scanf("%s", decision4);
-                                                                if(strcmp(decision4, "venture") == 0)
-                                                                {
-                                                                        printf("The dark stone path is lit with fire scattered around it. Screaming and various noises can be heard in the distance but they seem to get closer with ever step taken. After about 10 mins of walking you arrive at a gate that reads WELCOME. It is wide open. Do you 'enter'? Or do you 'go off the path' and trying to find a different route?");
-                                                                        scanf("%s", decision4);
-                                                                        if(strcmp(decision4, "enter") == 0)
-                                                                        {
-                                                                                printf("fill");
-                                                                        }
-                                                                        else if(strcmp(decision4, "go off the path") == 0)
-                                                                        {
-                                                                                printf("You decide to go off the path into the unknown. You walk cautiously into the darkness. The screaming is louder now. A very large person appears infront of you out of the darkness. You are frozen in terror as he towers over you. You decide to try to make a run for it but he grabs your arm before you can make your second step. He lifts you in the air by your arm. He begins to tear you limb by limb. You scream for help but no one is there to save you. You slowly start to fade out of conscious.");
-                                                                                printf("GAME OVER.");
-
-                                                                //              return EXIT_SUCCESS;
-                                                                        }
-                                                                else if(strcmp(decision4, "stay") == 0)
-                                                                {
-                                                                        printf("fill");
-                                                                }
-                                                                }
-                                                        }
-                                        break;
+			{
+					while(choice != 99)
+					{
+							puts("you open the door and find ........");
+							scanf("%d",&choice);
+					}
+					break;
 			}
 			case 5:
 			{
