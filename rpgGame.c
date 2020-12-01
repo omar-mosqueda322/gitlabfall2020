@@ -209,11 +209,79 @@ void main(void)
 			{
 					while(choice != 99)
 					{
-							puts("you open the door and find ........");
+							puts("Entered Moises' room");
+							puts("You open the door and see 5 doors which one do you choose?...");
+							puts("Choose an option below (Enter 99 to quit)");	
+							puts("Door 1 ");
+							puts("Door 2 ");
+							puts("Door 3 ");
+							puts("Door 4");
 							scanf("%d",&choice);
+		 					switch (choice)
+							{		
+								case 1:
+									puts("Door is cold to the touch");
+									puts("What do you do first");
+ 									puts("1.Do you try and build a fire?");
+									puts("2.Do you look for warm clothing?");
+   									puts("3.Do you tough it out?");
+									scanf("%d", &choice);
+									switch (choice)
+									{
+										case 1:
+											puts("Do you even know how to start a fire?");
+	       										puts("Of course you don't, but luckily there is a lighter in front of you");
+					       						puts("You find some dried up branches and leaves and light them");
+						                                        puts("So now that the fire is started what do you do");
+			  								puts("1. Look for food");
+	 										puts("2. Find something to put on");
+      											puts("3. Nothing, ill stay wasrm by the fire.");
+		 									scanf("%d", &choice);
+											break;		
+										case 2:
+    											puts("Smart move need to get some clothes luckily theres clothes right next to you");
+											break;                                                                   
+				   						case 3:
+  											puts("I too like to live dangerously");
+											puts("But you really shouldve chosen something else");
+			 								break;
+	   									default:
+	   										puts("Try again");
+		       									break;
+									}
+      									break;
+      								case 2:
+      									puts("Who left the heater on?");
+									break;
+     								case 3:
+       									puts("You fall from the sky towards the ground");
+						       			puts("Are you scared?");
+  									puts("1. Yes 2. No");
+				     					scanf("%d", &choice);
+    									switch(choice)
+									{
+										case 1:
+											puts("You shouldn't be you have a parachute");
+			   								break;
+      										case 2:
+											puts("Kinda edgy of you, are you ok? Maybe you should talk to somebody");
+							      				break;
+			 							default:
+		 									puts("You only really have two options");
+	 										break;
+									}
+				     					break;
+	 							case 4:
+									puts("There is a strange man in front of you");
+									puts("1.Do you approach him? or 2. Do you ignore him?");
+	  								break;
+       								default:
+									printf("Door is locked cannot open \n");
+									break;
+							}
 					}
-					break;
 			}
+							
 			case 23:
 			{
 					while(choice != 99)
