@@ -7,8 +7,10 @@
 #include <time.h>
 #include <stdio.h>
 
+void gameRules(); //function to explain rules of room 12 game
+void gameCraps(); //function to run room 12 game
 
-void main(void)
+int main(void)
 {
 	int x,y,z,i,h,g,k,choice=0;
 	char name[256];
@@ -120,6 +122,7 @@ void main(void)
 			{
 					while(choice != 99)
 					{
+
 					}
 					break;
 			}
@@ -127,6 +130,28 @@ void main(void)
 			{
 					while(choice != 99)
 					{
+						puts("you open the door and find you've entered room 12........\n");
+
+						char response, temp; //char variables needed for game to work
+						{
+							printf("Since you're here and brave, will you take a chance and play a game of cards? Enter 'y' twice for yes or '99' to leave at any time...\n");
+							response = getchar(); //set response to equal user's input
+							temp = getchar(); //set temp value to equal user's input
+
+							if(response == 'y' || response == 'Y') //if answer is equal to letter 'y' or 'Y'...
+							{
+								gameRules(); //simple function that prints game rules for user before game begins
+								gameCraps(); //calls main game function
+							}
+							else if(response == 99) //had issues modifying this code to run no...using escape 99 for now to to exit game...
+							{
+								puts("You don't want to play, but you'll be back. Goodbye for now... >:D");
+								break;
+							}
+						}
+
+						scanf("%d", &choice); //scan in user's input for choice...
+						
 					}
 					break;
 			}
@@ -383,3 +408,66 @@ void main(void)
 	}
 }
 
+void gameRules() //simple function that prints rules of game to user...
+{
+	puts("\nThe rules of this card game - craps - are simple...");
+	puts("If you roll a 7 or 11 immediately...you win!");
+	puts("If you roll a 2, 3, or 12 immediately...you lose!");
+	puts("If you roll anything besides those numbers, you want to roll that number again before you roll a 7 to win!\n");
+}
+
+
+void gameCraps() //function play craps that does the logic for the game...
+{
+    int randomint(int x, int y); //function to call random integer...
+    srand(time(NULL)); //random seed set to clock time
+
+    int die1, die2, die3, die4, rollcount, rollcount2; //4 die and 2 roll ints
+
+    die1 = randomint(1,6); //setting first die to equal random int from 1-6
+    die2 = randomint(1,6); //same as above with second die
+    rollcount = die1 + die2; //roll function equals die 1 and die 2....
+    printf("You rolled a %i\n",rollcount); //print statement letting user know their roll
+
+    if(rollcount == 7 || rollcount == 11)//if roll is equal to 7 or 11...player wins game
+    	{
+    		printf("You Win!\n"); //let user know they won game
+		printf("Enter 'y' or 'Y' to roll again. Enter '99' to exit program.\n");
+        	return;
+    	}
+    else if(rollcount == 2 || rollcount == 3 || rollcount == 12) //if roll is equal to a 2, 3, or 12....player loses game
+    	{
+		printf("You Lose :(\n"); //let user know they lost game
+		printf("Enter 'y' or 'Y' to roll again. Enter '99' to exit program.\n");
+        	return;
+    	}
+    else // otherwise on every other number roll...
+        {
+            do //run this command at least once...while conditions above aren't met...
+            {
+                die3 = randomint(1,6); //similar to above, set die3 to equal a random int between 1-6
+                die4 = randomint(1,6); //same as above w/4th die
+                rollcount2 = die3 + die4; //our 2nd roll equals die 3 + die 4
+                printf("You rolled a %d\n", rollcount2); //let user know what they rolled w/2nd roll...
+
+                if(rollcount == rollcount2) //if our 2nd roll is equal to our first roll...
+                 {
+                     printf("You Win\n"); //let user know they won game
+		     printf("Enter 'y' or 'Y' twice to roll again. Enter '99' to exit program.\n");
+                     return;
+                 }
+            }
+
+	    while(rollcount != 7); //while our 2nd roll is not equal to 7...
+	    printf("You Lose :(\n"); //let user know they lost game...
+	    printf("Enter 'y' or 'Y' twice to roll again. Enter '99' to exit program.\n");
+
+        }
+
+}
+
+int randomint(int x, int y) //random integer function to work craps game
+{
+
+	return rand()%(y - x + 1); //ensures random number is generated
+}
