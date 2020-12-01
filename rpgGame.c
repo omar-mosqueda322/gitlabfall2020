@@ -366,8 +366,92 @@ void main(void)
 			{
 					while(choice != 99)
 					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
+							puts("You open the door and find yourself trapped in another room.");
+							puts("In front of you are three buttons: blue, red, yellow.");
+							puts("Lets play a game :)");
+							
+							puts("Pick a button:");
+							puts("1.Blue");
+							puts("2.Red");
+							puts("3.Yellow");
+							scanf("%d", &choice);
+							while((choice != 1)&&(choice != 2)&&(choice != 3)&&(choice != 99))
+							{
+								puts("Enter '1' '2' '3'.");
+								scanf("%d", &choice);
+							}
+							if(choice == 1)
+							{
+								puts("Room 1");
+								puts("Water starts pouring out from the cieling, this room is starting to flood too!");
+								puts("You must find a way to stop the water or you will drown, time is running out!");
+								
+							}
+							if(choice == 2)
+							{
+								puts("Room 2");
+								puts("Your hear a loud crank, the walls slowly start to close in");
+								puts("You must find a way to stop the walls, time is running out!");
+							}
+							if(choice == 3)
+							{
+								puts("A generator turns on, the air begins to get vaccumed out of the room");
+								printf("You must find a way to stop from suffocating, time is running out!");
+							}
+							int x=10;
+							while(x!=0)
+							{
+								printf("Timer %d minutes left\n", x);
+								puts("1.Look Around");
+								puts("2.Use Laptop");
+								puts("3.Use Tools");
+								puts("4.Open Door");
+								scanf("%d", &y);
+								switch(y)
+								{
+									case 1:
+										puts("You look around the room.");
+										puts("The lights in the room are flickering.");
+										puts("In the middle is a big metal crate and ontop is a laptop and small box on it.");
+										puts("One wall has a lot of light switches with a calander next to it.");
+										puts("The calander has the last day circled on the month of december.");
+										puts("The other wall has a lever with a stickynote next to it saying 'hex: FF'.");
+										puts("There is another door in front of you but its locked.");
+										x--;
+										break;
+									case 2:
+										puts("You go up to the laptop and open it up to a terminal");
+										puts("Please enter code:");
+										scanf("%d", &z);
+										if(z==1515)
+										{
+											puts("You hear a loud clank, the water stops pouring from the cieling");
+										}
+										if(z==1231)
+										{
+											puts("A vent opens up in the cieling:");
+										}
+										if((z!=1515)&&(z!=1231))
+										{
+											puts("Nothing happened.");
+										}
+										x--;
+										break;
+									case 3:
+										x--;
+										break;
+									case 4:
+										if(y==0)
+										{
+											puts("You have survived and escaped!!");
+											choice=99;
+										}
+										puts("Door is locked.");
+										x--;
+										break;
+								}	
+							}
+							puts("Sorry time ran out and you died");
 					}
 					break;
 			}
