@@ -543,7 +543,46 @@ int main(void)
 			{
 					while(choice != 99)
 					{
+							puts("you open the door and find 3 more doors.");
+							puts("On the left there is a door with a Skull and Bones. In the middle the door has an Angel. On the right it has no symbol.\n");
+							puts("1. Open the left door. \n2. Open the middle door. \n3. Open the right door.\n");
+							scanf("%d", &choice);
+							if(choice == 1){
+								puts("You proceed to open the door with Skull and Bones on it.\n");
+								printf("A skeleton stands before you. \n'Hello %s would you like to play a game?'\nThe door behind you disappears so its not like you have a choice to say no...so you agree to play without knowing what kind of game.\n",name);
+								puts("[Skeleton]: Wonderful! Choose a hand *Giant Grin on his face*\n");
+								puts("1. Left \n2. Right\n");
+								scanf("%d", &choice);
+								if(choice == 1){
+									puts("[Skeleton]: *Laughs* Excellent choice. If you chose the other hand your soul would have been mine\n");
+									puts("[Skeleton]: Now lets play one final game. You can roll this 100 sided die and if you get anything higher than 55 you can leave here with a million dollars. Or you can walk through that door *Skeleton points to a new door as it rises from the ground*\n");
+									puts("1. Roll the die. \n2. Open the door\n");
+									scanf("%d", &choice);
+									if(choice == 1){
+										puts("[Skeleton]: *Evil Laughs* You have chosen the right path so far. However, I never told you what happens if you get anything below 55. If you land below 55 you have to stay here for the rest of your life guarding this door and I will finally be free! \n");
+										puts("Ready to roll?\n1. Yes\n2. No");
+										scanf("%d", &choice);
+										puts("[Skeleton]: Ahh who cares not like you have a choice! *Rolls die*\n");
+									}else if(choice == 2){
+										puts("[Skeleton]: Did you really think I would let you live?");
+										puts("You have died to a Skeleton \n");
+										break;
+									}
 
+								}else if (choice == 2){
+									puts("[Skeleton]: Thank you for playing. *He puts his hand over your head*\n");
+									puts("You have died try again!\n");
+									break;
+								}
+							}else if(choice == 2){
+								puts("You proceed to open the door with an Angel on it.\n");
+								puts("To be continuned");
+								break;
+							}else if(choice == 3){
+								puts("You proceed to open the blank door.\n");
+								puts("You enter the room and its filled with clocks. Every clock instantly stops ticking and your vision slowly fades to black. You close your eyes hoping you get your vision back, but you open them and you are no longer in the room. Instead you you are placed straight back to where you started with the option to choose any room.");
+								break;
+							}
 					}
 					break;
 			}
