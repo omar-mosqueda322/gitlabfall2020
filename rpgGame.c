@@ -23,6 +23,7 @@ void gameCraps(); //function to run room 12 game
 int main(void)
 {
 	int x,y,z,i,h,g,k,choice=0;
+	char decision; 
 	char name[256];
 	int boxNum=0;
 
@@ -1661,8 +1662,26 @@ int main(void)
 			{
 					while(choice != 99)
 					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
+						puts("Welcome to room 32 where I already know what is on your mind.");
+						puts("I bet I can guess what number your thinking of with just a couple of instructions.");
+						puts("Up for the challenge? y/n");
+						scanf("%c", &decision);
+						
+						if(decision == 'y')
+						{
+							puts("Pick a number, any number and make sure you remember that number.");
+							puts("Now double the number.");
+							puts("Now add 10 to the new number.");
+							puts("Divide it by 2");
+							puts("Now subtract that by the original number.");
+							puts("Your new number is now 5");
+							break;
+						}
+						else if(decision == 'n')
+							{
+								puts("I see you're in no mood for a little fun");
+								break;
+							}
 					}
 					break;
 			}
