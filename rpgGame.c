@@ -6,6 +6,7 @@
 #include <string.h>
 #include <time.h>
 #include <stdio.h>
+#include <stdbool.h>
 
 
 void main(void)
@@ -112,6 +113,116 @@ void main(void)
 					while(choice != 99)
 					{
 							puts("you open the door and find ........");
+							puts("A lottery machine?");
+							puts("Welcome to Fabian's room");
+							int n1,n2,n3,newrn1,newrn2,newrn3;
+							bool checkNum1;
+							bool checkNum2;
+							bool checkNum3;
+							srand(time(NULL));
+	
+							printf("Enter the lottery by entering three numbers. Each 1 digit\n");
+							scanf(" %d %d %d",&n1,&n2,&n3);
+							newrn1 = rand()%10;
+							newrn2 = rand()%10;
+							newrn3 = rand()%10;
+							printf("Your numbers are: %d, %d, %d\n",n1,n2,n3);
+							printf("The winning lottery numbers are: %d, %d, %d\n",newrn1,newrn2,newrn3);
+		
+							if(n1==newrn1 || n1==newrn2 || n1==newrn3)
+							{
+								checkNum1= true;
+							}
+							else
+							{
+								checkNum1=false;
+							}
+		
+							if(checkNum1)
+							{
+								if (n1==newrn1)
+								{
+									newrn1=420;
+								}
+								else if (n1==newrn2)
+								{
+									newrn2=420;
+								}
+								else
+								{
+									newrn3=420;
+								}
+							}
+							if(n2==newrn1 || n2==newrn2 || n2==newrn3)
+							{
+								checkNum2= true;
+							}
+							else
+							{
+								checkNum2=false;
+							}
+							if(checkNum2)
+							{
+								if (n2==newrn1)
+								{
+									newrn1=420;
+								}
+								else if (n2==newrn2)
+								{
+									newrn2=420;
+								}
+								else
+								{
+									newrn3=420;
+								}
+							}
+							if(n3==newrn1 || n3==newrn2 || n3==newrn3)
+							{
+								checkNum3= true;
+							}
+							else
+							{
+								checkNum3=false;
+							}
+							if(checkNum3)
+							{
+								if (n3==newrn1)
+								{
+									newrn1=420;
+								}
+								else if (n3==newrn2)
+								{
+									newrn2=420;
+								}
+								else
+								{
+									newrn3=420;
+								}
+							}
+							if(checkNum1 && checkNum2 && checkNum3)
+							{
+								if(n1==newrn1 && n2==newrn2 && n3==newrn3)
+								{
+									printf("You've hit the jackpot of 1,000,000\n");
+								}
+								else 
+								{
+									printf("You wont 1,000\n");
+								}
+							}
+							else if ((checkNum1 && checkNum2 || checkNum1 && checkNum3) || (checkNum2 && checkNum3))
+							{
+								printf("You've won $100\n");
+							}
+							else if (checkNum1 || checkNum2 || checkNum3) 
+							{
+								printf("You won $10\n");
+							}
+							else
+							{
+								printf("You won nothing sorry!\n");
+							}
+							puts("choose a new room now if you dare... \n");
 							scanf("%d",&choice);
 					}
 					break;
