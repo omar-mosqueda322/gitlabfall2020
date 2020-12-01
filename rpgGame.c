@@ -7,6 +7,8 @@
 #include <time.h>
 #include <stdio.h>
 
+void extraCredit(void);
+void ignoreExtra(void);
 
 void main(void)
 {
@@ -52,10 +54,29 @@ void main(void)
 			{
 					while(choice != 99)
 					{
-							puts("you open the door and find ........");
+							printf("%s", "You open the door and find ........\n");
+							printf("%s", "You see extra credit for CSC 251-01\n Do you chase it?\n");
+							printf("%s%s%s", "1) To chase it\n","2) Ignore the tempations of passing the class!\n","99) If you don't want to play anymore\n");
 							scanf("%d",&choice);
-					}
+							
+							switch(choice)
+							{
+								case 1:
+									extraCredit();
+									break;
+								case 2:
+									ignoreExtra();
+									break;
+								case 99:
+									break;
+								default:
+									printf("%s", "Please follow the directions!\nYou're going to back to spawn!\n");
+									break;			
+							
+							}
 					break;
+					}
+			break;
 			}
 			case 4:
 			{
@@ -435,6 +456,36 @@ void main(void)
 					break;
 			}
 		}	
+	}
+}
+void extraCredit(void)
+{
+	printf("%s", "You have gained extra credit!\nIf you beat me in a duel!\n");
+
+	printf("%s", "DUEL MECHANICS WILL BE IMPLEMENTED IN THE NEXT UPDATE\n\n");
+}
+
+
+void ignoreExtra(void)
+{
+	int counter = 0;
+
+	printf("%s", "Take the extra credit, I'm not gonna ask you again!\n");
+
+	int choice;
+	printf("%s", "Please type 1 for extra credit\n or you will be kicked out of room THREE!\n");
+	scanf("%d", &choice);
+	
+	switch(choice)
+	{
+		case 1:
+			extraCredit();
+			break;
+
+		defualt:
+			printf("%s", "You have been kicked!...LEAVE THIS ROOM AT ONCE!\n");
+			break;
+
 	}
 }
 
