@@ -1736,9 +1736,228 @@ int main(void)
 			{
 					while(choice != 99)
 					{
-							puts("you open the door and find a book. \n");
-							puts("Room for Andrea \n"); 
-							scanf("%d",&choice);
+							int userchoice;//local variable to store user input. 
+
+							/*Introduction of the game*/
+							printf("\n"); 
+							printf("Welcome to Mythical Island Adventure: you will face certain situations where your character has to make right decision to complete the game. Use your wits to survive the Mythical Island. Good Luck!\n");
+						       printf("Choose the response between entering 1 or 2 whichever will take you further the game. Enter 99 to exit the room 34.\n");
+
+					/*game starts*/
+					/*get valid input from user for decision _1_ and take action based on decision. */
+
+					do{
+						printf("\n");//seperator 
+						
+						printf("You start on the journey to come back home to your family for Christmass holiday. Your magical wand transform into a broom stick and fly to the skies. In the middle of the ocean, storm came and broke your broom-stick. You find your self in the middle of the island or so called Mythical Island. What do you do?\n");
+						printf("1: You make a boat using coconut leaves and try to escape to the ocean.\n");
+					        printf("2: You find and built a shelter using woods and stones.\n");
+
+					/*seperator*/ 
+						printf("\n");
+
+						printf("Your choice: ");
+						scanf(" %d", &userchoice);
+						
+						choice = userchoice;//choice set to userchoice if the user decides to exit _99_. 
+
+					if(userchoice==1)
+						{
+						 printf("\n");//seperator
+						 printf("The boat is not strong enough and destroyed your journey going to your family celebration in Christmass holiday. Game Over!\n");//return
+					 	 printf("\n"); 	 
+						}
+					
+					else if(userchoice == 2)
+						{
+						printf("\n");
+					        printf("Your shelter is built. You start exploring the island..."); 	
+						}
+
+					else if(userchoice != 1 && userchoice != 2 && choice != 99)
+						{
+						printf("Invalid input! Please enter 1 or 2 only.\n"); 	
+						}
+					}	       
+					while(userchoice != 1 && userchoice != 2 &&choice != 99);//to make sure choice isn't _99_. 
+
+					if(choice == 99)
+						break; 
+
+					if(choice != 1)//if they didn't choose _1_, then continue. 
+						{
+						do{ //get valid input from the user for decision _2_ and take action based on decision. 
+						printf("\n");//separator
+
+						printf("You see a cyclops with their weapons while exploring the forest inside of the island. What do you do?\n"); 	
+						printf("1: You try to fight and kill the monster using a wood.\n");
+					        printf("2: You quickly hide and secretely go to the other side of the island.\n");
+
+						printf("\n");//separator
+
+						printf("Your choice: ");
+						scanf(" %d", &userchoice);
+
+						choice = userchoice;//set choice to userchoice if _99_ was read in to exit. 
+
+						if(userchoice==1)
+						{
+						printf("\n"); 
+						printf("You became cyclops lunch, they said you are yummy and thank you for the meal. Game Over!\n");
+						printf("\n"); 
+					       	break;//I am using my void main to exit in the game only. 	
+						}
+
+						else if(userchoice==2)
+						{
+						printf("\n");
+					        printf("You found fruits and coconut juice. You go back to your shelter and ate them to fight another day....\n"); 	
+						}
+						
+						else if(userchoice != 1 && userchoice != 2 && choice != 99)
+						{
+						printf("Invalid input! Please enter 1 or 2 only.\n");
+						}
+
+						 }	while(userchoice !=1 && userchoice !=2 && choice != 99); 
+
+						if(choice == 99)
+						break;
+
+					/*if choice wasn't _1_, they are still in the game. */
+						if(choice != 1)
+						{
+						do{ //get valid input from user for decision _3_ and take action based on decision. 
+						
+						printf("\n"); //separator
+
+						printf("By exploring yesterday, you found out cyclops looks big and strong, and trolls looks small and weak. What do you do?\n"); 
+						printf("1: You approach the friendly trolls.\n");
+						printf("2: You approach cyclops to align yourself with powerful forces not sure their instention though.\n");
+
+						printf("\n"); 
+
+						printf("Your choice: ");
+						scanf(" %d", &userchoice);
+
+						choice = userchoice; //set choice to userchoice to see if _99_ was read in to exit. 
+
+						if(userchoice==1)
+						{
+							printf("\n"); 
+							printf("The trolls are indeed friendly they invite you to their home, so your not alone anymore.\n"); 
+						}	
+
+						else if(userchoice==2)
+						{
+						printf("\n"); //separator
+						printf("You try to communicate with Cyclops. They get angry and attack you because their hunting prey got escape. Game Over!\n");
+						printf("\n"); 
+					        break; //break instead of return _0_ because I'm using a void main, and want to exit my game not the whole program. 	
+						}
+
+						else if(userchoice != 1 && userchoice != 2 && choice != 99)
+						{
+						printf("Invalid input! Please enter 1 or 2 only.\n"); 
+						}
+
+						}	while(userchoice !=1 && userchoice != 2 && choice != 99); 
+
+						if(choice == 99)
+						break; 
+
+						/*if choice wasn't _2_, they are still in the game*/
+						if(choice != 2)
+						{
+						do{/*get valid input from user for decision _4_ and take action based on decision. */
+						printf("\n");//separator
+
+						printf("The grandpa troll tells you a story the enemies of the island of them are the pirates and other are cyclops. The next day you help trolls to catch fishes on the sea. However, you see a pirate ship on the other side of the island. What do you do?\n");
+						printf("1: You try to befriend them and use the opportunity to get away from the island.\n");
+					        printf("2: You hide and run to tell the trolls about the arriving pirates on the island...\n");
+
+						printf("\n");//separator
+						
+						printf("Your choice: "); 
+						scanf(" %d", &userchoice);
+						
+						choice = userchoice; //to set choice to userchoice to see if _99_ was read in to exit. 
+						
+						if(userchoice==1)
+						{
+						printf("\n");//separator
+
+						printf("You are surrounded by pirates, and make you their slave. You are taken away from the island but stuck with pirates forever. Game Over!\n");
+						printf("\n"); 
+						break; //break instead of return _0_ because I'm using my void main and want to exit to my game only. 
+						}	
+
+						else if(userchoice == 2)
+						{
+						printf("\n"); 
+						printf("The trolls are happy you told them about the pirates are exploring the beach. The trolls create an invisible barrier to keep you and other trolls safe away from the  pirates.\n"); 
+						}
+
+						else if(userchoice != 1 && userchoice != 2 && choice != 99)
+						{
+						printf("Invalid input! Please enter 1 or 2 only.\n"); 
+						}
+						  }	while(userchoice != 1 && userchoice !=2 && choice != 99);
+
+						{
+						if(choice == 99)
+						break;
+
+						if(choice != 1)
+						{
+						
+							do{ /*get valid input from user for decision _5_ and take action based on decision.*/
+								printf("\n"); 
+
+								printf("The pirates did not find any interesting on the island, they leave. Trolls and you gather and celebrate. However, the celebration is too loud, the cyclops came, break the barrier, and attacked the trolls home. The grandfather troll try to combat the cyclops but failed. He hand you down his magical pendant What do you do?\n");
+							        printf("1: Take the magical pendant to fix your broken flying broom stick, save your self and ran away.\n");
+								printf("2: Take the pendant, fix your magical wand, summon fairies alliances to save trolls including the grandfather from evil cyclops.\n");								
+								printf("\n");//separator
+								
+								printf("Your choice: ");
+								scanf(" %d", &userchoice);
+
+							choice = userchoice;//to set choice to userchoice to see if _ 99_ was read in to exit.
+							
+							if(userchoice==1)
+							{
+							printf("\n");//separator
+
+							printf("Because of your selfishness, your flying broomstick broke, you trip over a cliff pluging to inevitable death.. Game Over!\n");
+							printf("\n"); 
+						        break;//break instead of return _0_ because I'm using a void main and only want to exit my game.  	
+							}	
+
+							else if(userchoice==2)
+							{
+							printf("\n");//separator
+						       	
+							printf("The grandfather troll let you keep his magical pendant as a present, teach you to summon door a shorcut passage way going to your family home. Everyone surprise to welcome you warmly to celebrate Christmass holiday with them.\n ");
+							printf("\n"); 
+							printf("You win the game. The End!\n"); 	
+							printf("\n");//separator 
+							}
+
+							else if(userchoice != 1 && userchoice != 2 && choice != 99)
+							{
+							printf("Invalid input! Please enter 1 or 2 only.\n"); 
+							}
+							
+							}	while(userchoice !=1 && userchoice !=2 && choice !=99); 
+
+							if(choice == 99)
+							break; 
+							  }
+					 	       	  }	
+						          }
+						          }
+							  }
+					
 					}
 					break;
 			}
