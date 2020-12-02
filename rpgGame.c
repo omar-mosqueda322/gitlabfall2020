@@ -1733,8 +1733,9 @@ int main(void)
 					break;
 			}
 			case 34:
-			{
-					while(choice != 99)
+			{		
+					int flag = 0; 
+					while(choice != 99 && flag !=1) 
 					{
 							int userchoice;//local variable to store user input. 
 
@@ -1759,19 +1760,24 @@ int main(void)
 						printf("Your choice: ");
 						scanf(" %d", &userchoice);
 						
+						flag = 1; 
+
 						choice = userchoice;//choice set to userchoice if the user decides to exit _99_. 
 
 					if(userchoice==1)
 						{
 						 printf("\n");//seperator
-						 printf("The boat is not strong enough and destroyed your journey going to your family celebration in Christmass holiday. Game Over!\n");//return
-					 	 printf("\n"); 	 
+						 printf("The boat is not strong enough and destroyed your journey going to your family celebration in Christmass holiday.\n");//return
+					 	 printf("\n"); 
+
+						 printf("Game Over!\n");
+						 printf("\n"); 	 
 						}
 					
 					else if(userchoice == 2)
 						{
 						printf("\n");
-					        printf("Your shelter is built. You start exploring the island..."); 	
+					        printf("Your shelter is built. You start exploring the island...\n"); 	
 						}
 
 					else if(userchoice != 1 && userchoice != 2 && choice != 99)
@@ -1789,7 +1795,7 @@ int main(void)
 						do{ //get valid input from the user for decision _2_ and take action based on decision. 
 						printf("\n");//separator
 
-						printf("You see a cyclops with their weapons while exploring the forest inside of the island. What do you do?\n"); 	
+						printf("You see cyclops with their weapons while exploring the forest inside of the island. What do you do?\n"); 	
 						printf("1: You try to fight and kill the monster using a wood.\n");
 					        printf("2: You quickly hide and secretely go to the other side of the island.\n");
 
@@ -1803,15 +1809,18 @@ int main(void)
 						if(userchoice==1)
 						{
 						printf("\n"); 
-						printf("You became cyclops lunch, they said you are yummy and thank you for the meal. Game Over!\n");
-						printf("\n"); 
+						printf("You became cyclops lunch, they said you are yummy and thank you for the meal.\n");
+						printf("\n");
+							
+						printf("Game Over!\n");
+						printf("\n"); 	
 					       	break;//I am using my void main to exit in the game only. 	
 						}
 
 						else if(userchoice==2)
 						{
 						printf("\n");
-					        printf("You found fruits and coconut juice. You go back to your shelter and ate them to fight another day....\n"); 	
+					        printf("You found fruits and coconut juice. You go back to your shelter and ate them to fight another day...\n"); 	
 						}
 						
 						else if(userchoice != 1 && userchoice != 2 && choice != 99)
@@ -1851,8 +1860,11 @@ int main(void)
 						else if(userchoice==2)
 						{
 						printf("\n"); //separator
-						printf("You try to communicate with Cyclops. They get angry and attack you because their hunting prey got escape. Game Over!\n");
+						printf("You try to communicate with cyclops. They get angry and attack you because their hunting prey got escape.\n");
 						printf("\n"); 
+
+						printf("Game Over!\n");
+					        printf("\n"); 	
 					        break; //break instead of return _0_ because I'm using a void main, and want to exit my game not the whole program. 	
 						}
 
@@ -1887,8 +1899,11 @@ int main(void)
 						{
 						printf("\n");//separator
 
-						printf("You are surrounded by pirates, and make you their slave. You are taken away from the island but stuck with pirates forever. Game Over!\n");
+						printf("You are surrounded by pirates, and make you their slave. You are taken away from the island but stuck with pirates forever.\n");
 						printf("\n"); 
+
+						printf("Game Over!\n");
+					       	printf("\n"); 	
 						break; //break instead of return _0_ because I'm using my void main and want to exit to my game only. 
 						}	
 
@@ -1904,7 +1919,6 @@ int main(void)
 						}
 						  }	while(userchoice != 1 && userchoice !=2 && choice != 99);
 
-						{
 						if(choice == 99)
 						break;
 
@@ -1928,8 +1942,11 @@ int main(void)
 							{
 							printf("\n");//separator
 
-							printf("Because of your selfishness, your flying broomstick broke, you trip over a cliff pluging to inevitable death.. Game Over!\n");
+							printf("Because of your selfishness, your flying broomstick broke, you trip over a cliff pluging to inevitable death.\n");
 							printf("\n"); 
+
+							printf("Game Over!\n");
+						       	printf("\n"); 	
 						        break;//break instead of return _0_ because I'm using a void main and only want to exit my game.  	
 							}	
 
@@ -1956,7 +1973,6 @@ int main(void)
 					 	       	  }	
 						          }
 						          }
-							  }
 					
 					}
 					break;
