@@ -9,6 +9,12 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+///////////Shanes room methods///////////
+
+void shanesFileWriter(int choice);
+
+///////////Shanes room methods end/////////
+
 void extraCredit(void);
 void ignoreExtra(void);
 
@@ -1255,6 +1261,7 @@ int main(void)
 			}
 			case 28:
 			{
+
 					//Room #28 for Shane Cortez
 				while (choice != 99)
 				{
@@ -1268,6 +1275,12 @@ int main(void)
 					puts("2. Quickly look around and reassess the situation");
 					puts("99. At any time to End Game");
 					scanf("%d", &choice);
+					while (choice > 2 || choice < 1)
+					{
+						puts("enter 1, 2 or 99");
+						scanf("%d", &choice);
+					}
+
 					if (choice == 1)
 					{
 						puts("in a panic you jump across the pit and make it safely to the other side.");
@@ -1278,6 +1291,11 @@ int main(void)
 						puts("1. Try to jump across and jump back to grab the key");
 						puts("2. Check inventory");
 						scanf("%d", &choice);
+						while (choice > 2 || choice < 1)
+						{
+							puts("enter 1, 2 or 99");
+							scanf("%d", &choice);
+						}
 						if (choice == 1)
 						{
 							puts("You attempt the first jump and realize too late that the pit is far too wide to jump across, you fall into the darkness and are never seen again....");
@@ -1296,6 +1314,11 @@ int main(void)
 							puts("1. inspect door.");
 							puts("2. open chest with key");
 							scanf("%d", &choice);
+							while(choice>2||choice<1)
+							{
+								puts("enter 1, 2 or 99");
+								scanf("%d", &choice);
+							}
 							if (choice == 1)
 							{
 								puts("upon further inspection you notice that the vines appear flamable...");
@@ -1307,6 +1330,7 @@ int main(void)
 								puts("3. earth");
 								puts("What will you write:");
 								scanf("%d", &choice);
+								shanesFileWriter(choice);
 								if (choice == 1)
 								{
 									puts("you write the ancient runes of fire onto the page.");
@@ -1317,6 +1341,11 @@ int main(void)
 									puts("1. walk through the door");
 									puts("2. Turn around and jump into the pit");
 									scanf("%d", &choice);
+									while(choice>2||choice<1)
+									{
+										puts("enter 1, 2 or 99");
+										scanf("%d", &choice);
+									}
 
 									if (choice == 1)
 									{
@@ -1371,6 +1400,7 @@ int main(void)
 								puts("3. earth");
 								puts("What will you write:");
 								scanf("%d", &choice);
+								shanesFileWriter(choice);
 								if (choice == 1)
 								{
 									puts("you write the ancient runes onto the page.");
@@ -1381,6 +1411,11 @@ int main(void)
 									puts("1. walk through the door");
 									puts("2. Turn around and jump into the pit");
 									scanf("%d", &choice);
+									while(choice>2||choice<1)
+									{
+										puts("enter 1, 2 or 99");
+										scanf("%d", &choice);
+									}
 
 									if (choice == 1)
 									{
@@ -1450,10 +1485,15 @@ int main(void)
 							puts("1. Open the chest");
 							puts("2. Further inspect the door");
 							scanf("%d", &choice);
+							while (choice > 2 || choice < 1)
+							{
+								puts("enter 1, 2 or 99");
+								scanf("%d", &choice);
+							}
 							if (choice == 1)
 							{
-								puts("upon further inspection you notice that the vines appear flamable...");
-								puts("you then turn your attention to the chest, you pull out the key and unlock the chest, inside you find a scroll which reads:");
+								
+								puts("you turn your attention to the chest, you pull out the key and unlock the chest, inside you find a scroll which reads:");
 								puts("write a spell and this scroll will grant you power...");
 								puts("Unfortunately you only studied one year of spellcasting in highschool and the only three spells you remember from back then are:");
 								puts("1. fire");
@@ -1461,6 +1501,7 @@ int main(void)
 								puts("3. earth");
 								puts("What will you write:");
 								scanf("%d", &choice);
+								shanesFileWriter(choice);
 								if (choice == 1)
 								{
 									puts("you write the ancient runes of fire onto the page.");
@@ -1471,6 +1512,11 @@ int main(void)
 									puts("1. walk through the door");
 									puts("2. Turn around and jump into the pit");
 									scanf("%d", &choice);
+									while(choice>2||choice<1)
+									{
+										puts("enter 1, 2 or 99");
+										scanf("%d", &choice);
+									}
 
 									if (choice == 1)
 									{
@@ -1525,7 +1571,7 @@ int main(void)
 								puts("3. earth");
 								puts("What will you write:");
 								scanf("%d", &choice);
-								if (choice == 1)
+								shanesFileWriter(choice);								if (choice == 1)
 								{
 									puts("you write the ancient runes onto the page.");
 									puts("The scroll flashes bright red with fiery power, suddenly your hands begin to feel hot, when suddenly they light ablaze! with this power you can shoot fire out of your hand!");
@@ -1535,6 +1581,11 @@ int main(void)
 									puts("1. walk through the door");
 									puts("2. Turn around and jump into the pit");
 									scanf("%d", &choice);
+									while(choice>2||choice<1)
+									{
+										puts("enter 1, 2 or 99");
+										scanf("%d", &choice);
+									}
 
 									if (choice == 1)
 									{
@@ -1953,3 +2004,57 @@ int randomint(int x, int y) //random integer function to work craps game
 	return rand()%(y - x + 1); //ensures random number is generated
 }
 
+///////////Shanes room methods///////////
+
+void shanesFileWriter(int choice)
+{
+	FILE *write;
+	char plaintext[256];
+	char fire[50];
+	char water[50];
+	char earth[50];
+
+	if (choice != 1 && choice != 2 && choice != 3 && choice != 99)
+	{
+		puts("Incorrect input try typing 1.Fire, 2.Water, or 3.Earth");
+		scanf("%d", &choice);
+	}else
+	{
+	write = fopen("rm28-scroll.txt","w");
+	char plaintext[256] = "write a spell and this scroll will grant you power...";
+	char fire[50] = "Eldur";
+	char water[50] = "Laguz";
+	char earth[50] = "Midgard";
+	}
+	
+	
+	switch (choice)
+	{
+	case 1:
+		//fire
+		puts("fire puts");
+		fprintf(write, "%s\n%s" ,plaintext,fire);
+
+		break;
+	case 2:
+		//water
+
+		fprintf(write, "%s\n%s", plaintext, water);
+
+		break;
+	case 3:
+		//earth
+
+		fprintf(write, "%s\n%s", plaintext, earth);
+		
+		break;
+	case 99:
+		return;
+	default:
+		shanesFileWriter(choice);
+		break;
+	}
+	fclose(write);
+}
+
+///////////Shanes room methods end/////////
