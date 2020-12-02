@@ -545,7 +545,7 @@ int main(void)
 					{
 							puts("you open the door and find 3 more doors.");
 							puts("On the left there is a door with a Skull and Bones. In the middle the door has an Angel. On the right it has no symbol.\n");
-							puts("1. Open the left door. \n2. Open the middle door. \n3. Open the right door.\n");
+							puts("1. Open the Skull and Bones door. \n2. Open the Angel door. \n3. Open the no symbol door.\n");
 							scanf("%d", &choice);
 							if(choice == 1){
 								puts("You proceed to open the door with Skull and Bones on it.\n");
@@ -563,6 +563,19 @@ int main(void)
 										puts("Ready to roll?\n1. Yes\n2. No");
 										scanf("%d", &choice);
 										puts("[Skeleton]: Ahh who cares not like you have a choice! *Rolls die*\n");
+										srand(time(NULL));
+										int roll = rand()%100;
+										printf("%d\n",roll);
+										if(roll>55){
+											puts("Congrats you are free to exit out that door\n");
+											puts("\n The door just leads you straight to where you started\n");
+											break;
+										}else{
+											puts("[Skeleton]: Finally I'm free!");
+											puts("You are not stuck in this room for eternity...");
+											choice = 99;
+											break;
+										}
 									}else if(choice == 2){
 										puts("[Skeleton]: Did you really think I would let you live?");
 										puts("You have died to a Skeleton \n");
@@ -576,7 +589,32 @@ int main(void)
 								}
 							}else if(choice == 2){
 								puts("You proceed to open the door with an Angel on it.\n");
-								puts("To be continuned");
+								puts("Welcome! You need to guess the following word or you can't come to heaven.\n");
+								puts("You can not get 1 letter wrong or you lose \n");
+								puts("What is yellow and can be found in water?\n");
+								char answer[20] = {'d', 'u','c','k'};
+								char guess[20];
+								int x = 0;
+								char letter;
+
+								while (x < 6){
+									scanf(" %c",&letter);
+
+									if (letter == answer[x]){
+										guess[x]= letter;
+										printf("keep going\n");
+										if(letter == 'k'){
+											puts("Congrats you guess the correct word: DUCK!\n");
+											break;
+										}
+									}else{
+										printf("You failed sorry!\n");
+										printf("\n");
+										break;
+									}      
+
+									++x;
+								}
 								break;
 							}else if(choice == 3){
 								puts("You proceed to open the blank door.\n");
