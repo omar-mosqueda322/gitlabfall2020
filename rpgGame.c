@@ -191,6 +191,16 @@ int main(void)
 			}
 			case 7:
 			{
+
+					/* Edwin Figueroa (RM #7)
+					 * 
+					 * Scoped the variables locally to avoid conflicts with merge requests.
+					 * I anticipated the potential other students would add/remove/revise key
+					 * variables.
+					 *	
+					 * I did however add the srand(time(NULL)) function in main.
+					*/
+				
 					int enteredRoom = 0;
 					int chestLocked = 0; // 0 is locked, 1 is open.
 					char chestInventory[4][25] = {"a dead cricket", "an odd device", "a broken compass"};
