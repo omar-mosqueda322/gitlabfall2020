@@ -19,6 +19,9 @@ int choice3(int number1);
 void gameRules(); //function to explain rules of room 12 game
 void gameCraps(); //function to run room 12 game
 
+char prompt(void);
+void randomFill(int *ptr);
+void room27Output(int z);
 
 int main(void)
 {
@@ -1246,12 +1249,119 @@ int main(void)
 			}
 			case 27:
 			{
-					while(choice != 99)
+				
+				int i,num;
+				char choose, letters;
+				int arr[5] = {0};				//array1 for random numbers
+				int arr2[5] = {0};				//array2 for user input
+				int *ptr;				
+				ptr = arr;
+				srand(time(NULL));
+				puts("\nRoom 27 (SM)");
+				puts("You have entered room 27");
+				puts("The room is empty, you turn back....");
+				puts("The door has magically disappeared");
+				puts("Suddenly you hear something fall");
+
+				while(choice != 99)
+				{
+					puts("what do you do?");
+					puts("1. Stop?");
+					puts("2. Look around the room?");
+					puts("3. Find out what made the noise?");
+					scanf("%d",&choice);
+					if(choice == 1)
 					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
+						puts("\nWhy did you stop?");
+						puts("Keep going");
+						puts("You are still in Room 27");
 					}
-					break;
+					else if(choice == 2)
+					{
+						puts("\nYou see numbers on the wall");
+						randomFill(ptr);			//gets random num from function prototype
+						for(i = 0; i < 5; i++)			//prints out numbers in array1
+						{
+							printf("%d",*ptr);
+							ptr++;
+						}
+						puts("\n\nYou find a keypad, do you?");
+						puts("1. Enter numbers? ");			//gives user choice to enter or not enter num
+						puts("2. Dont do anything");
+						scanf("%d", &choice);
+						if(choice == 1)
+						{
+							puts("\nEnter code");
+							for(i = 0; i < 5; i++)
+							{
+								scanf("%d", &arr2[i]);		//user enters num
+							}
+							for(i = 0; i < 5; i++)
+							{
+								if(arr[i] != arr2[i])		//checks if num are equal to each other
+								{
+									puts("\nYou didnt enter the correct numbers");
+									puts("The keypad breaks");
+									puts("There is no escape\n");
+									break;
+								}
+								else 
+								{
+									puts("\nYou entered the numbers from the wall");
+									puts("A door opens up\nyou walk out");
+							
+								puts("You survived the escape room\n");
+									break;
+								}
+							}	
+						}
+						
+						else
+						{
+						/*	puts("\nYou turn around and see a door that wasnt there before");
+							puts("Do you walk in?");
+							puts("y/n?");
+							scanf(" %c", &choose);*/			//gets choice from use
+							letters = prompt();
+							if(letters == 'y')
+							{
+								puts("\nYou have entered another room\n");
+								break;
+							}
+							else
+							{
+								puts("\nYou are still in Room 27");
+							}
+						}
+					}
+					else 
+					{
+						puts("\nThe item on the floor is a flashlight?");
+						puts("The lights go out.....");
+						puts("Do you....");
+						puts("1.Turn on flashlight?\n2.Do nothing");
+						scanf("%d", &choice);
+
+						/*if(choice == 1)
+						{
+							puts("\nYou are trapped in here with us");
+							puts("Game Over");
+							puts("Better Luck Next Time\n");
+							break;
+						}
+						else
+						{
+							puts("\nYou are sitting in the dark");
+							puts("Having fun?");
+							puts("Bye\n");
+							break;
+						}*/
+						room27Output(choice);
+						break;
+					}	
+				}	
+					
+				break;
 			}
 			case 28:
 			{
@@ -1951,5 +2061,40 @@ int randomint(int x, int y) //random integer function to work craps game
 {
 
 	return rand()%(y - x + 1); //ensures random number is generated
+}
+
+char prompt(void)
+{
+	char choose;
+	puts("\nYou turn around and see a door that wasnt there before");
+	puts("Do you walk in?");
+	puts("y/n?");
+	scanf(" %c", &choose);			//gets choice from use
+	
+	return choose;
+
+}
+void randomFill(int *ptr)		//function definition to fill array1 with random int 0-9:wq
+{
+	int i;
+	for(i = 0; i < 5; i++)
+	{
+		ptr[i] = rand()%10;
+	}
+}
+void room27Output(int z)
+{
+	if(z == 1)
+	{
+		puts("\nYou are trapped in here with us");
+		puts("Game Over");
+	}
+	else
+	{
+		puts("\nYou are sitting in the dark");
+		puts("Having fun?");
+		puts("Bye\n");
+	}
+	
 }
 
