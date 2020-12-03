@@ -580,7 +580,7 @@ int main(void)
 			{
 					while(choice != 99)
 					{
-						puts("As your hand reaches for the 13th door you think about all the superstitions related to the number 13.");
+						
        srand(time(NULL));
 				
 				int mn = 3;
@@ -728,47 +728,8 @@ int main(void)
                                                         {
                                                                 puts("Wrong choice");
                                                         }
-
 					}
 					break;
-                                                 puts("However, you open it anyways and you find yourself in a large dark room that is immedietly cold and nothing is visible.");
-                                                        puts("Although the room is pitch black you cant even see your hands, you stop and look to your right when something catches your eye.");
-                                                        puts("A samll bright light is floating in the distance, close enough to see but far enough to not be able to know what it is.");
-                                                        puts("Do you walk towards the light or do you wak in the opposite direction.");
-                                                        puts("1. Walk towards the light.");
-                                                        puts("2. Walk in the other direction.");
-                                                        scanf("%d",&choice);
-                                                        if(choice == 1)
-                                                                {
-                                                                        puts("feeling curious you walk towards the light.");
-                                                                        puts("As your walking, the light gets brighter and slowly getting closer until you feel a sudden rush of cold air on your left shoulder.");
-                                                                        puts("You look over and see a ghost like hand resting on your shoulder");
-                                                                        printf("It whispers into your ear with a low grungy voice \"%s turn around, I can give you anything you want \" \n",name);
-                                                                        puts("Do you turn around or keep walking towards the light?");
-                                                                        puts("1. Continue walking towards the light.");
-                                                                        puts("2. Turn around and face this mysterious voice");
-                                                                        scanf("%d", &choice);
-                                                                        if(choice == 1)
-                                                                        {
-                                                                                puts("Overcoming your curiosity once more, you continue walking towards the light,");
-                                                                                puts("As you get closer to the light you can now see a forest and wonder if this is the way out.");
-                                                                                puts("However, you once more hear this voice different from before.");
-                                                                        }
-
-                                                                        break;
-                                                                }
-                                                        else if(choice == 2)
-                                                                {
-                                                                        puts("Not knowing what this light could be you decide to turn around and head deeper into the unknown darkness.");
-                                                                        puts("...more to come...");
-
-
-                                                                        break;
-                                                                }
-                                                        else
-                                                        {
-                                                                puts("Wrong choice");
-                                                        }
 
 					}
 					break;
