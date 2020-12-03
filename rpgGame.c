@@ -2,6 +2,7 @@
 //G. Poppe
 //Shane Cortez
 //Michael VanCleave-Lopez
+//Sergio Molina
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
