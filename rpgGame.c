@@ -581,7 +581,157 @@ int main(void)
 					while(choice != 99)
 					{
 						puts("As your hand reaches for the 13th door you think about all the superstitions related to the number 13.");
+       srand(time(NULL));
+				
+				int mn = 3;
+				
+				int response;
+				
+				int fish = 1 + rand()%10;
+				int a,b,c,d,f;
+
+					while(choice != 99)
+					{
+						puts("As your hand reaches for the 13th door you think about all the superstitions related to the number 13.");
                                                         puts("However, you open it anyways and you find yourself in a large dark room that is immedietly cold and nothing is visible.");
+                                                        puts("Although the room is pitch black you cant even see your hands, you stop and look to your right when something catches your eye.");
+                                                        puts("A samll bright light is floating in the distance, close enough to see but far enough to not be able to know what it is.");
+                                                        puts("Do you walk towards the light or do you wak in the opposite direction.");
+                                                        puts("1. Walk towards the light.");
+                                                        puts("2. Walk in the other direction.");
+                                                        scanf("%d",&choice);
+                                                        if(choice == 1)
+                                                                {
+                                                                        puts("feeling curious you walk towards the light.");
+                                                                        puts("As your walking, the light gets brighter and slowly getting closer until you feel a sudden rush of cold air on your left shoulder.");
+                                                                        puts("You look over and see a ghost like hand resting on your shoulder");
+                                                                        printf("It whispers into your ear with a low grungy voice \"%s turn around, I can give you anything you want \" \n",name);
+                                                                        puts("Do you turn around or keep walking towards the light?");
+                                                                        puts("1. Continue walking towards the light.");
+                                                                        puts("2. Turn around and face this mysterious voice");
+                                                                        scanf("%d", &choice);
+                                                                        if(choice == 1)
+                                                                        {
+                                                                                puts("Overcoming your curiosity once more, you continue walking towards the light,");
+                                                                                puts("As you get closer to the light you can now see a forest and wonder if this is the way out.");
+                                                                                puts("You continue walking to what you believe to be a forest disregarding the voice behind you.");
+										   puts("As you enter the light a bright white flash obscures your vision.");
+										   puts("You can now see a small semi-transparent green orb on a tree stump.");
+									 	   puts("Do you pick it up or smash it with a nearby plank of wood");
+									 	   puts("1. Pick it up.");
+										   puts("2. Smash it.");
+										   scanf("%d", &choice);
+										   if(choice == 1)
+											{
+											puts("You pick it up an begin to feel your body tense, this feeling of tiny needles around your entire body.");
+											puts("Your vision goes dark.");
+											puts("The feeling of rising water surrounds you and when you open your eyes you realize you are back in the first room you started.");
+											break;
+											}
+											
+										
+									   
+									   	  else if(choice == 2)
+									   	  {
+									   	  	puts("You grab a nearby plank of wood and step towards the orb.");
+											puts("With a mighty swing, you manage to smash the orb into small shards of glass, and as you do.");
+											puts("Your vision goes dark.");
+                                                                                     puts("The feeling of rising water surrounds you and when you open your eyes you realize you are back in the first room you started.");
+
+											}
+											break;
+									     }
+
+                                                                	  else if(choice == 2)
+                                                                	  {
+                                                                	  	puts("as you turn around and face this unknown entity, the ghoslty figure is now facing you.");
+                                                                                        puts("With the bit a of light the creature reveals its self and you see a hunched hooded humanoid figure.");
+                                                                                        puts("It has a sad zombie like face with a large mouth hanging low to its chest.");
+                                                                                        puts("This creature has no eyes and in its gaping mouth nothing but a void of darkness. As you stare at this creature your mind and body go blank unable to think or move.");
+                                                                                        puts("This creature has now taken over your body and the fear of never getting out overtakes you. Your are Dead.");
+                                                                                        
+                                                                                        exit(0);
+                                                                                        }
+                                                                }
+                                                                      
+
+                                                        else if(choice == 2)
+                                                                {
+                                                                        puts("Not knowing what this light could be you decide to turn around and head deeper into the unknown darkness.");
+                                                                        puts("You continue walking and stumble upon a conviently placed falsh light that can now help you see.");
+                                                                        puts("As you continue walking to come across a monolith that speaks to you in a loud deep voice, it asks you to guess a number between 1 through 10 if you want to survive.");
+                                                                        printf("Enter a number between 1 through 10\n");
+                                                                        scanf("%d", &response);
+						while(response < 1 || response > 10)
+						{
+							printf("NO!! A number between 1 through 10\n");
+							scanf("%d",&response);
+						}
+						printf("%d + magic number = %d\n",response,(response + mn));
+						printf("%d * magic number = %d\n",response,(response * mn));
+						printf("%d - magic number = %d\n",response,(response - mn));
+						printf("What is your guess? It says.\n");
+						scanf("%d",&response);
+						if(response == mn)
+						{
+							printf("You are correct! The monolith begins to glow with no issues.\n");
+							
+						} 
+						else
+						{
+							printf("NO, wrong number inferior human\n");
+							printf("A beam of light emits from the monolith which vaporizes you. \n");
+							printf("Only your boots remain. You Are Dead.\n");
+							exit(0);
+						}
+                                                 	puts("No you cant out smart me simple human");
+                                                 	puts("Fine then, lets see if you can figure this out HAHAHA");
+                                                 	printf("There is a tank of fish that can only hold 12 fish. At the moment it is empty\n");
+                                                 	printf("for every red fish there can be only 1 blue fish\n");
+                                                 	printf("but if there is more than 1 blue fish no yellow fish can be in the tank\n");
+                                                 	printf("The number of green fish in the tank can be any number\n");
+							printf("There are %d red fish\n", a = rand()%10);
+							printf("There are %d blue fish\n", b = rand()%10);
+							printf("There are %d green fish\n", c = rand()%10);
+							printf("There are %d yellow fish\n", d = rand()%10);
+							printf("How many fish will fit in this tank\n");
+							scanf("%d",&response);
+							if(response == (12))
+							{
+								puts("Dammit, you are smarter than you look human\n");
+								puts("The room begins to shake as the monolith in front of you begins to open up. Revealing a secret tunnel.\n");
+								puts("UGH FINE you win\n");
+								puts("The monolith glows and turns in to a man in a black tuxedo and black sunglasses\n");
+							        puts("He pulls out pen from his coat pocket and with out telling you he points it towards you and it flashes\n");
+								puts("You now find your self back in your home sitting at your computer not knowing how you got there\n");
+								puts("However this person sitting down looks familiar, ITS YOU.\n");
+								puts("You only see yourself for a few minutes before that person is sucked into the computer\n");
+								puts("It takes a moment for you to compose yourself but you sit back down on your chair close the game and never return to it.");
+								puts("Although you cant shake the feeling of someone watching you, the presence of someone is always behind you but everytime you turn they are gone.");
+								printf("At this point, the computer you shutdown turns back on and displays \"Thank you for playing %s, Good Bye................................for now\" \n",name);
+							exit(0);	
+							}
+							else
+							{
+								printf("Haha The answer was 12, only 12 fish can fit in the tank, your nothing but a simple human\n");
+								printf("A beam of light emits from the monolith which vaporizes you. \n");
+								printf("Only your boots remain. You Are Dead.\n");
+							exit(0);
+							}                      
+								  
+
+                                                                        break;
+                                                                }
+                                                              
+                                                                
+                                                        else
+                                                        {
+                                                                puts("Wrong choice");
+                                                        }
+
+					}
+					break;
+                                                 puts("However, you open it anyways and you find yourself in a large dark room that is immedietly cold and nothing is visible.");
                                                         puts("Although the room is pitch black you cant even see your hands, you stop and look to your right when something catches your eye.");
                                                         puts("A samll bright light is floating in the distance, close enough to see but far enough to not be able to know what it is.");
                                                         puts("Do you walk towards the light or do you wak in the opposite direction.");
