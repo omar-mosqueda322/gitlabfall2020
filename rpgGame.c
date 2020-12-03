@@ -3184,7 +3184,7 @@ int choice3(int number1)
 {
 	int answer = 0;
 
-	printf("magic number is : %d\n", number1);	
+//	printf("magic number is : %d\n", number1);	
 	
 	printf("10 + magic number = %d\n", (10 + number1));
 	printf("5 * magic number  = %d\n", (5 * number1));
