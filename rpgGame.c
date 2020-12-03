@@ -2,6 +2,7 @@
 //G. Poppe
 //Shane Cortez
 //Michael VanCleave-Lopez
+//Richmond Laureta
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
@@ -57,7 +58,7 @@ void problem2 (char *ptr);
 int flip();
 
 
-
+void weaponPower(int p); //room 25 for RICHMOND LAURETA
 
 
 int main(void)
@@ -1920,52 +1921,627 @@ puts("");
 			{
 					while(choice != 99)
 					{		printf("Room for Richmond Laureta AKA (rlaureta)\n");
-							/*ROUGH DRAFT OF MY GAME:
-							The title of my game is: "The King's Tyrant"
-							I will create an rpg game that will start in a 
-							ruined dungeon and you wake up from your sleep.
-						       	You then go and pick your class and weapon.
-							You can either be a warrior or mage class. 
-							Then you pick your weapon and your path.
-							You will also have skills and you will spend 
-							points to level them up when you gain experience.
-							My game will have a karma effect for good and bad. 
-							The more you choose to be bad the choices will 
-							be more bad. If you choose to be good then your path 
-							will be more good. Its up to you who you want to be.
-							At the end of the game you will see what you become.*/
+							srand(time((NULL)));
+	int choice;
+	
+	int powerWS = 0;
+	int randomForInt; 
+	randomForInt = 1 + rand()%4;
 
-							puts("You open the door and close it behind you.");
-							puts("After you overcome the panic from almost drowning, you look around and You find yourself in a cave, the air is damp and you smell mold.");
-							puts("You notice a skeleton at your feet with it's right hand clenched around something. The cave ahead leads to a tunnel and you see a door to your right.");
-							puts("At this point you have 3 choices:");
-							puts("1. Examine the skeleton.");
-							puts("2. Proceed further ahead in the cave.");
-							puts("3. Enter the door to your right.");
-							scanf("%d",&choice);
-							if(choice == 1)
-							{
-								puts("You reach down and pry open the skeleton's hand, a finger breaks loose and you place it in your pocket. Once you pry the opject free you look at it closely in the light and see it is a live grenade and the pin springs free. You drop the grenade and dash through the cave. You can hear the grenade explode, collapsing the tunnel behind you.");
-								puts("To be continued...");
-								break;
-							}
-							else if(choice == 2)
-							{
-								puts("You find yourself further ahead in the cave.");
-								puts("To be continued....");
-								break;
-							}
-							else if(choice == 3)
-							{
-								puts("You enter the and close the door behind you.");
-								printf("You hear an loud voice \" %s why do you disturb me? \" \n",name);
-                                                                puts("To be continued....");
-								break;
-							}
-							else
-							{
-								puts("wrong choice");
-							}
+	printf("You are in a pod sleeping for over a thousand years, oblivious to everything, \nwhen all of a sudden, earthquake struck and collapsed the dungeon you are in. \nYour pod remains in tact and then a lightning hit your pod.\n You are awakened... you got out of your pod to a ruined dungeon.");
+	printf("\n\nYou see two pathways with doors at the end: \n\n1. The left pathway: INTELLIGENCE eteched on the door(RANDOM POWER)). ");
+	printf("\n2. The right pathway: STRENGTH etched on the door.");
+	printf("\nWhich pathway you want to choose?(Press 0 to exit at anytime.) ");
+	scanf("%d", &choice);
+	while (choice != 0) {
+		//Intelligence
+		if (choice == 1) {
+			printf("\nYou open the door and see three staffs, set on a table in the middle of the room. You walk over to the table to see the choices of staffs.\n\n");
+			printf("1. This staff is red and can cast flame.\n");
+			printf("2. This staff is blue and can cast water blast.\n");
+			printf("You have to choose the elemental for your weapon: ");
+
+				
+					
+			//RED
+			if (choice == 1) {
+				printf("\nYou picked up the fire staff and your outfit changed into a fire red wizard.\n");
+				printf("You exit the collapsed dungeon and after exiting you see a woman being attacked by a goblin.\n\n");
+				printf("1. Help the woman and cast flame on the goblin.\n");
+				printf("2. Cast flame on both the goblin and the woman.\n");
+				printf("Which action do you want to take? ");
+				scanf("%d", &choice);
+				
+				printf("Power of the weapon: ");
+				weaponPower(randomForInt);
+			    //help the woman
+				if (choice == 1){
+					printf("\nYou run towards the goblin and cast your flame spell. The goblin attacked you, but also, the goblin died in flames.\n");
+					printf("The woman thanked you and gave you a health potion for healing.\n");
+					printf("The woman explained to you what happened to the village. The woman told you \nthat the village is being attacked by an evil sorcerer in the fortress castle.\n");
+					printf("It is up to you if you want to save the village with your  fire staff.\n\n"); 
+					printf("1. Face the evil sorcerer.\n");
+					printf("2. Ignore the woman.\n");
+					printf("What course of action would you like to take? ");
+					scanf("%d", &choice);
+					printf("Power of the weapon: ");
+					weaponPower(randomForInt);		
+					if (choice == 1){
+						printf("\nYou journeyed to the castle and battled many enemy then you face the evil sorcerer.\n");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						printf("Power of the weapon: ");
+						weaponPower(randomForInt);
+						if (choice == 1) {
+							printf("\nYou defeated the sorcerer and saved countless lives. \nThe village honored you and became the fire red KING WIZARD.\n");
+							printf("Game Completed.");
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+							break;
+						}
+						else if (choice == 2) {
+							printf("\nYou defeated the sorcerer but suffered loses. \nThe village honored you and became the fire red KING WIZARD.\n");
+							printf("Game Completed.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						}
+					}
+					else if (choice == 2) {
+						printf("You ignored the woman and still went to the castle and face the evil sorcerer.");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						printf("Power of the weapon: ");
+						weaponPower(randomForInt);
+						if (choice == 1) {
+							printf("\nYou defeated the sorcerer and ruled with iron fist. \nThe village honored you and became the fire red KING WIZARD.\n");
+							printf("Game Completed.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						} 
+						else if (choice == 2){
+							printf("You ruled with the evil sorcerer with an iron fist.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						}
+					}
+				}
+				//kill both
+				else if (choice == 2){
+					printf("You heartlessly cast the flame on the goblin and the woman killing them both.");
+					printf("The woman's soul was released and haunts you telling you that you need \nto kill the evil sorcerer that is invading the village living in the fortress castle.");
+					printf("It is up to you if you want to save the village with your fire staff.\n\n"); 
+					printf("1. Face the evil sorcerer.\n");
+					printf("2. Ignore the woman's soul\n");
+					printf("What course of action would you like to take? ");
+					scanf("%d", &choice);
+					printf("Power of the weapon: ");
+					weaponPower(randomForInt);
+					if (choice == 1){
+						printf("\nYou journeyed to the castle and battled many enemy then you face the evil sorcerer.\n");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						printf("Power of the weapon: ");
+						weaponPower(randomForInt);
+						if (choice == 1) {
+							printf("\nYou defeated the sorcerer but lost a lot of lives and the woman you killed haunts your mind forever. \nThe village honored you and you became the fire red KING WIZARD.\n");
+							printf("Game Completed.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						}
+						else if (choice == 2) {
+							printf("You made the pact with the evil sorcerer and ruled the village cruely for thousands of years."); 
+							printf("Game Completed.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						}
+					}
+					else if (choice == 2) {
+						printf("You ignored the soul and still went to the castle and face the evil sorcerer.");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						printf("Power of the weapon: ");
+						weaponPower(randomForInt);
+						if (choice == 1) {
+							printf("\nYou defeated the sorcerer but lost a lot of lives and the woman you killed haunts your mind forever. \nThe village honored you and you became the fire red KING WIZARD.\n");
+							printf("Game Completed.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						}
+						else if (choice == 2) {
+							printf("You made the pact with the evil sorcerer and ruled the village cruely for thousands of years."); 
+							printf("Game Completed.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						}
+					}
+				}
+			}
+			//BLUE
+			else if (choice == 2) {
+				printf("\nYou picked up the blue staff and your outfit changed into a blue wizard.\n");
+				printf("You exit the collapsed dungeon and after exiting you see a woman being attacked by a goblin.\n\n");
+				printf("1. Help the woman and cast water blast on the goblin.\n");
+				printf("2. Cast water blast on both the goblin and the woman to kill them.\n");
+				printf("Which action do you want to take? ");
+				scanf("%d", &choice);
+				printf("Power of the weapon: ");
+				weaponPower(randomForInt);
+				//woman alive
+				if (choice == 1){
+					printf("\nYou run towards the goblin and cast your water blast spell. The goblin attacked you, but also, the goblin died with the water blast.\n");
+					printf("The woman thanked you and gave you a health potion for healing.\n");
+					printf("The woman explained to you what happened to the village. The woman told you \nthat the village is being attacked by an evil sorcerer in the fortress castle.\n");
+					printf("\nIt is up to you if you want to save the village with your water staff.\n\n"); 
+					printf("1. Face the evil sorcerer.\n");
+					printf("2. Ignore the woman.\n");
+					printf("What course of action would you like to take? ");
+					scanf("%d", &choice);
+					printf("Power of the weapon: ");
+					weaponPower(randomForInt);
+					if (choice == 1){
+						printf("\nYou journeyed to the castle and battled many enemy then you face the evil sorcerer.\n");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						printf("Power of the weapon: ");
+						weaponPower(randomForInt);
+						if(choice == 1) {
+							printf("\nYou defeated the sorcerer and saved countless lives. \nThe village honored you and became the water blue KING WIZARD.\n");
+							printf("Game Completed.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						}
+						else if (choice ==2 ){
+							printf("You made the pact with the evil sorcerer and ruled the village with an iron fist.\n"); 
+							printf("Game Completed.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						}
+					}
+					else if (choice == 2) {
+						printf("You ignored the woman and still went to the castle and face the evil sorcerer.");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						printf("Power of the weapon: ");
+						weaponPower(randomForInt);
+						if(choice == 1) {
+							printf("\nYou defeated the sorcerer and saved countless lives. \nThe village honored you and became the water blue KING WIZARD.\n");
+							printf("Game Completed.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						}
+						else if (choice ==2 ){
+							printf("You made the pact with the evil sorcerer and ruled the village with an iron fist.\n"); 
+							printf("Game Completed.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						}
+					}
+				}
+				//woman killed
+				else if (choice == 2) {
+					printf("You heartlessly cast the water blast on the goblin and the woman killing them both.");
+					printf("The woman's soul was released and haunts you telling you that you need \nto kill the evil sorcerer that is invading the village living in the fortress castle.");
+					printf("It is up to you if you want to save the village with your water staff.\n\n"); 
+					printf("1. Face the evil sorcerer.\n");
+					printf("2. Ignore the woman's soul\n");
+					printf("What course of action would you like to take? ");
+					scanf("%d", &choice);
+					printf("Power of the weapon: ");
+					weaponPower(randomForInt);
+					if (choice == 1){
+						printf("\nYou journeyed to the castle and battled many enemy then you face the evil sorcerer.\n");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						printf("Power of the weapon: ");
+						weaponPower(randomForInt);
+						if (choice == 1) {
+							printf("\nYou defeated the sorcerer but lost a lot of lives and the woman you killed haunts your mind forever. \nThe village honored you and you became the water blue KING WIZARD.\n");
+							printf("Game Completed.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						}
+						else if (choice == 2) {
+							printf("You made the pact with the evil sorcerer and ruled the village cruely for thousands of years."); 
+							printf("Game Completed.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						}
+						
+					}
+					else if (choice == 2) {
+						printf("You ignored the woman's soul and still went to the castle and face the evil sorcerer.");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						printf("Power of the weapon: ");
+						weaponPower(randomForInt);
+						if (choice == 1) {
+							printf("\nYou defeated the sorcerer but lost a lot of lives and the woman you killed haunts your mind forever. \nThe village honored you and you became the water blue KING WIZARD.\n");
+							printf("Game Completed.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						}
+						else if (choice == 2) {
+							printf("You made the pact with the evil sorcerer and ruled the village cruely for thousands of years."); 
+							printf("Game Completed.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						}
+					}
+				}
+			}
+		}
+		//STRENGTH
+		else if (choice == 2) {
+			printf("\nYou open the door and you see two weapons, set on a table in the middle of the room. You walk over to the table to see the choices of weapon.\n\n");
+			printf("1. The first weapon is a katana\n");
+			printf("2. The second weapon is a lance\n");
+			printf("What is your weapon choice? ");
+			scanf("%d", &choice);
+			
+			//Katana
+			if (choice == 1) {
+				printf("\nYou picked up the katana blade and your outfit changed into a samurai warrior.\n");
+				printf("You exit the collapsed dungeon and after exiting you see a woman being attacked by a goblin.\n\n");
+				printf("1. Help the woman and attack the goblin with the katana.\n");
+				printf("2. Use the katana on both the goblin and the woman to kill them.\n");
+				printf("Which action do you want to take? ");
+				scanf("%d", &choice);
+				powerWS++;
+				printf("Weapon powered up: ");
+				weaponPower(powerWS);
+				//help the woman
+				if(choice == 1) {
+					printf("\nYou run towards the goblin and use your katana. The goblin attacked you, but also, the goblin died.\n");
+					printf("The woman thanked you and gave you a health potion for healing.\n");
+					printf("The woman explained to you what happened to the village. The woman told you \nthat the village is being attacked by an evil sorcerer in the fortress castle.\n");
+					printf("It is up to you if you want to save the village with your katana.\n\n"); 
+					printf("1. Face the evil sorcerer.\n");
+					printf("2. Ignore the woman.\n");
+					printf("What course of action would you like to take? ");
+					scanf("%d", &choice);	
+					powerWS++;
+					printf("Weapon powered up: ");
+					weaponPower(powerWS);
+					if (choice == 1) {
+						printf("\nYou journeyed to the castle and battled many enemy then you face the evil sorcerer.\n");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						powerWS++;
+						printf("Weapon powered up: ");
+						weaponPower(powerWS);
+						if (choice == 1) {
+							printf("You defeated the evil sorcerer saved countless lives. You were honored by the villagers and became an emperor shogun.\n");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+						else if (choice == 2) {
+							printf("You ruled the village with the evil with an iron fist.\n");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+					}
+					else if (choice == 2) {
+						printf("You ignored the woman and still went to the castle and face the evil sorcerer.");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						powerWS++;
+						printf("Weapon powered up: ");
+						weaponPower(powerWS);
+						if (choice == 1) {
+							printf("You defeated the evil sorcerer saved countless lives. You were honored by the villagers and became an emperor shogun.\n");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+						else if (choice == 2) {
+							printf("You ruled the village with the evil with an iron fist.\n");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+					}
+				}
+				//kill both
+				else if (choice == 2) {
+					printf("You heartlessly use the katana on the goblin and the woman killing them both.");
+					printf("The woman's soul was released and haunts you telling you that you need \nto kill the evil sorcerer that is invading the village living in the fortress castle.\n");
+					printf("It is up to you if you want to save the village with your katana.\n\n"); 
+					printf("1. Face the evil sorcerer.\n");
+					printf("2. Ignore the woman's soul\n");
+					printf("What course of action would you like to take? ");
+					scanf("%d", &choice);
+					powerWS++;
+					printf("Weapon powered up: ");
+					weaponPower(powerWS);
+					if (choice == 1) {
+						printf("\nYou journeyed to the castle and battled many enemy then you face the evil sorcerer.\n");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						powerWS++;
+						printf("Weapon powered up: ");
+						weaponPower(powerWS);
+						if (choice == 1) {
+							printf("You defeated the evil sorcerer but lost a lot of lives. You were honored by the villagers and became an emperor shogun.");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+						else if (choice == 2) {
+							printf("You ruled the village with the evil sorcerer and become tyranical.\n");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+					}
+					else if (choice == 2) {
+						printf("You ignored the woman's soul and still went to the castle and face the evil sorcerer.");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						powerWS++;
+						printf("Weapon powered up: ");
+						weaponPower(powerWS);
+						if (choice == 1) {
+							printf("You defeated the evil sorcerer but lost a lot of lives. You were honored by the villagers and became an emperor shogun.");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+						else if (choice == 2) {
+							printf("You ruled the village with the evil sorcerer and become tyranical.\n");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+						
+					}
+
+				}
+			}
+			//Lance
+			else if (choice == 2) {
+				
+				printf("\nYou picked up the lance and your costume changed to a Knight.\n");
+				printf("You exit the collapsed dungeon and after exiting you see a woman being attacked by a goblin.\n\n");
+				printf("1. Help the woman and use the lance on the goblin.\n");
+				printf("2. Use the lance on both the goblin and the woman to kill them.\n");
+				printf("Which action do you want to take? ");
+				scanf("%d", &choice);
+				
+				//help the woman
+				if(choice == 1) {
+					printf("\nYou run towards the goblin and use your lance. The goblin attacked you, but also, the goblin died.\n");
+					printf("The woman thanked you and gave you a health potion for healing.\n");
+					printf("The woman explained to you what happened to the village. The woman told you \nthat the village is being attacked by an evil sorcerer in the fortress castle.\n");
+					printf("It is up to you if you want to save the village with your lance.\n\n"); 
+					printf("1. Face the evil sorcerer.\n");
+					printf("2. Ignore the woman.\n");
+					printf("What course of action would you like to take? ");
+					scanf("%d", &choice);
+					powerWS++;
+					printf("Weapon powered up: ");
+					weaponPower(powerWS);	
+					if(choice == 1) {
+						printf("\nYou journeyed to the castle and battled many enemy then you face the evil sorcerer.\n");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						powerWS++;
+						printf("Weapon powered up: ");
+						weaponPower(powerWS);
+						if (choice == 1) {
+							printf("You defeated the evil sorcerer. The villager honored you and you became the knight KING.\n");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+						else if (choice == 2) {
+							printf("You ruled the land with the evil sorcerer with an iron fist.\n");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+						
+					}
+					else if (choice ==2 ){
+						printf("You ignored the woman and still went to the castle and face the evil sorcerer.");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						powerWS++;
+						printf("Weapon powered up: ");
+						weaponPower(powerWS);
+						if (choice == 1) {
+							printf("You defeated the evil sorcerer. The villager honored you and you became the knight KING.\n");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+						else if (choice == 2) {
+							printf("You ruled the land with the evil sorcerer with an iron fist.\n");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+					}
+				}
+				//kill both
+				else if (choice == 2) {
+					printf("You heartlessly use the lance on the goblin and the woman killing them both.");
+					printf("The woman's soul was released and haunts you telling you that you need \nto kill the evil sorcerer that is invading the village living in the fortress castle.");
+					printf("It is up to you if you want to save the village with your water staff.\n\n"); 
+					printf("1. Face the evil sorcerer.\n");
+					printf("2. Ignore the woman's soul\n");
+					printf("What course of action would you like to take? ");
+					scanf("%d", &choice);
+					powerWS++;
+					printf("Weapon powered up: ");
+					weaponPower(powerWS);
+					if(choice == 1) {
+						printf("\nYou journeyed to the castle and battled many enemy then you face the evil sorcerer.\n");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						powerWS++;
+						printf("Weapon powered up: ");
+						weaponPower(powerWS);
+						if (choice == 1) {
+							printf("You defeated the evil sorcerer but lost a lot of lives. The villager honored you and you became the knight KING.\n");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+						else if (choice == 2) {
+							printf("You ruled the village with the evil sorcerer and became tyranical.\n");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+						
+					}
+					else if (choice ==2 ){
+						printf("You ignored the woman's soul and still went to the castle and face the evil sorcerer.");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						powerWS++;
+						printf("Weapon powered up: ");
+						weaponPower(powerWS);
+					}
+						if (choice == 1) {
+							printf("You defeated the evil sorcerer but lost a lot of lives. The villager honored you and you became the knight KING.\n");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+							
+						}
+						else if (choice == 2) {
+							printf("You ruled the village with the evil sorcerer and became tyranical.\n");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+
+				}
+			}
+		}
+	
+	}
+int i; 
+printf("\nENDING CREDITS: \n");
+for(i = 0; i < 20; i++){
+	
+	printf("-");
+}
+char creatorName[8] = {"RICHMOND"};
+
+for (i = 0; i < strlen(creatorName); i++){
+	printf("\n%c", creatorName[i]);
+}
+
+
+
+FILE *writeToFile;
+FILE *writeToFile2;
+writeToFile = fopen("output25.txt", "w");
+writeToFile2 = fopen("output25.txt", "a");
+printf("\nCredits is written and saved on the output25.txt\n");
+fprintf(writeToFile2, "THIS game is created By RICHMOND LAURETA for CSC 251 for Garrett Poppe. Thank YOU PROFESSOR for this semester.");
+fclose(writeToFile2);
+fclose(writeToFile);
+break;
 					}
 					break;
 
@@ -3478,6 +4054,10 @@ int flip()
 }
 
 		
+void weaponPower(int p){
+	
+	printf("%d\n", p); //ROOM 25
+}
 
 
 
