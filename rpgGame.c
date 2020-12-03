@@ -1,6 +1,7 @@
 //Contributors
 //G. Poppe
 //Shane Cortez
+//Michael VanCleave-Lopez
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
@@ -897,15 +898,93 @@ int main(void)
 			}
 			case 20:
 			{
+					bool realLooplmao = true;
+				
+				while(realLooplmao)
+				{
 					int level = 0,attack = 0,magic = 0,health = 0,defense = 0,totalHP = 0;
 					bool NEW = true;
 					srand(time(NULL));
+					int i = 0;
+puts("");			
+puts("                                      /|");
+puts("                                     |\\|");
+puts("                                     |||");
+puts("                                     |||");
+puts("                                     |||");
+puts("                                     |||");
+puts("                                     |||");
+puts("                                     |||");
+puts("                                  ~-[{o}]-~");
+puts("                                     |/|");
+puts("                                     |/|");
+puts("             ///~`     |\\_           `0'         =\\\\         . .");
+puts("            ,  |='  ,))\\_| ~-_                    _)  \\      _/_/|");
+puts("           / ,    ((((((    ~ \\                   ~~~\\-~-_ /~ _   |");
+puts("         /' -~/~)))))))'\\_   _/'                      \\_  /'  D   |");
+puts("        (       (((((( ~-/ ~-/                          ~-;  /    \\--_");
+puts("         ~~--|   ))''    ')  `                            `~~\\_    \\   )");
+puts("             :        (_  ~\\           ,                    /~~-     ./");
+puts("              \\        \\_   )--__  /(_/)                   |    )    )|");
+puts("    ___       |_     \\__/~-__    ~~   ,'      /,_;,   __--(   _/      |");
+puts("  //~~\\`\\    /' ~~~----|     ~~~~~~~~'        \\-  ((~~    __-~        |");
+puts("((()   `\\`\\_(_     _-~~-\\                      ``~~ ~~~~~~   \\_      /");
+puts(" )))     ~----'   /      \\                                   )       )");
+puts("  (         ;`~--'        :                                _-    ,;;(");
+puts("            |    `\\       |                             _-~    ,;;;;)");
+puts("            |    /'`\\     ;                          _-~          _/");
+puts("           /~   /    |    )                         /;;;''  ,;;:-~");
+puts("          |    /     / | /                         |;;'   ,''");
+puts("          /   /     |  \\|                         |   ,;(    -Tua Xiong");
+puts("        _/  /'       \\  \\_)                   .---__\\_    \\,--._______");
+puts("       ( )|'         (~-_|                   (;;'  ;;;~~~ ' `;;|   ;;; ");
+puts("        ) `|_         |-_;;--__               ~~~----__/'    /'_______/");
+puts("        `----'       (   `~--_ ~~~;;------------~~~~~ ;;;'_ '");
+puts("                     `~~~~~~~~'~~~-----....___;;;____---~~");
+puts("Here you will face a series of trials, make sure every choice counts.");
+puts("");
+puts("");
+					
+					bool askNameCAPS=true;
+					while(askNameCAPS)
+					{
+					int nameCAPS = 0;
+					puts("Would you like your name to be in all caps? 1:Yes 2:No");
+					scanf(" %d",&nameCAPS);
+					switch(nameCAPS)
+					{
+						case 1:
+							for(i; name[i]!='\0';i++)
+							{
+								name[i]=toupper(name[i]);
+							}
+							askNameCAPS=false;
+							break;
+							
+						case 2:
+							if(islower(name[0]))
+								name[0]=toupper(name[0]);
+							for(i=1; name[i]!='\0';i++)
+							{
+								name[i]=tolower(name[i]);
+							}
+							askNameCAPS=false;
+							break;
+							
+						default:
+							puts("Wrong entry, continuing.");
+							break;
+						
+						
+					};
+					}
+					
 					
 					while(choice != 99)
 					{
 							/*puts("you open the door and find ........");
 							scanf("%d",&choice);*/
-								
+							
 							bool gameLoop = false;
 							int option = 0;
 							int levelF = level;
@@ -934,7 +1013,7 @@ int main(void)
 							while(NEW)
 							{
 								puts("Pick your class.");
-								puts("_________________________________________");
+								puts("________________________________________________________________");
 								puts("1. Warrior.");
 								puts("2. Magician.");
 								puts("3. Exit.");
@@ -983,7 +1062,7 @@ int main(void)
 							if(gameLoop == true)
 								puts("You will be given 3 health potions that heal \"20%\" of your health.\nUse them wisely.");
 							
-							puts("_________________________________________");
+							puts("________________________________________________________________");
 							puts("");
 							
 							for(levelF; ((gameLoop == true)&&(levelF <= 5)); levelF++)
@@ -998,14 +1077,14 @@ int main(void)
 									totalHP += multiplier;
 									health += multiplier;
 									attack += multiplier;
-									defense += (multiplier/3);
+									defense += (multiplier/2);
 								}
 								else if(magician == true)
 								{	
 									totalHP +=(3*(multiplier/2));
 									health +=(3*(multiplier/2));
 									magic += (multiplier+8);
-									defense += (multiplier/4);
+									defense += (multiplier/3);
 								}
 								else
 									puts("Something went wrong with warrior/magician boolean");
@@ -1031,7 +1110,7 @@ int main(void)
 										printf("Warrior: %s HP: %d DMG: %d \n",name,health,attack);
 									else
 										printf("Magician: %s HP: %d DMG: %d \n",name,health,magic);
-									puts("_________________________________________");
+									puts("________________________________________________________________");
 									puts("1. Attack.");
 									puts("2. Magic.");
 									puts("3. Health Potion.");
@@ -1107,8 +1186,30 @@ int main(void)
 
 									if(health<=0)
 									{
+										int lossCont = 0;
 										puts("You lose.");
 										loss=true;
+										bool lossChoice = true;
+										while(lossChoice)
+										{
+											puts("Would you like to continue? 1: Yes 2: No");
+											scanf(" %d",&lossCont);
+											switch(lossCont)
+											{
+												case 1:
+													puts("Continuing...");
+													lossChoice = false;
+													break;
+												case 2:
+													puts("Closing...");
+													lossChoice = false;
+													realLooplmao = false;
+													break;
+												default:
+													puts("Wrong choice, please enter 1 or 2.");
+													break;
+											};
+										}
 										break;
 									}
 									puts("________________________________________________________________");
@@ -1119,9 +1220,73 @@ int main(void)
 								level = levelF;
 							}
 						if(level==5&&health>0)
+						{
+							char line[30];
 							printf("Congratulations %s, you defeated all the bosses in Room 20!\n",name);
+							//int number;
+							printf("%s's stats were\n_______________\n",name);
+							printf("Level: %d\n",level);
+							printf("Attack: %d\n",attack);
+							printf("Magic: %d\n",magic);
+							printf("Health: %d\n",health);
+							printf("Defense: %d\n",defense);
+							printf("TotalHP: %d\n",totalHP);
+							int option = 0;
+							//int level = 0, attack = 0, magic = 0, health = 0, defense = 0,totalHP = 0;
+							//srand(time(NULL));
+							
+							FILE *rptr, *wptr;
+							bool inMenu = true;
+							while(inMenu)
+							{
+								puts("______________________________________");
+								puts("1. Start New Game");
+								puts("2. Save to Hall of Fame -stats.txt-");
+								puts("3. Read the Hall of Fame -stats.txt-");
+								puts("4. Exit Room 20");
+								
+								scanf(" %d", &option);
+								
+								switch(option)
+								{
+									case 1: //gameLoop(&level, &attack, &magic, &health, &defense,&totalHP,true);
+										inMenu = false;
+										
+										break;
+									case 2: puts("Saving stats to stats.txt...");
+										wptr = fopen("stats.txt","a");
+										fprintf(wptr,"Name: %s\n",name);
+										fprintf(wptr,"Level: %d\n",level);
+										fprintf(wptr,"Attack: %d\n",attack);
+										fprintf(wptr,"Magic: %d\n",magic);
+										fprintf(wptr,"Health: %d\n",health);
+										fprintf(wptr,"Defense: %d\n",defense);
+										fprintf(wptr,"TotalHP: %d\n",totalHP);
+										fprintf(wptr,"___________________\n");
+										fclose(wptr);
+										break;
+									case 3: puts("Reading stats from stats.txt...");
+										rptr = fopen("stats.txt","r");
+										
+										while(!feof(rptr))
+										{
+											fscanf(rptr,"%s",line);
+											printf("%s\n",line);			
+										}
+										fclose(rptr);
+										break;
+									case 4: puts("Thank you for playing, goodbye.");
+											inMenu = false;	
+											realLooplmao = false;
+										break;
+									default: puts("Wrong entry.");
+										 break;
+								};
+							}
+						}
 						puts("________________________________________________________________");
 					}
+				}
 					break;
 			}
 			case 21:  //Michael Morgan's room
