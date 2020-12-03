@@ -1108,6 +1108,102 @@ int main(void)
 					{
 							puts("you open the door and find ........");
 							puts("A penguin drinking a been");
+							puts("To enter you must guess how many beers the peguin had drunk");
+							int j = 7;
+							int x = 0;
+							printf("Please enter a number between 1 and 10 \n");
+							scanf("%d",&y);
+							if(y > 10 || y < 0)
+							{
+								printf("Your number is out of bounds. \n");
+								puts("please enter 99");
+								scanf("%d",&choice);
+							}
+							x = j + y;
+							printf("%d + number of beers = %d \n",y,x);
+							x = j * y;
+							printf("%d * number of beers = %d \n",y,x);
+							x = j - j;
+							printf("%d - number of beers = %d \n",y,x);
+							printf("Guess the number of beers: \n");
+							scanf("%d",&z);
+							if(z == j)
+								{
+								printf("YOU WIN!! \n");
+								}
+								else
+									{
+									printf("you lose \n");
+									choice = 99;
+								
+							puts("that's right I had seven lol");
+							puts("I just finished my classesand I can't figure out my GPA.");
+							puts("I found a program to tell me I can't enter my grades cause of the wings.");
+							puts("Can you put them in i got two A's one B two C's");
+							int A = 0, B = 0, C = 0, D = 0, F = 0, y = 0, i =0; //%d
+	double avg = 0, total = 0;          //%lf
+	float h;     //%f
+	char grade;
+	while(grade != 'z')
+	{
+		printf("enter the letter grade A-F (press z to finish):");
+		scanf(" %c", &grade);
+		
+		switch(grade)
+		{
+			case 'a':
+			case 'A':
+				puts("You entered A");
+				A++;
+				total += 4;
+				i++;
+				break;
+			case 'b':
+			case 'B':
+			        puts("You entered B");
+				B++;
+				total += 3;
+				i++;
+				break;
+			case 'c':
+			case 'C':
+				puts("You entered C");
+				C++;
+				total += 2;
+				i++;
+				break;
+			case 'd':
+			case 'D':
+				puts("You entered D");
+				D++;
+				total += 1;
+				i++;
+				break;
+			case 'f':
+			case 'F':
+				puts("You entered F");
+				F++;
+				i++;
+				break;
+			default:
+				puts("You entered an invalid letter grade");
+
+		}
+	}
+
+	avg = total /  i;
+	printf("The gredes entered were: \n A = %d, B = %d, C = %d, D = %d, F = %d \n", A, B, C, D, F);
+	printf("The average was %.1lf.\n", avg);
+	
+	if(avg != 3.2)
+	{
+		puts("no that can't be right you must have wings too.");
+		puts("enter 99");
+		scanf("%d",&choice);
+	}
+	
+		
+	
 
 							scanf("%d",&choice);
 					}
@@ -1866,11 +1962,11 @@ int choice3(int number1)
 {
 	int answer = 0;
 
-	printf("magic number is : %d\n", number1);	
+	printf("number of beers is : %d\n", number1);	
 	
-	printf("10 + magic number = %d\n", (10 + number1));
-	printf("5 * magic number  = %d\n", (5 * number1));
-	printf("20 - magic number = %d\n", (20 - number1));
+	printf("10 + number of beers = %d\n", (10 + number1));
+	printf("5 * number of beers  = %d\n", (5 * number1));
+	printf("20 - number of beers = %d\n", (20 - number1));
 	
 	printf("What is your guess? ");
 	scanf(" %d", &answer);
@@ -1952,4 +2048,6 @@ int randomint(int x, int y) //random integer function to work craps game
 
 	return rand()%(y - x + 1); //ensures random number is generated
 }
+}
+
 
