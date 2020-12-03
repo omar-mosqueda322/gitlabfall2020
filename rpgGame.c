@@ -849,6 +849,14 @@ int main(void)
 			{
 					while(choice != 99)
 					{
+						char ans = 'Y';
+						int count=0;						
+						int total=0;
+						int prize[4]={1000000,1000,100,10};
+						srand(time(NULL));
+							
+						do
+						{
 							int myNum[3];
 							int winNum[3]= {rand()%10,rand()%10,rand()%10};
 							int die = 1 + rand()%6; 
@@ -857,8 +865,6 @@ int main(void)
 							bool checkNum1;
 							bool checkNum2;
 							bool checkNum3;
-							srand(time(NULL));
-							
 							puts("\nYou open the door and find ...");
 							puts("A lottery machine?");
 							puts("Welcome to Fabian's room");							
@@ -875,7 +881,6 @@ int main(void)
 							{
 								checkNum1=false;
 							}
-		
 							if(checkNum1)
 							{
 								if (myNum[0]==winNum[0])
@@ -952,32 +957,26 @@ int main(void)
 									puts("");
 									printf("You've hit the jackpot of 1,000,000!\n");
 									puts("WOW! incredible luck there buddy!");
-									printf("Please grab your money hop in the elevator and choose your new room! or you can escape by typing 99.\n");
-									scanf("%d",&choice);
+									total = total + prize[0];
 								}
 								else 
 								{
 									printf("You won $1,000\n");
 									puts("Go pay some bills of now!");
-									printf("Please grab your money hop in the elevator and choose your new room! or you can escape by typing 99.\n");
-									scanf("%d",&choice);
+									total = total + prize[1];
 								}
 							}
 							else if ((checkNum1 && checkNum2 || checkNum1 && checkNum3) || (checkNum2 && checkNum3))
 							{
 								printf("You've won $100\n");
 								printf("Go treat your mom to some lunch.");
-								printf("Please grab your money hop in the elevator and choose your new room! or you can escape by typing 99.\n");
-								scanf("%d",&choice);
-								break;
-
+								total = total + prize[2];
 							}
 							else if (checkNum1 || checkNum2 || checkNum3) 
 							{
 								puts("You won $10");
 								puts("You won a little bit of money but at least it's something right?");
-								puts("Please grab your money hop in the elevator and choose your new room! or you can escape by typing 99.");
-								scanf("%d",&choice);
+								total = total + prize[3];
 							}
 							else
 							{
@@ -992,11 +991,15 @@ int main(void)
 								{	
 									puts("\"You precede to roll your die in hopes you get a number in your favor\"");
 									printf("You rolled a %d\n",die);
-									printf("You are safe to live! Please grab your money hop in the elevator and choose your new room!");
-									scanf("%d",&choice);
+									printf("You are safe to live!");
 								}
 								else if(die== death || roll>6)
-								{                              
+								{          
+									if(die==death)
+									{
+										puts("\"You precede to roll your die in hopes you get a number in your favor\"");
+										printf("You rolled a %d\n",die);
+									}					                    
 									puts(" ______   _______  _______  _______  __   __ ");
 									puts("|      | |       ||   _   ||       ||  | |  |");
 									puts("|  _    ||    ___||  |_|  ||_     _||  |_|  |");
@@ -1013,22 +1016,36 @@ int main(void)
 									puts("╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗    ╚██████╔╝ ╚████╔╝ ███████╗██║  ██║    ██╗");
 									puts(" ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝     ╚═════╝   ╚═══╝  ╚══════╝╚═╝  ╚═╝    ╚═╝");
                                                              	puts("\nThe game will now exit. Better luck next time!");                          
-                                                              	
-                                                           		choice = 99;                   
+                                                              	if(roll>6||roll<1)
+                                                              	{
+                                                              		puts("I warned you about not choosing a number within the limits");
+                                                              	}
+                                                           		choice = 99;
+                                                           		count++;
+                                                           		break;                   
 								}
 								
 								else
 								{
-								puts("\"You precede to roll your die in hopes you get a number in your favor\"");
-								printf("You rolled a %d\n",die);
-								puts("Oof, that was a close one. You may not have one the lottery, ");
-								puts("but you at least get to leave with your life.");
-								puts("Now enter the elevator choose a new room or you can type 99 to leave the game");
-								scanf("%d",&choice);
-								
-								}	
-							}		
-					}
+									puts("\"You precede to roll your die in hopes you get a number in your favor\"");
+									printf("You rolled a %d\n",die);
+									puts("");
+									puts("Oof, that was a close one. You may not have one the lottery, ");
+									puts("but you at least get to leave with your life.");							
+								}													
+							}
+							printf("You have earned a total of %d so far\n",total);
+							printf("Would you like to try again at the lotto? Maybe you can win more money(Y/N)\n");
+							scanf(" %c",&ans);	
+							ans=toupper(ans);					
+						}
+					while (ans=='Y');
+					if(count<=0)
+					{
+						printf("Okay, go into the elevator and choose a new room\n");
+						scanf("%d",&choice);
+					}	
+					}			
 			}
 			case 11:
 			{
