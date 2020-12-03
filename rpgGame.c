@@ -44,6 +44,9 @@ void congratulations(void);
 
 // End of Room 9 Functions
 
+void roomPrompt(int* userChoice);
+void gorillaRoom(int* bananaAmount, int* orangeAmount);
+
 int main(void)
 {
 	int x,y,z,i,h,g,k,choice=0;
@@ -1606,53 +1609,68 @@ int main(void)
 			}
 			case 24:
 			{
-				#include <time.h>
+				int userChoice = 0,
+					turn = 0,
+					randomAlignment = 0,
+					bananaAmount = 0,
+					orangeAmount = 0;
 
 
-                                 int choice = 0,
-                                     turn = 0,
-                                     bananaAmount = 0,
-                                     orangeAmount = 0;
+				puts("As you open the door, you notice a sign reading: \"This is Phillip F. Aguilera's room\".\n"
+					"You enter the room and close the door behind you, noticing the choice of more doors. There are three more doors to choose.\n"
+					"A sheet of paper is lying on the floor. You pick it up and begin to read what has been written.\n"
+					"It states:");
+				puts("Enter the rooms and try to escape with the highest amount of bananas and oranges as possible!");
+				puts("You must have 10 bananas and 10 oranges in 5 turns or you lose!\n");
 
 
-                                 puts("As you open the door, you notice a sign reading: \"This is Phillip F. Aguilera's room\".\n"
-                                      "You enter the room and close the door behind you, noticing the choice of more doors. There are three more doors to choose.\n"
-                                      "A sheet of paper is lying on the floor. You pick it up and begin to read what has been written.\n"
-                                      "It states:\n");
-                                 printf("You have %d bananas and %d oranges.\n", bananaAmount, orangeAmount);
-                                 puts("Enter the rooms and try to escape with the highest amount of bananas and oranges as possible!\n");
-                                 puts("You must have XXX amount of bananas and oranges in XXX amount of turns or you lose!\n");
 
+				for (turn = 0; turn < 5; turn++)
+				{
+					printf("You have %d bananas and %d oranges!\n", bananaAmount, orangeAmount);
+					roomPrompt(&userChoice);
 
-                                 for (turn = 0; turn < 4; turn++)
-                                 {
-                                         puts("Main Menu:\n"
-                                              "1) Enter Room 1.\n"
-                                              "2) Enter Room 2.\n"
-                                              "3) Enter Room 3.\n");
-                                         printf("Enter the Room you wish to enter: ");
-                                         scanf("%d", &choice);
+					randomAlignment = rand() % 2;
 
-                                         switch(choice)
-                                         {
-                                                 case 1:
-                                                         puts("You are in Room 1.\n");
-                                                         break;
-                                                 case 2:
-                                                         puts("You are in Room 2.\n");
-                                                         break;
-                                                 case 3:
-                                                         puts("You are in Room 3.\n");
-                                         }
-
-                                 }
-
-					while(choice != 99)
+					if (randomAlignment == 0)
 					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
+						switch (userChoice)
+						{
+						case 1:
+
+
+							puts("You are in Room 1.\n");
+							gorillaRoom(&bananaAmount, &orangeAmount);
+
+
+							break;
+						case 2:
+							puts("You are in Room 2.\n");
+							break;
+						case 3:
+							puts("You are in Room 3.\n");
+						}
 					}
-					break;
+					else
+					{
+						switch (userChoice)
+						{
+						case 1:
+							puts("You are in Room 1.\n");
+							break;
+						case 2:
+							puts("You are in Room 2.\n");
+							break;
+						case 3:
+							gorillaRoom(&bananaAmount, &orangeAmount);
+						}
+					}
+
+
+				}
+
+
+				break;
 			}
 			case 25:
 			{
@@ -2846,4 +2864,62 @@ void congratulations(void)
 	puts("  \\_/ |_| |_|\\__,_|_| |_|_|\\_\\   \\_/\\___/ \\__,_| (_) |");
 	puts("                                                  /_/ ");
 	reset();
+}
+
+void roomPrompt(int* userChoice)
+{
+	do
+	{
+		puts("Main Menu:\n"
+			"1) Enter Room 1.\n"
+			"2) Enter Room 2.\n"
+			"3) Enter Room 3.\n");
+		printf("Enter the Room you wish to enter: ");
+		scanf("%d", userChoice);
+	} while ((*userChoice < 1) || (*userChoice > 3));
+}
+
+void gorillaRoom(int* bananaAmount, int* orangeAmount)
+{
+	int userChoice = 0,
+		winLoseAmount = 0,
+		chanceToSteal = 0;
+
+	printf("You enter Room One. On the far end of the room, your eyes easily catch a very large gorilla.\n"
+		"Behind the gorilla, you see a large pile of bananas.\n"
+		"If you wish to steal the bananas from the gorilla, enter 1. Otherwise, enter 0 to exit: ");
+
+	scanf("%d", &userChoice);
+
+	if (userChoice == 0)
+	{
+		puts("Better safe than sorry ...");
+		return;
+	}
+	else if (userChoice == 1)
+	{
+		chanceToSteal = rand() % 100;
+		winLoseAmount = 1 + rand() % 10;
+
+		puts("You decide to attempt to steal the bananas from the gorilla ...");
+
+		if (chanceToSteal > 60)
+		{
+			bananaAmount += winLoseAmount;
+			puts("Success! You were able to successfully steal %d from the gorilla and made a hasty escape back into the main room.");
+		}
+		else
+		{
+			bananaAmount -= winLoseAmount;
+			puts("As you make your way to the other side of the room, you slip on a banana ...\n"
+				"In doing so, you fall and the imapact with the ground made a large enough noise to wake the gorilla!\n"
+				"Not daring to fight him, he steals %d bananas."
+				"You make your way back to the Main Room ... \n");
+		}
+	}
+	else
+	{
+		puts("Incorrect input! You are returning to the Main Room ...");
+	}
+
 }
