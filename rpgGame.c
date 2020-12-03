@@ -2076,7 +2076,7 @@ puts("");
 			case 27:
 			{
 				
-				int i,num;
+				int i,num,enterNum,missingNum=27, total;
 				char choose, letters;
 				int arr[5] = {0};				//array1 for random numbers
 				int arr2[5] = {0};				//array2 for user input
@@ -2134,20 +2134,58 @@ puts("");
 								else 
 								{
 									puts("\nYou entered the numbers from the wall");
-									puts("A door opens up\nyou walk out");
-							
-								puts("You survived the escape room\n");
-									break;
+									puts("A door opens up\nyou walk through the door");
+									puts("Room 27");
+									puts("You're in Room 27 again");
+									puts("There is a computer in the middle of the room");
+									puts("You sit down in front of the computer ");
+									puts("1. turn on computer");
+									puts("2. walk away");
+									scanf("%d", &choice);
+									if(choice == 1)
+									{
+										puts("The computer turns on\n");
+										puts("Hello");
+										puts("Enter a number > 0 ");
+										scanf("%d", &enterNum);
+										if(enterNum<1)
+										{
+											puts("This number is not in range");
+											puts("You have to start at the beginning for not following instructions");
+											break;	
+										}
+										else
+										{
+											total = enterNum * missingNum;
+											printf("%d * ? = %d\n", enterNum,total);
+											puts("what is the missing number");
+											scanf("%d", &enterNum);
+											if(enterNum == missingNum)
+											{
+												puts("Congratulations you can walk into the next room");
+												puts("Welcome to Room 27");
+												break;
+											}
+											else
+											{
+												puts("You failed");
+												puts("Room 27");
+												break;
+											}
+										}
+									}
+									else
+									{
+										puts("You get up");
+										puts("You are still in Room 27");
+										break;
+									}
 								}
 							}	
 						}
 						
 						else
 						{
-						/*	puts("\nYou turn around and see a door that wasnt there before");
-							puts("Do you walk in?");
-							puts("y/n?");
-							scanf(" %c", &choose);*/			//gets choice from use
 							letters = prompt();
 							if(letters == 'y')
 							{
@@ -2168,20 +2206,6 @@ puts("");
 						puts("1.Turn on flashlight?\n2.Do nothing");
 						scanf("%d", &choice);
 
-						/*if(choice == 1)
-						{
-							puts("\nYou are trapped in here with us");
-							puts("Game Over");
-							puts("Better Luck Next Time\n");
-							break;
-						}
-						else
-						{
-							puts("\nYou are sitting in the dark");
-							puts("Having fun?");
-							puts("Bye\n");
-							break;
-						}*/
 						room27Output(choice);
 						break;
 					}	
