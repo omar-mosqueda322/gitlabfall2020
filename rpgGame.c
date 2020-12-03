@@ -1327,12 +1327,106 @@ int main(void)
 			}
 			case 26:
 			{
-					while(choice != 99)
+					//Room created by Saad Khan ©
+				while(choice != 99)
+				{
+					char riddleoptions[9][25] = {"The Kingdom of Kush", "The Kingdom of Aksum",
+					"The Land of Punt", "Harla Kingdom", "Kingdom of D'mt", "Kingdom of Numidia",
+					"Mali", "Kindom of Kerma", "Kindom of Makuria"};
+					int i, size, num;
+					double sqnum;
+					FILE *wptr;
+
+					printf("\nYou open the door...It's oddly heavy...Nonetheless it's open.\n");
+					puts("Upon entering the room, there's a riddle at the wall.....Behold:");
+					puts("1. Read the riddle.");
+					puts("2. Turn back.");
+					puts("3. Wipe the riddle off.");
+
+					scanf("%d", &choice);
+
+					if(choice == 1)
 					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
+						while(choice != 99)
+						{
+							printf("\nThe riddle reads:\n");
+							puts("In the \"kingdom\" of gold where the red and yellow banner is hoisted.");
+							puts("There inneth lies a mighty murky stream 4570720 yards long.");
+							puts("Resources never forsaken. Never squandered. Never disregarded.");
+							puts("What is this place?:");
+
+							size = sizeof(riddleoptions)/sizeof(riddleoptions[0]);
+
+							for(i = 0; i < size; i++)
+							{
+								printf("%d. %s\n", i + 1, riddleoptions[i]);
+							}
+
+							scanf("%d", &choice);
+
+							if(choice == 7)
+							{
+								puts("You are a individual of wisdom...Duly please...");
+								printf("Continue on...\n\n");
+							}
+							else
+							{
+								puts("Curse be upon thee...");
+								puts("Thou shalt pass... but with blighted charm!!!");
+								printf("Zaaaaaapppppp!!!!!!\n\n");
+							}
+							break;
+						}
+						break;
 					}
-					break;
+					else if(choice == 2)
+					{
+						wptr = fopen("thefileoflife.txt", "w");
+						fprintf(wptr, "This \"lucky\" egg won't assist you. You must think harder.\n");
+			
+						puts("You attempt to turn back...");
+						puts("There is no where to turn back!!! Door does not exist anymore!!!");
+						puts("You must do something else!");
+					}
+					else if(choice == 3)
+					{
+						while(choice != 99)
+						{
+							puts("You wipe the riddle off with your hand...");
+							puts("It comes off like butter...");
+							puts("...but another riddle appears on the wall!!!");
+							puts("It reads:");
+
+							srand(time(NULL));
+							num = (rand() % 10) + 1;
+							sqnum = sqrt(num);
+
+							printf("Please select the square root of %d:\n", num);
+							printf("1. %f\n", sqrt(sqnum));
+							printf("2. %f\n", pow(sqnum, 2));
+							printf("3. %f\n", sqnum + 3.14);
+							printf("4. %f\n", sqnum);
+
+							scanf("%d", &choice);
+
+							if(choice != 4)
+							{
+								puts("Absoutely incorrect!!! Incorrect calculations!!!");
+								puts("A hole opens beneth the \"floor()\"");
+								printf("You fall swiftly into it.\n\n");
+							}
+							else
+							{
+								puts("Hmmm...That answer is accurate");
+								puts("...But not seemingly satisfying...");
+								printf("You are allowed to proceed into an unknown place.\n\n");
+							}
+							break;
+						}
+						break;
+					}
+				}
+				break;
 			}
 			case 27:
 			{
