@@ -8,6 +8,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <unistd.h>
 
 void extraCredit(void);
 void ignoreExtra(void);
@@ -19,6 +20,29 @@ int choice3(int number1);
 void gameRules(); //function to explain rules of room 12 game
 void gameCraps(); //function to run room 12 game
 
+//Room 9 Functions
+
+void bBlue(void);
+
+void bCyan(void);
+
+void bRed(void);
+
+void bYellow(void);
+
+void bGreen(void);
+
+void reset(void);
+
+void displayInputs(int c);
+
+void displayStats(int c, int s);
+
+void woman(void);
+
+void congratulations(void);
+
+// End of Room 9 Functions
 
 int main(void)
 {
@@ -26,6 +50,11 @@ int main(void)
 	char decision; 
 	char name[256];
 	int boxNum=0;
+
+	int input,rando,rando2,score = 0,counter = 0;
+	double timetaken;
+	time_t begin,end;
+	int oneusage = 0;
 
 	// NEEDED FOR ROOM 7:
 	srand(time(NULL));
@@ -437,7 +466,284 @@ int main(void)
 					while(choice != 99)
 					{
 							puts("you open the door and find ........");
-							scanf("%d",&choice);
+							sleep(1);
+							puts("A small control room of some sort.");	
+							sleep(1);
+							puts("Two doors on opposite ends of the room.");
+							sleep(1);
+							puts("The lights are dim, going off and on spontaneously.");
+							sleep(1);
+							puts("Several monitors broken and smashed in.");
+							sleep(1);
+							puts("You see a particular monitor that catches your eye.");
+							sleep(1);
+							woman();
+							sleep(2);
+							puts("!!!");
+							sleep(1);
+							puts("A young woman?");
+							sleep(1);
+							puts("Looks as if she's been in containment for a long time.");
+							sleep(1);
+							bYellow();
+							puts("*SLAM*");
+							reset();
+							sleep(1);
+							puts("A security door emerges and closes behind you.");
+							sleep(1);
+							puts("It's locked.");
+							sleep(1);
+							bRed();
+							puts("\nEMERGENCY EMERGENCY");
+							sleep(1);
+							puts("BOMB HAS BEEN SET OFF");
+							sleep(1);
+							puts("WARNING EXTREMELY SENSITIVE!");
+							sleep(2);
+							reset();
+							puts("Theres a giant piece of machinery with a big screen above.");
+							sleep(2);
+							puts("\t [ ] [2] [3] [4] [5] [6] [ / [8] [9]");
+							sleep(2);
+							puts("The 1 and 7 keys seem non functional.");
+							sleep(2);
+							puts("Theres a note next to the machine.");
+							sleep(2);
+							puts("Input 9 numbers, they must add to exactly 37.");
+							sleep(3);
+							bYellow();
+							puts("You have 45 seconds.");
+							reset();
+
+							begin = time(NULL);
+
+							while(counter < 9 )
+							{
+								scanf("%d",&choice);
+
+								if(choice < 1 || choice > 9)
+								{
+									puts("That button doesn't exist.");
+								}
+								else
+								{
+									if(choice == 1)
+									{
+										if(oneusage == 0)
+										{		
+											rando = 29 + rand()%10;
+											rando2 = 5 + rand()%30;
+											rando = rando - rando2;
+											bYellow();
+											printf("%d\n",rando);
+											score = rando;
+											puts("The number is flashing on screen.");
+											puts("Seems it replaced my current score.");
+											counter++;
+											displayInputs(counter);
+											oneusage++;
+											reset();
+										}
+										else
+										{
+											reset();
+											puts("The [1] button appears to be broken.");
+											puts("It doesn't work.");
+											puts("It doesn't appear to have read any input.");
+										}
+									}
+									else if(choice == 7)
+									{
+										if(oneusage == 0)
+										{
+											displayStats(counter,score);
+											reset();
+											puts("Seems no input has been added from this button");
+											reset();
+											oneusage++;
+										}
+										else
+										{
+											reset();
+											puts("Nothing happened.");
+										}
+									}
+									else
+									{
+										bGreen();
+										puts("Ding");
+										reset();
+										score = score + choice;
+										counter++;
+									}
+								}
+							}
+							end = time(NULL);
+							timetaken = (double)(end - begin);
+							bYellow();
+							printf("Time Took %ld seconds \n",(end - begin));
+							displayStats(counter, score);
+							reset();
+							if(timetaken < 45)
+							{
+								if(score == 37)
+								{
+									bGreen();
+									puts("Bomb Deactivated.");
+									bBlue();
+									sleep(1);
+									puts("*sigh*.");
+									sleep(2);
+									puts("I live to see another day...");
+									sleep(1);
+									reset();
+									puts("The woman has a relieved expression on her face.");
+									sleep(1);
+									puts("You see a release latch to unlock her cell door.");
+									sleep(1);
+									puts("Release Latch? (1)Yes (2)No");
+									choice = 0;
+
+									while(choice < 1 || choice > 2)
+										scanf("%d",&choice);
+									if(choice == 1)
+									{
+										puts("You released the latch.");
+										sleep(2);
+										bBlue();
+										puts("We have to go NOW! she exclaims!");
+										sleep(2);
+										reset();
+										puts("The other door opened, its an elevator.");
+										sleep(1);
+										puts("You go in with the young lady and immediately the Elevator goes straight down really fast.");
+										sleep(2);
+										puts("It's stopped.");
+										sleep(1);
+										puts("The doors open, we see civilization.");
+										sleep(1);
+										puts("What the hell was that place?");
+										sleep(1);
+										puts("Ask her what was that place?(1) Say Goodbye(2)");
+										choice = 0;
+
+										while(choice < 1 || choice > 2)
+											scanf("%d",&choice);
+										if(choice == 1)
+										{
+											puts("What Happened?");
+											sleep(1);
+											bBlue();
+											puts("I was a hostage, a ransom that my family couldn't pay.");
+											sleep(1);
+											puts("They were going to blow me up along with that whole lab.");
+											sleep(1);
+											puts("You just happened to stumble by at the right time.");
+											sleep(1);
+											puts("Talk about dumb luck haha.");
+											reset();
+											sleep(2);
+											puts("Who's they?");
+											sleep(2);
+											puts("She immediately put her face to my ear and whispered.");
+											sleep(2);
+											bBlue();
+											printf("\nt");
+											printf("h");
+											printf("e");
+											printf(" ");
+											sleep(1);
+											printf("c");
+											sleep(1);
+											printf("u");
+											sleep(1);
+											printf("l");
+											sleep(1);
+											printf("t\n");
+											sleep(2);
+											puts("My family were members and I wanted out and..");
+											sleep(2);
+											reset();
+											puts("I decided to help her get out of town.");
+											sleep(1);
+											puts("After a long process of hiding and changing ID's and a few cosmetic surgeries.");
+											sleep(1);
+											puts("I got her a plane ticket outside of the state where cult activity was most prominent.");
+											sleep(1);
+											puts("It was time for her to go.");
+											sleep(1);
+											puts("I waved bye at the airport.");
+											sleep(1);
+											puts("She turns to me.");
+											congratulations();
+											puts("END");
+										}
+										else if(choice == 2)
+										{
+											puts("You wave bye as you leave.");
+											sleep(2);
+											puts("You think to yourself it's not worth the trouble to know or get involved any further.");
+											sleep(2);
+											puts("You go home and take a nice long nap.");
+											sleep(1);
+											puts("END");
+										}
+									}
+									else if(choice == 2)
+									{
+
+										puts("You decided not to release the latch but instead only unlock the other door.");
+										sleep(2);
+										bBlue();
+										puts("NOOO!!");
+										sleep(1);
+										puts("LET ME OUT PLEASE!!");
+										sleep(2);
+										reset();
+										puts("The door opens, it's an elevator.");
+										sleep(1);
+										puts("You go in.");
+										sleep(2);
+										puts("You go down and exit outside a building.");
+										sleep(1);
+										puts("What was that place? you ponder.");
+										sleep(2);
+										puts("You think, it doesn't matter as long as I'm free.");
+										sleep(2);
+										puts("Along the way home you justify your actions.");
+										sleep(2);
+										puts("What if she was dangerous? I couldn't put myself at risk for a stranger. I'm glad I left her.");
+										sleep(2);
+										puts("You make it home safe.");
+										sleep(2);
+										puts("But can't shake the feeling you were being followed.");
+										sleep(1);
+										puts("END");
+									}
+									choice = 99;
+								}
+								else
+								{
+									reset();
+									puts("BOOM!");
+									sleep(1);
+									bRed();
+									puts("You Are Dead.");
+									choice = 99;
+								}
+							}
+							else
+							{
+								reset();
+								puts("Took too long.");
+								sleep(1);
+								puts("The bomb was set off.");
+								sleep(1);
+								bRed();
+								puts("You are Dead.");
+								choice = 99;
+							}
+
 					}
 					break;
 			}
@@ -2373,3 +2679,94 @@ int randomint(int x, int y) //random integer function to work craps game
 	return rand()%(y - x + 1); //ensures random number is generated
 }
 
+void bRed(void)
+{
+	printf("\033[1;31m");
+}
+void bYellow(void)
+{
+	printf("\033[01;33m");
+}
+void bBlue(void)
+{
+	printf("\033[1;34m");
+}
+void bCyan(void)
+{
+	printf("\033[0;36m");
+}
+void bGreen(void)
+{
+	printf("\033[1;32m");
+}
+void reset (void)
+{
+	printf("\033[0m");
+}
+
+void displayInputs(int c)
+{
+	bYellow(
+	       );
+	printf("Inputs: %d / 9\n", c);
+	reset(
+	     );
+}
+void displayStats(int c, int s)
+{
+	bYellow(
+	       );
+	printf("Inputs: %d / 9\n", c);
+	printf("Score: %d / 37\n", s);
+	reset(
+	     );
+}
+
+void woman(void)
+{
+	bBlue();
+
+	puts("                    __.    ");
+	puts("                .qd$$$$bp.");
+	puts("              .q$$$$$$$$$n.");
+	puts("            .$$$$$$$$$$$$$$");
+	puts("           .q$$$$$$$$$$$$$$$");
+	puts("          .$$$$$$$$$$$Y ####;");
+	puts("        .q$$$$$$$$P^\"_.`;#### ");
+	puts("       q$$$$$$;}    ,   /####P   ");
+	puts("     .$$$P^::Y$/`  _   .:.$$/");
+	puts("    .L.;..    \\ `.__-:.. \\$P");
+	puts("     $':.  __.. :   :..    :");
+	puts("");
+	reset();
+}
+
+void congratulations(void)
+{
+	bBlue();
+	puts("\n");
+	puts("                   __.");
+	puts("               .qd$$$$bp.");
+	puts("             .q$$$$$$$$$$n.");
+	puts("            .$$$$$$$$$$$$$$");
+	puts("          .q$$$$$$$$$$$$$$$");
+	puts("         .$$$$$$$$Y  ######;");
+	puts("         .q$$$$PP^/   _`\\;###"); 
+	puts("         &$$$$;}/-    -  \\;##");
+	puts("       .2$$$$$/`    .   /####P");
+	puts("      q$$$$$$$$\\   __. .##$$#");
+	puts("    .$$...... ;  .   ./####\\$$P");	
+	puts("   .L;;-------  }  `` {########");
+	puts("    $'\":$$ ___)       (___    ");
+	puts("        ````   --     --   ````");
+	puts("   		   V");
+	puts("");
+	puts(" _____ _                 _     __   __            __  ");
+	puts("|_   _| |               | |    \\ \\ / /            \\ \\");
+	puts("  | | | |__   __ _ _ __ | | __  \\ V /___  _   _  (_) |");
+	puts("  | | | '_ \\ / _` | '_ \\| |/ /   \\ // _ \\| | | |   | |");
+	puts("  | | | | | | (_| | | | |   <    | | (_) | |_| |  _| |");
+	puts("  \\_/ |_| |_|\\__,_|_| |_|_|\\_\\   \\_/\\___/ \\__,_| (_) |");
+	puts("                                                  /_/ ");
+	reset();
+}
