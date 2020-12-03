@@ -46,6 +46,10 @@ void congratulations(void);
 
 void roomPrompt(int* userChoice);
 void gorillaRoom(int* bananaAmount, int* orangeAmount);
+void drawPicture(void);
+void caseRandomizer(char *name, int *bananaAmount, int *orangeAmount);
+
+
 
 int main(void)
 {
@@ -1609,20 +1613,27 @@ int main(void)
 			}
 			case 24:
 			{
-				int userChoice = 0,
+				int charCounter = 0,
+					userChoice = 0,
 					turn = 0,
 					randomAlignment = 0,
 					bananaAmount = 0,
 					orangeAmount = 0;
 
+				for (charCounter = 0; charCounter < 256; charCounter++)
+				{
+					if (islower(name[charCounter]))
+					{
+						name[charCounter] = toupper(name[charCounter]);
+					}
+				}
 
 				puts("As you open the door, you notice a sign reading: \"This is Phillip F. Aguilera's room\".\n"
 					"You enter the room and close the door behind you, noticing the choice of more doors. There are three more doors to choose.\n"
 					"A sheet of paper is lying on the floor. You pick it up and begin to read what has been written.\n"
 					"It states:");
-				puts("Enter the rooms and try to escape with the highest amount of bananas and oranges as possible!");
-				puts("You must have 10 bananas and 10 oranges in 5 turns or you lose!\n");
-
+				printf("%s, enter the rooms and try to escape with the highest amount of bananas and oranges as possible!\n", name);
+				puts("You must have at least 5 bananas and at least 5 oranges in 5 turns to win this game or you lose!\n");
 
 
 				for (turn = 0; turn < 5; turn++)
@@ -1636,39 +1647,44 @@ int main(void)
 					{
 						switch (userChoice)
 						{
-						case 1:
-
-
-							puts("You are in Room 1.\n");
-							gorillaRoom(&bananaAmount, &orangeAmount);
-
-
-							break;
-						case 2:
-							puts("You are in Room 2.\n");
-							break;
-						case 3:
-							puts("You are in Room 3.\n");
+							case 1:
+								gorillaRoom(&bananaAmount, &orangeAmount);
+								break;
+							case 2:
+								drawPicture();
+								break;
+							case 3:
+								caseRandomizer(name, &bananaAmount, &orangeAmount);
 						}
 					}
 					else
 					{
 						switch (userChoice)
 						{
-						case 1:
-							puts("You are in Room 1.\n");
-							break;
-						case 2:
-							puts("You are in Room 2.\n");
-							break;
-						case 3:
-							gorillaRoom(&bananaAmount, &orangeAmount);
+							case 1:
+								drawPicture();
+								break;
+							case 2:
+								caseRandomizer(name, &bananaAmount, &orangeAmount);
+								break;
+							case 3:
+								gorillaRoom(&bananaAmount, &orangeAmount);
 						}
 					}
 
 
 				}
 
+				printf("You have %d bananas and %d oranges!\n", bananaAmount, orangeAmount);
+
+				if ((bananaAmount >= 5) && (orangeAmount >= 5))
+				{
+					puts("Congratulations! You win the game!\n");
+				}
+				else
+				{
+					puts("Sorry, you lose.\n");
+				}
 
 				break;
 			}
@@ -2866,6 +2882,82 @@ void congratulations(void)
 	reset();
 }
 
+void caseRandomizer(char* name, int* bananaAmount, int* orangeAmount)
+{
+	int charCounter = 0,
+		randomCase = 0,
+		lowerAmount = 0,
+		upperAmount = 0,
+	    winLoseAmount = 0;
+	
+	puts("You have entered the case randomizer room ...\n"
+		 "Your name's letters' cases are randomized. If there are more capital letters, you are rewarded!\n"
+		 "Otherwise, there will be punishment ... ");
+
+
+
+	for (charCounter = 0; charCounter < 256; charCounter++)
+	{
+		randomCase = rand() % 2;
+
+		if (randomCase == 0)
+		{
+			name[charCounter] = toupper(name[charCounter]);
+		}
+		else
+		{
+			name[charCounter] = tolower(name[charCounter]);
+		}
+	}
+
+	for (charCounter = 0; charCounter < 256; charCounter++)
+	{
+		if (islower(name[charCounter]))
+		{
+			lowerAmount++;
+		}
+		else if (isupper(name[charCounter]))
+		{
+			upperAmount++;
+		}
+	}
+
+	if (upperAmount > lowerAmount)
+	{
+		winLoseAmount = 1 + rand() % 7;
+		*bananaAmount += winLoseAmount;
+		*orangeAmount += winLoseAmount;
+
+		printf("Congratulations! You have won %d bananas and oranges!\n", winLoseAmount);
+	}
+	else
+	{
+		winLoseAmount = 1 + rand() % 3;
+		*bananaAmount -= winLoseAmount;
+		*orangeAmount -= winLoseAmount;
+
+		printf("Unfortunately, you lost and lose %d bananas and oranges ... \n\n", winLoseAmount);
+	}
+}
+
+void drawPicture(void)
+{
+	puts("You enter the room and can faintly see a picture at the distance. As you walk closer to the image, you see ... \n");
+
+	puts("        _--~~--_");
+	puts("      /~/_|  |_\\~\\");
+	puts("     |____________|");
+	puts("     |[][][][][][]|");
+	puts("   __| __         |__");
+	puts("  |  ||. |   ==   |  |");
+	puts(" (|  ||__|   ==   |  |)");
+	puts("  |  |[] []  ==   |  |");
+	puts("  |  |____________|  |");
+	puts("  /__\\           /__\\");
+	puts("   ~~              ~~ ");
+	puts("");
+}
+
 void roomPrompt(int* userChoice)
 {
 	do
@@ -2885,41 +2977,55 @@ void gorillaRoom(int* bananaAmount, int* orangeAmount)
 		winLoseAmount = 0,
 		chanceToSteal = 0;
 
-	printf("You enter Room One. On the far end of the room, your eyes easily catch a very large gorilla.\n"
+	printf("You enter the room and on the far end of the room, your eyes easily catch a very large gorilla sleeping soundly.\n"
 		"Behind the gorilla, you see a large pile of bananas.\n"
 		"If you wish to steal the bananas from the gorilla, enter 1. Otherwise, enter 0 to exit: ");
 
 	scanf("%d", &userChoice);
 
+	userChoice = toupper(userChoice);
+
 	if (userChoice == 0)
 	{
 		puts("Better safe than sorry ...");
-		return;
 	}
 	else if (userChoice == 1)
 	{
-		chanceToSteal = rand() % 100;
+		chanceToSteal = 1 + rand() % 100;
 		winLoseAmount = 1 + rand() % 10;
 
 		puts("You decide to attempt to steal the bananas from the gorilla ...");
 
-		if (chanceToSteal > 60)
+		if (chanceToSteal >= 60)
 		{
-			bananaAmount += winLoseAmount;
-			puts("Success! You were able to successfully steal %d from the gorilla and made a hasty escape back into the main room.");
+			*bananaAmount += winLoseAmount;
+			printf("Success! You were able to successfully steal %d bananas from the gorilla and made a hasty escape back into the main room.\n\n", winLoseAmount);
 		}
 		else
 		{
-			bananaAmount -= winLoseAmount;
-			puts("As you make your way to the other side of the room, you slip on a banana ...\n"
+			*bananaAmount -= winLoseAmount;
+			printf("As you make your way to the other side of the room, you slip on a banana ...\n"
 				"In doing so, you fall and the imapact with the ground made a large enough noise to wake the gorilla!\n"
-				"Not daring to fight him, he steals %d bananas."
-				"You make your way back to the Main Room ... \n");
+				"Not daring to fight him, he steals %d bananas!\n"
+				"You make your way back to the Main Room ... \n\n", winLoseAmount);
 		}
+
+		chanceToSteal = 1 + rand() % 100;
+		
+		if (chanceToSteal > 85)
+		{
+			winLoseAmount = 1 + rand() & 5;
+
+			*orangeAmount += winLoseAmount;
+
+			puts("As you leave the room back into the Main Room, you notice some oranges in the dark corner!\n"
+				 "Before the gorilla can notice, you are able to snatch some and quickly leave through the door.\n");
+		}
+
 	}
 	else
 	{
-		puts("Incorrect input! You are returning to the Main Room ...");
+		puts("Incorrect input! You are returning to the Main Room ...\n");
 	}
 
 }
