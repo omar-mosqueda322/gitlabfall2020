@@ -20,6 +20,10 @@ int choice3(int number1);
 void gameRules(); //function to explain rules of room 12 game
 void gameCraps(); //function to run room 12 game
 
+
+void oddDeviceShenanigans(void);  // Room #7
+int drunkBehavior(void);  // Room #7
+
 //Room 9 Functions
 
 void bBlue(void);
@@ -239,21 +243,33 @@ int main(void)
 			}
 			case 7:
 			{
-					int enteredRoom = 0;
-					int chestLocked = 0;
-					char chestInventory[4][25] = {"bottle of rum", "dead cricket", "odd device"};
-					char playerInventory[4][25] = {"", "", "", ""};
-					int count = 0;  // 0 is locked, 1 is open.
-					char item[25];
-					int bottle = 3;
 
-					while(choice != 99)
-				{ 
+					/* Edwin Figueroa (RM #7)
+					 * 
+					 * Scoped the variables locally to avoid conflicts with merge requests.
+					 * I anticipated the potential other students would add/remove/revise key
+					 * variables.
+					 *	
+					 * I did however add the srand(time(NULL)) function in main.
+					*/
+				
+					int enteredRoom = 0;
+					int chestLocked = 0; // 0 is locked, 1 is open.
+					char chestInventory[4][25] = {"a dead cricket", "an odd device", "a broken compass"};
+					char playerInventory[4][25] = {"", "", "", ""};
+					int count = 0;  
+					char key[10] = {"an old key"};
+					int bottle = 3;
+					int arrLength = 0;
+					int oddDevice = 0;
+
+					while(oddDevice != 1)
+					{ 
 							if(enteredRoom == 0) {
-								puts("You quickly grab the door knob and open the 7th door.  The water causes you to fall and forces you into the room. You immediately get to your feet and grab the door nob from the inside and turn it. It's jammed!  Clearly the water must be forcing it closed.");
+								puts("");
+								puts("You quickly grab the handle and open the 7th door.  The water causes you to fall and forces you into the room. You immediately get to your feet and grab the door nob from the inside and turn it. It's jammed!  Clearly the water must be forcing it closed.");
 								enteredRoom++;
 							}
-
 							
 							if(bottle == 3) {
 								puts("You scan the room and find a large chest at the foot of an old bed.  You also find a small table near the right side of the bed with a dusty old book and a bottle of rum. ");
@@ -270,53 +286,104 @@ int main(void)
 							if(bottle == 3) {
 								puts("2. Approach the small table and examine the book next to the bottle of rum.");
 							}
-							else if((bottle > 0)) { 
+							else if(bottle > 0) { 
 								puts("2. Have another swig of that bottle on the small table.  Hell, you don't even notice the book right next to it at this point.");
 							}
-							else {
+							else if (bottle == 0) {
 								puts("2. Approach the small table and examine the book.");
 							}
 
 							puts("3. Take a nap.");
-							puts("");
+
+							puts("***********************************************");
 							puts("What do you choose?");
 
 							scanf("%d",&choice);
 							if(choice == 1)
 							{
 								if(chestLocked == 0) {
-									puts("***********************************************");
+									puts("");
 									puts("You walk over to the dark end of the room and approach the chest near the foot of the bed.  It is made mostly of oak with broad iron bands reinforcing it.  You jiggle the clasp but it appears to be locked.");
 									puts("");
 								}
 								else {
-									puts("***********************************************");
-									puts("You open the chest and see the following:");
-									for(count; count < 3; count++) {
+									
+									while(choice != 5) {
+										count = 0;
+										puts("");
+										puts("You unlock the chest with the old key and find the following within:");
+										puts("");
+										puts("***********************************************");
+										for(count; count < 3; count++) {
 										printf("%d. %s \n", count +1, chestInventory[count]);
+										}
+
+										puts("5. Close the chest.");
+										puts("Select an item in the chest to add it to your inventory, or simply close the chest [5].");
+
+										count = 0;
+
+										puts("");
+										puts("You have the following items in your personal inventory:");
+										for(count; count < 4; count++) {
+											printf(">  %s \n", playerInventory[count]);
+										}
+										puts("***********************************************");
+										
+										scanf("%d",&choice);
+
+										count = 0;
+										
+										if(choice == 1) {
+											arrLength = strlen(chestInventory[0]);
+											for(count; count < arrLength; count++) {
+												playerInventory[0][count] = chestInventory[0][count];
+												chestInventory[0][count] = ' ';
+											}
+										}
+										else if(choice == 2) {
+											arrLength = strlen(chestInventory[1]);
+											for(count; count < arrLength; count++) {
+												playerInventory[1][count] = chestInventory[1][count];
+												chestInventory[1][count] = ' ';
+											}
+											
+											oddDeviceShenanigans();
+											oddDevice = 1;
+											break;
+										}
+										else if(choice == 3) {
+											arrLength = strlen(chestInventory[2]);
+											for(count; count < arrLength; count++) {
+												playerInventory[2][count] = chestInventory[2][count];
+												chestInventory[2][count] = ' ';
+											}
+										}
 									}
-									puts("4. Close the chest.");
-									puts("Select an item number to add it to your inventory, or simply close the chest.");
-									scanf("%d",&choice);
-
-									/*
-
-									Insert code for moving item from the chest to the players inventory.  (if logic)
-
-									*/
+									
 																	}
 							}
 							else if(choice == 2)
 							{
 								if(bottle == 3) {
-									puts("***********************************************");
+									puts("");
 									puts("You approach the small table near the bed and pick up the book.  It's a bit dusty with faded red lettering accross the cover.  The title of the book is, 'Diary'.");
 									puts("");
-									puts("You open the book, and sift through the crumpled pages.  It appears to be giberish full of what looks like complex equations and symbols.  You move to the last page and you see a sketch for an odd looking device.  At the header, the page reads, 'Odd Device!'.  In the print below the sketch is a somewhat cryptic statement:'");
+									puts("You open the book, and sift through the crumpled pages.  It appears to be giberish full of what looks like complex equations and symbols.  You turn to the last page and you see a sketch, maybe a schematic, of an odd looking device.  At the header, the page reads, 'Odd Device!'.  In the print below is a cryptic message:");
 									puts("");
-									puts("'Only this 'odd device' will get you out of this room.  But there is huge risk in using it, so I locked it away.'");
+									puts("'Only this 'odd device' will get you out of here.  But there is huge risk in using it, so I locked it away.'");
 									puts("");
-									puts("After reading the book, you grab the bottle of rum, pop the cork and take a huge swig!");
+									puts("After reading the book, you grab the bottle of rum, pop the cork and take a huge swig!  Cuz, why not.");
+									puts("");
+								}
+
+								else {
+									puts("");
+								}
+
+								if (chestLocked == 1) {
+									puts("");
+									puts("Other than the old book you've already read, there's nothing else here of interest.");
 									puts("");
 								}
 
@@ -325,63 +392,82 @@ int main(void)
 								}
 					
 								// Random drunk behavior!
-								x = 1 + rand()%10;
+								x = drunkBehavior();
 
-								if((x <= 5) && (bottle > 0)) {
-
-									if(bottle != 3) {
-										puts("***********************************************");
-									}
+								if(bottle > 0) {
 										
 									if(bottle == 3) {
-										puts("Ahhh! Good stuff.  You have a compelling desire for another drink.  Maybe you have a problem.");
+										puts("Ahhh! Good stuff.  You have a compelling desire for another drink.  Maybe you have a problem. Have another!");
 										bottle--;
 									}
-									else {
+									else if(bottle == 2) {
 										puts("Mmm, this must be spiced rum.  You can't resist another drink.");
 										bottle--;
 									}
-								}
-
-								else if (((x > 5) && (x < 10)) && (bottle > 0)) {
-									if(bottle != 3) {
-										puts("***********************************************");
+									else if(bottle == 1) {
+										puts("That was good! *hiccup* Take another!");
+										bottle--;
 									}
 									else {
-										puts("");
+										puts("The bottle is empty.");
 									}
-									puts("The rum is already starting to hit you.  You begin to feel light headed.");
-									bottle--;
+								}
+
+								if (bottle != 0 && x <= 3) {
+
+									puts("The booze is definately hitting you.");
+									puts("");
+									puts("You stuble around the room a bit...  *Now* it's a party!");
+
+								}
+
+								else if ((bottle != 0) && ((x == 4) || (x == 5) || (x == 6))) {
+
+									puts("");
+									puts("*hiccup* You dance around the room a bit, stumble to the floor.  You dust yourself off and begin singing a song.");
+									puts("");
+									puts("You contemplate your drinking problem.  BAH!  Take another swig!");
+									puts("");
+
+								}
+
+								else if ((bottle != 0) && (x > 6)) {
+
+									puts("");
+									puts("Woah, you struggle to maintain your balance.  You begin to see double.  Hey wait, is that a second door?!?!");
+									puts("");
+									puts("Nah, it can't be...  You are seriously drunk.");
+									puts("");
+
 								}
 									
-								else if ((x == 10) || (bottle == 0)) {
-									if(bottle != 3) {
-										puts("***********************************************");
+								else if (bottle == 0) {
+
+									puts("");
+									puts("Damn!  The rum is powerful stuff.  You begin to feel dizzy.  Things begin to get really fuzzy, you mumble, 'barteeeender *hicuup* make it a double'.");
+									puts("");
+									puts("....a day passes....");
+									puts("");
+									puts("Your eyes slowly open.  Wow, what a headache!  Slowly things come into focus.  You realize you are laying on the floor near the side of the bed.  Under the bed you can see the empty bottle tipped over.  Something near it catches your eye.");
+									puts("");
+									puts("Next to the bottle you see a small rusted looking key.");
+									puts("");
+
+									bottle = 0;
+
+									count = 0;
+									arrLength = 10;
+									for(count; count < arrLength; count++) {
+										playerInventory[3][count] = key[count];
 									}
-									else {
-										puts("");
-									}
-										puts("Damn!  The rum is powerful stuff.  You begin to feel dizzy.  You find yourself having a difficult time standing.  You have a compelling desire to sing.  As you contemplate what the words are to that song vaguely in your head.  You stumble, fall, knocking your head on the edge of the table.");
-										puts("");
-										puts("....a day passes....");
-										puts("");
-										puts("Your eyes slowly open.  Wow, what a headache!  Slowly your eyes begin to come into focus.  You realize you are laying on the floor on the side of the bed.  Under the bed you can see the empty bottle tipped over.  Something near it catches your eye.");
-										puts("");
-										puts("Next to the bottle you see a small rusted looking key.");
+									chestLocked = 1; //unlocked
 
-										bottle = 0;
-
-										playerInventory[0] == "key";
-
-								}
-								else {
-									puts("There's really nothing more for you at this table.  Move on...");
 								}
 					
 							}
 							else if(choice == 3)
 							{
-								puts("***********************************************");
+								puts("");
 								puts("It's been a long day. *yawn* After an hour or so of sleep, something wakes you up!  Oh yes!  There's an unexplained flood in the room outside of your jammed door.");
 								puts("");
 								puts("You jump out of bed, with a clearer mind.  The rest did you well.  You vaguely recall a dream about having read the dusty old book on the table next to you.");
@@ -392,9 +478,9 @@ int main(void)
 								puts("wrong choice");
 								puts("");
 							}
-					}
 
-					// Need to code an exit out of the loop for room 7
+					}
+					break;
 
 			}
 			 case 8:
@@ -2756,6 +2842,24 @@ int randomint(int x, int y) //random integer function to work craps game
 	return rand()%(y - x + 1); //ensures random number is generated
 }
 
+
+void oddDeviceShenanigans(void) {
+	puts("");
+	puts("As you you make contact with the odd device, your vision goes grey and then you black out.");
+	puts("");
+	puts("In a dream like state you feel yourself falling...and falling....");
+	puts("");
+	puts("You find yourself back in the room where you started!!!!!");
+	puts("");										
+}
+
+int drunkBehavior(void) {
+	int x = 0;
+	x = 1 + rand()%10;
+	return x;
+}
+
+
 void bRed(void)
 {
 	printf("\033[1;31m");
@@ -2847,3 +2951,4 @@ void congratulations(void)
 	puts("                                                  /_/ ");
 	reset();
 }
+
