@@ -245,8 +245,266 @@ int main(void)
 			{
 					while(choice != 99)
 					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
+							int decision4;
+                                                        char lowerName4[20];
+                                                        char tempLowerName4[20];
+                                        /*              puts("*****************************************************************************************");
+                                                        puts("In your adventure please make sure to enter your decision exactly as stated in the 'quote'.");
+                                                        puts("\n");
+                                        */              for(i=0; i<20; i++)
+                                                        {
+                                                                lowerName4[i] = tolower(name[i]);
+                                                        }
+                                                        puts("You open the door and find two more doors.");
+                                                        puts("The left one is covered in dirt,moss, and other unknown substances.");
+                                                        puts("The right one is sparkling clean and there seems to be white light leaking out from under.");
+                                                        puts("Do you \n 1. go left? \n 2. go right?\n");
+                                                        scanf("%d", &decision4);
+                                                        if(decision4 == 1)
+                                                        {
+                                                                printf("\nYou open the door slowly, scared of what could be behind it. But to your surprise the door leads to a clean school classroom. You sigh in relief of what could have happen. But then you hear a scream of pain in the hallway.\n Do you\n 1. check it out?\n 2. hide in the classroom?\n\n");
+                                                                scanf("%d", &decision4);
+                                                                if(decision4 == 1)
+                                                                {
+                                                                        printf("\nYou walk over to the door connecting to the hallway.You open it and step a foot into the hallway. It seems clear until you look to the right see a man holding a woman up by her hair at the end of hallway.\n Do you\n 1. run to the left to try to escape the man?\n 2. approach him to try to save the woman?\n\n");
+                                                                        scanf("%d", &decision4);
+                                                                        if(decision4 == 1)
+                                                                        {
+                                                                                printf("\nYou run as quickly as can for the door hoping it's an exit. The man notices you and drops the women and starts chasing you. Luckily, the door does lead to outside but it appears you are in some kind of forest. There is a car running and long dirt road that you can't see the end of.\n Do you\n 1. get into the car?\n 2. do you hide on the side of the door and try to ambush him?\n\n");
+                                                                                scanf("%d", &decision4);
+                                                                                if(decision4 == 1)
+                                                                                {
+                                                                                        printf("\nYou get into the car. Put it into drive and make a U-turn for the road. The man exits the building and begins chasing the car. It's speeding up and you left him in the dust. It seems all clear but he starts shooting at you. You swerve left and right trying to dodge his bullets. You feel your shoulder burning and you look down at and notice you've been hit. You continue driving on the road and it finally leads to a paved road. You have been driving for a couple of miles now and tried your best to help your wound but you lost a lot of blood. You see a gas station in the distance but you still have half the tank left.\n Do you\n 1. stop at the gas station for help?\n 2. do you keep driving hoping you can get to a city?\n\n");
+                                                                                        scanf("%d", &decision4);
+                                                                                        if(decision4 == 1)
+                                                                                        {
+                                                                                                printf("\nYou pull over into the old gas station and notice two cars are parked infront of it. You head inside hoping to get some help. The cashier is minding his business as you enter. You tell him about your situation and he has a confused look on his face. \"Here you can use the phone.\" You pick up the phone. \n\n");
+                                                                                                int phoneNumberGas4 = 911;
+                                                                                                int phoneNumberGasDial4;
+                                                                                        //      scanf("%d", phoneNumberGasDial4);
+
+                                                                                                while(phoneNumberGasDial4 != phoneNumberGas4)
+                                                                                                {
+                                                                                                        printf("\nWho do you dial?\n");
+                                                                                                        printf("Perhaps the cops?\n");
+                                                                                                        scanf("%d", &phoneNumberGasDial4);
+                                                                                                }
+                                                                                        //      while(phoneNumberGasDial4 != phoneNumberGas4);
+
+                                                                                                printf("\nIt rings for a couple of seconds . . . until a woman picks and asks \"911, What's your emergency?\". You tell her your situation and she tells you stay put since officers are on their way. The cashier asks if you want anything to eat or drink. But you decline, so he offers that you can rest in the breakroom while you wait for the police to come. You agree so he leads you to the back and you sit down on a small dirty couch. You take a sigh of relief knowing that everything is going to be okay but then you get hit in the head from behind and fall down. Everything is a blur but you are being tied to a chair. You then black out. You are awaken with cold water being splashed on you. You are tied to a chair in a dark room with two other people. They look as confused as you are and are struggling to unbound their hands. You see the cashier from earlier walking around the three of you. He says \"Let's play a small game, here is a revolver with three bullets. I'm going to give you guys 3 tries to gues a number 1 through 10 and if you fail well then you can figure out what's going to happen.\"\n\n");
+                                                                                               printf("\nAll three of you guys are pleading for each others life but he responds \"Guess now or I'll just shoot you all.\"\n\n");
+                                                                                               int gasNumberAnswer = 7;
+                                                                                               int gasNumberGuess;
+                                                                                               int gasTries = 0;
+                                                                                               int gasTriesLimit =0;
+                                                                                              // printf("What do you guys guess?\n");
+                                                                                              // scanf("%d", &gasNumberGuess);
+                                                                                              // while(gasNumberGuess != gasNumberAnswer)
+                                                                                               while(gasNumberGuess != gasNumberAnswer && gasTriesLimit == 0)
+                                                                                               {
+                                                                                                       if(gasTries < 3)
+                                                                                                       {
+                                                                                                               printf("\nWhat do you guys guess?\n");
+                                                                                                               scanf("%d", &gasNumberGuess);
+                                                                                                               gasTries++;
+                                                                                                               printf("You have %d guesses left.\n", 3 - gasTries);
+                                                                                                       }
+                                                                                                       else
+                                                                                                               gasTriesLimit = 1;
+
+                                                                                                      // printf("WRONG. GUESS AGAIN. \n");
+                                                                                                      // printf("You have %d guesses left.\n", 3 - gasTries);
+                                                                                               }
+
+                                                                                                       if(gasTriesLimit != 0)
+                                                                                                       {
+                                                                                                               printf("\nThe cashier picks up his gun and shoots you all.\n\n GAME OVER.\n\n");
+                                                                                                               exit(1);
+                                                                                                       }
+                                                                                                       else
+                                                                                                       {
+                                                                                                               printf("\nHe says \"Wow I'm surprised you guys actually got it. But did you really think I would let you off?\" He picks up his gun and cocks it back. You close your eyes awaiting death. But the sirens of a police car are heard outside. The cashier puts away his gun and whispers \"Y'all better not make any noise.\" He then goes through a door that leads to the main room of the gas station. You hear converstation going on between the police officers and cashier. You start screaming for help and then you can hear the cashier and police officers start raising their voices. A couple of shots go off. The gas station is dead silent. \n Then the two police officers appear through the door but seems wounded. They untie everyone and escort them outside. \n Backup is arriving and everything seems to finally be okay. \n\n You survived.\n\n");
+                                                                                                               exit(1);
+                                                                                                       }
+
+
+
+                                                                                        }
+                                                                                        else if(decision4 == 2)
+                                                                                        {
+                                                                                                printf("\nYou drive past the gas station and continue driving into the unknown. Quite some time has passed but in the horizon you can see buildings. You are happy knowing you are almost in civilization. *POP* Your front passenger tire has blew out. You pull over to the side to try to fix it. You step out of the car and notice a cop car is pulling off the highway behind you. Maybe he can help. You wave towards the officers and try to signal that the tire blew out. You see the police man talking into his radio.\n\nHe steps out of his car with gun pulled and aimed at you. You have a confused look on your face and try to ask the officer \"What's wrong?\" But he doesn't give you an answer. \"Get on the ground\" he yells. You get on the ground with fear. He walks slowly towards you and handcuffs you.\n\n\"We got him!\" he says into his radio. Confusion takes over you as you don't know what he is talking about. You try to explain your situation to him but he tells you \"Shutup and be silent.\" He walks to the driver seat and pops open the trunk. He looks into the trunk with disgust.\n\nYou try to catch a peek into the trunk but it's out of sight. \"We got a body and some weapons\" he says into his radio.\n\n Do you\n 1. stay on the ground?\n 2. try to get up and runaway?\n\n");
+                                                                                                scanf("%d", &decision4);
+                                                                                                if(decision4 == 1)
+                                                                                                {
+                                                                                                        printf("\nYou remain on the floor as more officers come to the area. You are found guilty of 1st degree murder due to the evidence found in the car and sentenced to death.\n\nThe last past weeks have been hell, sitting in a concrete room waiting for your death. Nothing you told them they would believe.\n\nTomorrow, is your last day.\n\nGAME OVER.\n\n");
+                                                                                                          exit(1);
+
+                                                        }
+                                                                                                else if(decision4 == 2)
+                                                                                                {
+                                                                                                        printf("\nYou get an adrenaline rush, wiggle yourself up onto two feet and run full speed at the officer. He hits his head on the trunk and knocks him out. You find the handcuff keys and take off the handcuffs. You run off into the forest. You see buildings nearby after a couple of minutes of running. You made it into the city.\n\nYou survived.\n\n");
+                                                                                                        exit(1);
+                                                                                                }
+                                                                                        }
+                                                                                }
+                                                                                else if(decision4 == 2)
+                                                                                {
+                                                                                        printf("\nYou stand to the side of the door. Getting ready to suprise attack the guy. He runs out a little but is confused on where you went. You lunge at him and tackle him to the floor. He is a equal match in strength and you are struggling to keep him down. You punch him in the face. He begins to try to reach for his hip and you notice he has a gun. You quickly try to stop his hand from grabbing it but it's too late, it's in his hands. You try your best to keep the gun pointed to the side but he gets a sudden burst of strength and overwhlems you. The gun is pointed at your face. BANG!\n\n");
+                                                                                        printf("\nGAME OVER.\n\n");
+                                                                                        exit(1);
+
+                                                                //                      return EXIT_SUCCESS;
+                                                                                }
+                                                                        }
+                                                                        else if(decision4 == 2)
+                                                                        {
+                                                                                printf("\n\"Let go of her!\" you yell. The man throws her head to the floor. \"Who even are you?\" he snarls. \"Just someone that doesn't want to see someone get hurt\" you respond. \"It's a little too late for that unless you want to reverse time and save all the people that came before her\" he says. \"What do you want in exchange for her life?\" you ask him. \"Your life\" he demands. The woman has now began to regain consciousness. Frighten is wrtitten all over her face. You think for a couple of seconds about the decision.\n\n Do you\n 1. give up your life for her's?\n 2. let him take her life?\n\n");
+                                                                                scanf("%d", &decision4);
+                                                                                if(decision4 == 1)
+                                                                                {
+                                                                                        printf("\n\"Wow how brave of you\" he chuckles. He picks her up and kicks her towards you. \"Scram! Tell anyone this and I'll hunt your whole linage down\" he screams. You walk towards him getting ready for your death. The woman is on the ground frozen in fear. You arrive infront of the man. You feel the cold metal of the pistol on your head. \"Your final words?\" he chuckles. You close your eyes embracing death knowing that you saved someone. You take a long breath in. The gun shot rings through the hallway. A body hits the floor. You open your eyes and see that the woman tackled the man down. They are now fighting each other strength to control the gun. You quickly jump in to help her. With her courage the both of you were able to take the gun off of the man. She takes the gun and shoots him once in each leg. The both of you leave the school out o breath. His car is parked in front and is running. The woman and you drive out of there to get help.\n\nYou survived.\n\n ");
+                                                                                        exit(1);
+                                                                                }
+                                                                                else if(decision4 == 2)
+                                                                                {
+                                                                                        printf("\n\"I figured you would, who would throw their life away for a nobody\" he says. He shoots two bullets in her head and then points it at you. \"You really thought you would live through this?\" he ask. You hear the sound of the gun and then you fade into nothingness.\n\nGAME OVER.\n\n");
+                                                                                        exit(1);
+                                                                                }
+
+                                                                        }
+                                                                }
+                                                                else if(decision4 == 2)
+                                                                {
+                                                                        printf("\nYou hide in the back of the classroom behind some desk. NOOO PLEASE DONT is heard from the hallway and then there is silence. You hear heavy footsteps from the hallway. You get ready for the situation if the door would swing open but it doesn't. The heavy footsteps get more distant then you hear the slam of a door.\n\n Do you\n 1. go out into the hallway since you believe it's safe?\n 2. do you continue to hide in the classroom.\n\n");
+                                                                        scanf("%d", &decision4);
+                                                                        if(decision4 == 1)
+                                                                        {
+                                                                                printf("\nYou walk into the hallway and see woman laying on the floor at the end of it. You run to her. You lay her onto her back and see that she is already dead. You immediately run towards the entrance of the school hoping to catch the person who did this to her. The door to the school is wide open. You peak out and see the man doing something in his trunk. His back is facing you. You decide to ambush him. You sneak up slowly and grab a rock while on your way to him. You swing with fury at his head. He hits the floor and blood begins to pour out from his head. You search his body for a phone and find one. You call 911. It takes awhile but they finally arrive.\n\nYou survived.\n\n");
+                                                                                exit(1);
+                                                                        }
+                                                                        else if(decision4 == 2)
+                                                                        {
+                                                                                printf("\nYou decide to hide a bit more. Quite some time has passed now and it's getting dark. You decide it's time to step out and see what has happened. A couple of wolves are hunched over what use to be a body. You step on a branch and make a noise that alerts the wolves. They snarl at you and creep slowly towards you. You start walking backwards, keeping your eye on them. You stumble over some debris and fall down. The wolves jump at you and start picking at you. You are their dinner tonight.\n\nGAME OVER.\n\n");
+                                                                                exit(1);
+                                                                        }
+                                                                }
+
+                                                        }
+                                                        else if(decision4 == 2)
+                                                        {
+                                                                printf("\nYou open the door hoping it will take you to back to where you came from. As you open the door you are greeted with angelic voices singing. It's so white you can't even see a couple of feet in front of you. You take a few steps out and it all changes. Fire and stone replace the white all around. The angelic voices are replaced with screaming. YOU FOOL! is heard in the distance.\n Do you\n 1. venture into the dark stone path infront of you?\n 2. do you stay where you are at?\n\n");
+                                                                scanf("%d", &decision4);
+                                                                if(decision4 == 1)
+                                                                {
+                                                                        printf("\nThe dark stone path is lit with fire scattered around it. Screaming and various noises can be heard in the distance but they seem to get closer with ever step taken. After about 10 mins of walking you arrive at a gate that reads WELCOME. It is wide open.\n\n Do you\n 1. enter?\n 2. do you go off the path and trying to find a different route?\n\n");
+                                                                        scanf("%d", &decision4);
+                                                                        if(decision4 == 1)
+                                                                        {
+                                                                                printf("\nYou see a huge castle infront of you. You walk towards it cautiously and feel like something is pulling you towards it. You get to the closed doors and knock. A man wearing a hoodie and sweatpants opens the door. \"Hello, would you like to come in?\" You agree and he guides you to the room on the left. He motions towards a big chair. You sit down and he sits in another chair across from you. \"What brings you here?\" he ask. \"I opened a door and was brought here\"you respond. \"Very well, I think I can get you back to where you came from\" he tells you. \"I would like that, how can you do that?\" you ask. \"Well, how lucky are you?\" he ask. \"Huh?\" you respond. \"Roll this dice\" he tells you. He hands you a black metal dice.\n\n Do you\n 1. roll the dice?\n 2. tell him no?\n\n" );
+                                                                                scanf("%d", &decision4);
+                                                                                if(decision4 == 1)
+                                                                                {
+                                                                                        printf("\n\"Roll me a 6 in 6 tries and I'll return you to your world. But if you don't then I guess you will find out what happens. The odds are in your favor\" he says.\n\n");
+                                                                                        int devilDiceRoll4;
+                                                                                        int devilDiceRollTry;
+
+                                                                                        while(devilDiceRoll4 != 6 || devilDiceRollTry > 6)
+                                                                                        {
+                                                                                        //for(i=0; i<6; i++)
+                                                                                        //{
+                                                                                                printf("\nYou shake the die in your hand and throw it on the table\n");
+                                                                                                devilDiceRoll4 = rand()%6 + 1;
+                                                                                                devilDiceRollTry++;
+                                                                                                switch(devilDiceRoll4)
+                                                                                                {
+                                                                                                        case 1:
+                                                                                                                printf("\nYou rolled a 1.\n\"Try your luck again. Come on it's not that hard just roll a 6.\"\n");
+                                                                                                                break;
+                                                                                                        case 2:
+                                                                                                                printf("\nYou rolled a 2\n\"Well maybe get two more twos and we got a deal.\"\n");
+                                                                                                                break;
+                                                                                                        case 3:
+                                                                                                                printf("\nYou rolled a 3\n\"Halfway there.\"\n");
+                                                                                                                break;
+                                                                                                        case 4:
+                                                                                                                printf("\nYou rolled a 4\n\"Yup that's a four.\"");
+                                                                                                                break;
+                                                                                                        case 5:
+                                                                                                                printf("\nYou rolled a 5\n\"Damn, your luck sucks.\"\n");
+                                                                                                                break;
+                                                                                                        case 6:
+                                                                                                                printf("\nYou rolled a 6\n\"Wow, you actually did it.\"");
+                                                                                                                break;
+                                                                                                }
+                                                                                        //}
+                                                                                        }
+                                                                                        if(devilDiceRoll4 == 6)
+                                                                                        {
+                                                                                                printf("\n\"Well, a deal is a deal. I guess you could make a bet with the devil. Have fun in the other hell.\" he says.\n\nYou survived.\n\n");
+                                                                                                exit(1);
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                                printf("\n\"Well, a deal is a deal. Take him away\" he commands to the air. A guard then appears out of thin air and drags you out of the house and to a treadmill where you will have to run for eternity.\n\nGAME OVER.\n\n");
+                                                                                                exit(1);
+                                                                                        }
+                                                                                }
+                                                                                else if(decision4 == 2)
+                                                                                {
+                                                                                        printf("\n\"Hmmm well if you do not want to then we shall not. Take him away\" he commmands to the air. A guard then appears out of thin air and drags you out of the house and to a treadmill where you will have to run for eternity.\n\nGAME OVER.\n\n");
+                                                                                }
+                                                                        }
+                                                                        else if(decision4 == 2)
+                                                                        {
+                                                                                printf("\nYou decide to go off the path into the unknown. You walk cautiously into the darkness. The screaming is louder now. A very large person appears infront of you out of the darkness. You are frozen in terror as he towers over you. You decide to try to make a run for it but he grabs your arm before you can make your second step. He lifts you in the air by your arm. He begins to tear you limb by limb. You scream for help but no one is there to save you. You slowly start to fade out of conscious.\n\n");
+                                                                                printf("\nGAME OVER.\n");
+                                                                                exit(1);
+                                                                //              return EXIT_SUCCESS;
+                                                                        }
+                                                                }
+                                                                else if(decision4 == 2)
+                                                                {
+                                                                        printf("\nYou decide to stay and sit in the area you arrived. Quite some time has passed and you are feeling exhausted. You decide to close your eyes and catch some sleep and hopefully you will have a solution to this when you awake.\n\n");
+                                                                        printf("\n\"*psssst* Wake up\" someone says in a whisper. You spring up, ready to take on whatever is around. You see a small person hunched over to the right of you. His face is slightly mangled and his clothes are tattered. \"Sorry, did not mean to frighten you.\" it says. \"Ah yes I apolgize. My name is Gevin\" it tells you. \"What brings you here?\" Gevin asks? \"A door. Not sure how it leads here but I just want to go back.\" you respond. \"Ahhhh-ha, another doorman. Well good thing I got the experience but it's quite the journey. Let's get going\" he tells you. Gevin motions to follow him as he hops forward. You follow him.\n\nYou have been following him for quite some time. He suddenly stops and turns around and tells you to be quiet. You see two large figures in the distance. They are guarding a portal that sparks with electricity every second.\n\n\"We aregoing to have to try to distract them and then you will into the portal which will get you back where you came from or some other place. I'm not sure I have not been through it.\" Gevin tells you. \"Well how are we going to distract them?\" you ask. \"Well I do not know but I got some stuff in my sack that can help\" he says as he opens a sack the size of a hand. He begins reaching in and starts pulling out weapons and various things. \"Pick your poison but do not pick the poison\" he tells you.\n\n");
+                                                                        printf("\n Do you\n 1. take the wood stick that has a crystal on the end of it?\n 2. take the sword and shield?\n 3. take the crystal clear ball?\n 4. take the bg rock?\n 5. take the poison\n 6. take the staff with a huge eye\n 7. throw Gevin out in the open and use him for distraction?\n\n");
+                                                                        scanf("%d", &decision4);
+                                                                        if(decision4 == 1)
+                                                                        {
+                                                                                printf("\nYou grab the wood stick with a crystal. \"That one shoots fire\" he says. You take aim and shoot some fire on the right side front of the guards. They are not bothered by it at all. \"Maybe shoot them\" he recommends. You aim at the guards and shoot the fire at them. They are not affected at all. But they notice you and start running at you. \"Welp, it's over for us\" he says. The guards come and rips the both of you limb by limb.\n\nGAME OVER.\n\n");
+                                                                                exit(1);
+                                                                        }
+                                                                        else if(decision4 == 2)
+                                                                        {
+                                                                                printf("\nYou grab the sword and shield. Gevin somehow pulls another one out of his bag equips himself with it. You nod at him, ready to charge at them. You scream \"GOOOO!\" and the both of you run full speed at the guards. There is a spark on the sword and shield and it transform Gevin and you into large warriors that easily tower over the guards. The guards prepare for the attack but yourguy's strength is too strong for them. You slice them in half with no effort. You can now enter the portal.\n\nYou survived.\n\n");
+                                                                                exit(1);
+                                                                        }
+                                                                        else if(decision4 == 3)
+                                                                        {
+                                                                                printf("\nYou grab the crystal clear ball. \"Just throw it and watch the show\" says Gevin. You throw the ball as far you can. It cracks on impact and a Chimera appears out of thin air. The guards are frightened by the creature but they run straight at it hoping to take it down. The portal is wide open to enter. Gevin says \"Farewell, doorman.\" You run to the portal while the guards are struggling to keep up with the Chimera\n\nYou survived.\n\n");
+                                                                                exit(1);
+                                                                        }
+                                                                        else if(decision4 == 4)
+                                                                        {
+                                                                                printf("\nYou grab the big rock. \"Well, goodluck with that\" he says. You throw it but it does not land that far infront of you. The guards notice that you threw the rock and begin running at you. \"Yeah, someone told me it did something. I guess they lied\" says Gevin. The guards grab the both of you and throw you into an eternal fire pit, where you will burn forever.\n\nGAME OVER.\n\n");
+                                                                                exit(1);
+                                                                        }
+                                                                        else if(decision4 == 5)
+                                                                        {
+                                                                                printf("\nYou grab the poison. \"Wait! Hold on.\" he tries to say. But you begin to melt due to coming in contact with the poison. You are now a puddle of liquid.\n\nGAME OVER.\n\n");
+                                                                                exit(1);
+                                                                        }
+                                                                        else if(decision4 == 6)
+                                                                        {
+                                                                                printf("\nYou grab the staff with a huge eye. \"Oh yeah that is a good one, hit the ground with it\" he tells you. You hit the ground with the staff and bubble forms around the both of you. You begin walking towards the guards and they notice and charge to attack you. They blow up instantly upon touching the bubble. \"This bubble pops you\" he says. You say your goodbye and enter through the portal.\n\nYou survived.\n\n");
+                                                                                exit(1);
+                                                                        }
+                                                                        else if(decision4 == 7)
+                                                                        {
+                                                                                printf("\nYou grab Gevin and throw him out in the open. \"Come on that is not cool!\" he screams. The guards charge at him. \"Damn it\" is his last words. The guards are distracted turning Gevin into mush, so you enter through the portal.\n\nYou survived.\n\n");
+                                                                                exit(1);
+                                                                        }
+                                                                }
+							}	
 					}
 					break;
 			}
