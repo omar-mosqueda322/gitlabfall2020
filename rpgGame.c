@@ -21,10 +21,6 @@ int choice3(int number1);
 void gameRules(); //function to explain rules of room 12 game
 void gameCraps(); //function to run room 12 game
 
-
-bool r15taker(int *golds, int *saphs, int *rubs, int *ems);//room 15 for one of the chests
-void r15writeLetter(void);
-
 char prompt(void);
 void randomFill(int *ptr);
 void room27Output(int z);
@@ -59,7 +55,6 @@ void congratulations(void);
 void problem1(int math);
 void problem2 (char *ptr);
 int flip();
-
 
 
 
@@ -1339,92 +1334,11 @@ int main(void)
 					break;
 			}
 			
-						case 15:
+			case 15:
 			{
 					while(choice != 99)
 					{
-							printf("You find a room with several chests on the inside. Each of them are marked 1 through 6. Which one do you open?\n(put in the number you'd like to put in.)");
-							int Chestchoice;
-							scanf("%d",&Chestchoice);
-							int counter = 0;
-							int userInput=0;
-							int safeNumber = (rand() % 10);
-							int sapphires=0;
-							int rubys=0;
-							int gold=0;
-							int emeralds=0;
-							int *saphs = &sapphires;
-							int *rubs = &rubys;
-							int *golds = &gold;
-							int *ems = &emeralds;
-							bool result = true;
-							switch(Chestchoice)
-							{
-								case 1:
-									printf("you open the chest in order to find a skeleton on the inside. It's mouth opens.....");
-									while(counter != 5)
-									{
-										printf("ha\n");
-										counter++;
-									}
-									printf("if you can name what number i'm thinking of I won't kill you! It's between 1 and 10!\n");
-									scanf("%d", &userInput);
-									if(userInput != safeNumber)
-									{
-										printf("it laughs and attacks you biting your neck killing you.\n");
-									}
-									else
-									{
-										printf("You guess right, escape now with your life!\n");
-										printf("Fearing for your life you quickly run and escape from the monster in front of you.");
-									}
-									choice =99;
-									break;
-								case 2:
-									printf("the chest opens and you find treasure! congradulations!\n as you blink though....something happens your eyes water....\n");
-									printf("You feel as though your being tested.....inside there's 10 pieces of gold, 10 sapphires, 10 rubys, and 10 emeralds.");
-									result = r15taker(golds,saphs,rubs, ems);
-									if(result == true)
-										printf("\n the roof above starts falling apart, as you try to run out, the weight of the treasure you've stolen weighs you down far to much.\nA rock falls atop you and you die.");
-									else
-									{
-										printf("\nStrange, nothing seems to have happened but the other chests are gone. You decide that it's best to leave now while you're still safe.");
-										printf("you escape with %d pieces of gold, %d sapphires, %d rubys, and %d emeralds, not bad for a few minutes of exploration", gold,sapphires,rubys,emeralds);
-									}
-									choice = 99;
-									break;
-								case 3:
-									printf("the chest is locked.... but after moments of shaking it, the chest flings open and the chest turns out to open and have teeth inside! it's a mimic!\n");
-									printf("\nYou escape the room in fear and get away quickly.");
-									choice =99;
-									break;
-								case 4:
-									for(counter = 0; counter >5; counter++)
-									{
-										printf("You pull out %d fish,\n",counter);
-									}
-									printf("Why were there so many fish in there!?\n");
-									printf("you decide it's not nessasary to worry that much about it and head back home to cook your bounty of fish.\n");
-									choice = 99;
-									break;
-								case 5:
-									printf("you try to open the chest but it's locked.\n");
-									printf("you check your pockets there's no lockpick.\n");
-									printf("the others are probably locked.\n");
-									printf("You head home dejected.\n");
-									choice=99;
-									break;
-								case 6:
-									printf("you open it and find that inside is a ladder leading down.\n");
-									printf("following down the ladder your now on a beach, and the ladder disappears behind you..... there's a skeleton in front of you holding a letter.\n");
-									printf("it reads welcome to your new life. you're trapped.\n");
-									printf("this island is now your new home. it's not the worst place to spend your life.\n");
-									printf("you find a bottle though, and the back of the letter is blank. The pen in the hand of the skeleton still has ink..... \nwhat message do you write into the bottle? \nit seems you only have enough room for a message\n");
-									printf("you write on it \"Help I'm trapped on an island please come save me! I don't know where i am!\"\n hopefully oneday someone will find it.");
-									r15writeLetter();
-									choice=99;
-									break;
-							}	
+
 					}
 					break;
 			}
@@ -3365,41 +3279,6 @@ void gameCraps() //function play craps that does the logic for the game...
 
         }
 
-}
-
-bool r15taker(int *golds, int *saphs, int *rubs, int *ems)
-{
-	int placeholder = 0;
-	bool result = false;
-	printf("How many pieces of gold do you take?");
-	scanf("%d", &placeholder);
-	*golds = placeholder;
-	printf("How many sapphires do you take?");
-	scanf("%d", &placeholder);
-	*saphs = placeholder;
-	printf("How many rubys do you take?");
-	scanf("%d", &placeholder);
-	*rubs = placeholder;
-	printf("How many emeralds do you take?");
-	scanf("%d", &placeholder);
-	*ems = placeholder;
-	if((*ems+*rubs+*golds+*saphs) > 20)
-		result = true;
-	return result;
-}
-
-void r15writeLetter()
-{
-	int counter;
-	char str[500] = "Help I'm trapped on an island please come save me! I don't know where i am!";  
-	char *strptr = str;
-	int length = strlen(strptr);
-	FILE *fileAppend = fopen("letter.txt", "a");
-	for(counter = 0; counter <length;counter++)
-	{
-		fprintf(fileAppend,"%c",*(strptr+counter));
-	}
-	fclose(fileAppend);
 }
 
 int randomint(int x, int y) //random integer function to work craps game
