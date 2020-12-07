@@ -1065,7 +1065,6 @@ int main(void)
 							printf("Since you're here and brave, will you take a chance and play a game of cards? Enter 'y' twice for yes or '99' to leave at any time...\n");
 							response = getchar(); //set response to equal user's input
 							temp = getchar(); //set temp value to equal user's input
-							
 
 							if(response == 'y' || response == 'Y') //if answer is equal to letter 'y' or 'Y'...
 							{
