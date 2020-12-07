@@ -4152,7 +4152,8 @@ break;
 							puts("You open the door and find yourself trapped in another room.");
 							puts("In front of you are three buttons: blue, red, yellow.");
 							puts("Lets play a game :)");
-							
+							int k,j;
+							int a=0,b=0,c=0,d=0,e=0,f=0;
 							puts("Pick a button:");
 							puts("1.Blue");
 							puts("2.Red");
@@ -4165,6 +4166,7 @@ break;
 							}
 							if(choice == 1)
 							{
+								int k=1;
 								puts("Room 1");
 								puts("Water starts pouring out from the cieling, this room is starting to flood too!");
 								puts("You must find a way to stop the water or you will drown, time is running out!");
@@ -4172,15 +4174,18 @@ break;
 							}
 							if(choice == 2)
 							{
+								int k=2;
 								puts("Room 2");
 								puts("Your hear a loud crank, the walls slowly start to close in");
 								puts("You must find a way to stop the walls, time is running out!");
 							}
 							if(choice == 3)
 							{
+								int k=3;
 								puts("A generator turns on, the air begins to get vaccumed out of the room");
 								printf("You must find a way to stop from suffocating, time is running out!");
 							}
+							srand(time(NULL));
 							int x=10;
 							while(x!=0)
 							{
@@ -4189,6 +4194,7 @@ break;
 								puts("2.Use Laptop");
 								puts("3.Use Tools");
 								puts("4.Open Door");
+								puts("5.Feeling Lucky?");
 								scanf("%d", &y);
 								switch(y)
 								{
@@ -4208,11 +4214,29 @@ break;
 										scanf("%d", &z);
 										if(z==1515)
 										{
-											puts("You hear a loud clank, the water stops pouring from the cieling");
+											if(k==1)
+											{
+												puts("You hear a loud clank, water stops pouring but u need to drain the rest before u drown.");
+												int a=1;
+											}
+											else
+											{
+												puts("Nothing happened.");
+											}
+											
 										}
 										if(z==1231)
 										{
-											puts("A vent opens up in the cieling:");
+											if(k==2)
+											{
+												puts("Looks like the left wall stopped moving.");
+												;
+											}
+											else
+											{
+												puts("Nothing happened.");
+											}
+											
 										}
 										if((z!=1515)&&(z!=1231))
 										{
@@ -4221,10 +4245,143 @@ break;
 										x--;
 										break;
 									case 3:
-										x--;
-										break;
-									case 4:
-										if(y==0)
+										puts("Select tool to use");
+										puts("1.Metal Bar");
+										puts("2.Metal Crate");
+										puts("3.Pull lever");
+										puts("4.Switch lights");
+										puts("5.Open small box");
+										scanf("%d", &z);
+										switch(z)
+										{
+											case 1:
+												puts("Use Metal bar on what?");
+												puts("1.Door");
+												puts("2.Wall");
+												puts("3.Vent");
+												scanf("%d", &g);
+												if(g==1)
+												{
+													puts ("The door is tough, don't think its going to budge.");	
+												}
+												if(g==2)
+												{
+													if(k==2)
+													{
+														puts("Looks like the right wall stopped moving, the bar should hold for now");
+														int d=1;
+													}
+													else
+													{
+														puts("Nothing happened.");
+													}
+												}
+												if(g==3)
+												{
+													puts ("Didn't really do much.");		
+												}
+												x--;
+												break;
+											case 2:
+												puts("Move metal crate where?");
+												puts("1.Door");
+												puts("2.Wall");
+												puts("3.Vent");
+												scanf("%d", &g);
+												if(g==1)
+												{
+													puts ("You just blocked yourself even more. We can pretend it didn't happened, still lose time.");	
+												}
+												if(g==2)
+												{
+													puts("Not much happened.");
+												}
+												if(g==3)
+												{
+													if(k==3)
+													{
+														puts("Looks like that stopped one vent.");
+														int e=1;
+													}
+													else
+													{
+														puts("Nothing happened.");
+													}		
+												}
+												x--;
+												break;
+											case 3:
+												g= 1+ rand()%2;
+												if(g==1)
+												{
+													if(k==1)
+													{
+														puts("Looks like the drain opened up.");
+														int b=1;
+													}
+													else
+													{
+														puts("Nothing happened.");
+													}	
+												}
+												else
+												{
+													puts("Nothing happened.");
+												}
+												x--;
+												break;
+											case 4:
+												g= 1+ rand()%2;
+												if(g==1)
+												{
+													if(k==3)
+													{
+														puts("You hear a loud crash. Looks like that busted a generator. One vent stopped.");
+														int f=1;
+													}
+													else
+													{
+														puts("Nothing happened.");
+													}	
+												}
+												else
+												{
+													puts("Nothing happened.");
+												}
+												x--;
+												break;
+											case 5:
+												puts("You found a small key");
+												int j=1;
+												x--;
+												break;
+										}
+									case 4:	
+										if(k==1)
+										{
+											if((a==0)||(b==0))
+											{
+												puts("You need to stop the water before u can leave.");
+												break;
+											}
+										{
+										if(k==2)
+										{
+											if((c==0)||(d==0))
+											{
+												puts("You need to stop the walls before u can leave.");
+												break;
+											}
+										{
+										if(k==3)
+										{
+											if((e==0)||(f==0))
+											{
+												puts("You need to stop the vaccums before u can leave.");
+												break;
+											}
+										{
+										if(j==1)
 										{
 											puts("You have survived and escaped!!");
 											choice=99;
@@ -4232,12 +4389,30 @@ break;
 										puts("Door is locked.");
 										x--;
 										break;
+									case 5:
+										puts("Press Enter to Test your luck");
+										puts("Pick from 1-15");
+										g= 1+ rand()%15;
+										scanf("%d", &h);
+										if(g==h)
+										{
+											puts("You lucky son of a gun, you have escaped.");
+											choice=99;
+										}
+										else
+										{
+											puts("Sorry! Looks like you wasted time.");
+										}
+										x--;
+										break;
+										
+										
 								}	
 							}
 							puts("Sorry time ran out and you died");
 					}
 					break;
-			}
+				}	
 			case 31:
 			{
                                 int carselected;
