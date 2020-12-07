@@ -2,7 +2,11 @@
 //G. Poppe
 //Shane Cortez
 //Michael VanCleave-Lopez
+
 //Sergio Molina
+
+//Richmond Laureta
+
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
@@ -12,12 +16,20 @@
 #include <stdbool.h>
 #include <unistd.h>
 
+///////////Shanes room methods///////////
+
+void shanesFileWriter(int choice);
+
+///////////Shanes room methods end/////////
+
 void extraCredit(void);
 void ignoreExtra(void);
 
 int choice1(int number);
 int choice2(char *ptr);
 int choice3(int number1);
+int choice4(int *ptr1);
+int choice5(void);
 
 void gameRules(); //function to explain rules of room 12 game
 void gameCraps(); //function to run room 12 game
@@ -53,11 +65,18 @@ void congratulations(void);
 
 // End of Room 9 Functions
 
+
+void roomPrompt(int* userChoice);
+void gorillaRoom(int* bananaAmount, int* orangeAmount);
+void drawPicture(void);
+void caseRandomizer(char *name, int *bananaAmount, int *orangeAmount);
+
 void problem1(int math);
 void problem2 (char *ptr);
 int flip();
 
 
+void weaponPower(int p); //room 25 for RICHMOND LAURETA
 
 
 
@@ -93,12 +112,23 @@ int main(void)
 		{
 			case 1:
 			{	
+				srand(time(NULL));
+
 				int length = 0, num = 0, magicNum = 0;
 				char word[40] = "sacramento";
 				char *ptr;
 				ptr = word;
-								
-				srand(time(NULL));	
+
+				int array[6] = {0};
+				
+				for(i = 0; i < 6; i++)
+				{
+					array[i] = 1 + rand() % 10;		
+				}
+
+				int *numptr;
+
+				numptr = array;
 				
 				length = strlen(name);
 
@@ -112,14 +142,17 @@ int main(void)
 				
 				name[0] = toupper(name[0]);	//Making sure the name is written correctly with uppercase first letter
 				printf("Hello %s, you have entered the room 1.\n", name);
-				puts("You have survived the first part of your adventure..the Drowning.\n");
+				puts("You have survived the first part of your adventure..the Drowning.");
+				puts("You are in a dark room and see a small blue light in the middle of the room on top of the table.");
+				puts("You get close to it and realize that it is a laptop. You found a way to get out of the room.");
+				puts("But only way you can access the laptop is solving one of the 5 choices.");
 				puts("You have 5 choices to make in order to escape this horror adventure. \n");
 
 				printf(	"1. You have to solve a math problem for survival. \n"
 					"2. You have to guess the word for survival. \n"
 					"3. You have to find the magic number for survival. \n"
-					"4. Guess the word for survival. \n"
-					"5. Try to make a run for it. \n");
+					"4. Find the sum of a random integer array. \n"
+					"5. It's a surprise!. \n");
 
 				while(choice != 99)
 				{
@@ -130,7 +163,7 @@ int main(void)
 					{
 						case 1:
 						{
-						puts("You have chosen to solve the math problem. Don't forget you have one chance. Now choose a number between 1-10: ");
+						puts("You have chosen to solve the math problem. Don't forget you have one chance. Now choose a number between 1-10:");
 						scanf(" %d", &num);
 						choice1(num);
 						return EXIT_SUCCESS;
@@ -139,7 +172,7 @@ int main(void)
 				
 						case 2:
 						{
-						puts("You have chosen to guess the word. What is the capital of California?\n");
+						puts("You have chosen to guess the word. What is the capital of California?");
 						choice2(ptr);
 						return EXIT_SUCCESS;
 						break;
@@ -147,7 +180,7 @@ int main(void)
 			
 						case 3:
 						{
-						puts("Enter the magic number(between 1 - 20) from the following math problems: ");
+						puts("Enter the magic number(between 1 - 20) by solving the  math problems:");
 						magicNum = 1 + rand() % 20;
 						choice3(magicNum);
 						return EXIT_SUCCESS; 	
@@ -156,16 +189,19 @@ int main(void)
 
 						case 4:
 						{
-						puts("Choice 4.");
+						puts("You have chosen to calculate the average:");
+						choice4(numptr);
+						return EXIT_SUCCESS;			
 						break;
 						}
 
 						case 5:
 						{
 						puts("This was the wrong choice to be made. Now you have ended up in a room with nowhere to go....");
+						choice5();							
 						return EXIT_SUCCESS;
 						break;
-						}
+							}
 					}
 
 				}
@@ -233,8 +269,266 @@ int main(void)
 			{
 					while(choice != 99)
 					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
+							int decision4;
+                                                        char lowerName4[20];
+                                                        char tempLowerName4[20];
+                                        /*              puts("*****************************************************************************************");
+                                                        puts("In your adventure please make sure to enter your decision exactly as stated in the 'quote'.");
+                                                        puts("\n");
+                                        */              for(i=0; i<20; i++)
+                                                        {
+                                                                lowerName4[i] = tolower(name[i]);
+                                                        }
+                                                        puts("You open the door and find two more doors.");
+                                                        puts("The left one is covered in dirt,moss, and other unknown substances.");
+                                                        puts("The right one is sparkling clean and there seems to be white light leaking out from under.");
+                                                        puts("Do you \n 1. go left? \n 2. go right?\n");
+                                                        scanf("%d", &decision4);
+                                                        if(decision4 == 1)
+                                                        {
+                                                                printf("\nYou open the door slowly, scared of what could be behind it. But to your surprise the door leads to a clean school classroom. You sigh in relief of what could have happen. But then you hear a scream of pain in the hallway.\n Do you\n 1. check it out?\n 2. hide in the classroom?\n\n");
+                                                                scanf("%d", &decision4);
+                                                                if(decision4 == 1)
+                                                                {
+                                                                        printf("\nYou walk over to the door connecting to the hallway.You open it and step a foot into the hallway. It seems clear until you look to the right see a man holding a woman up by her hair at the end of hallway.\n Do you\n 1. run to the left to try to escape the man?\n 2. approach him to try to save the woman?\n\n");
+                                                                        scanf("%d", &decision4);
+                                                                        if(decision4 == 1)
+                                                                        {
+                                                                                printf("\nYou run as quickly as can for the door hoping it's an exit. The man notices you and drops the women and starts chasing you. Luckily, the door does lead to outside but it appears you are in some kind of forest. There is a car running and long dirt road that you can't see the end of.\n Do you\n 1. get into the car?\n 2. do you hide on the side of the door and try to ambush him?\n\n");
+                                                                                scanf("%d", &decision4);
+                                                                                if(decision4 == 1)
+                                                                                {
+                                                                                        printf("\nYou get into the car. Put it into drive and make a U-turn for the road. The man exits the building and begins chasing the car. It's speeding up and you left him in the dust. It seems all clear but he starts shooting at you. You swerve left and right trying to dodge his bullets. You feel your shoulder burning and you look down at and notice you've been hit. You continue driving on the road and it finally leads to a paved road. You have been driving for a couple of miles now and tried your best to help your wound but you lost a lot of blood. You see a gas station in the distance but you still have half the tank left.\n Do you\n 1. stop at the gas station for help?\n 2. do you keep driving hoping you can get to a city?\n\n");
+                                                                                        scanf("%d", &decision4);
+                                                                                        if(decision4 == 1)
+                                                                                        {
+                                                                                                printf("\nYou pull over into the old gas station and notice two cars are parked infront of it. You head inside hoping to get some help. The cashier is minding his business as you enter. You tell him about your situation and he has a confused look on his face. \"Here you can use the phone.\" You pick up the phone. \n\n");
+                                                                                                int phoneNumberGas4 = 911;
+                                                                                                int phoneNumberGasDial4;
+                                                                                        //      scanf("%d", phoneNumberGasDial4);
+
+                                                                                                while(phoneNumberGasDial4 != phoneNumberGas4)
+                                                                                                {
+                                                                                                        printf("\nWho do you dial?\n");
+                                                                                                        printf("Perhaps the cops?\n");
+                                                                                                        scanf("%d", &phoneNumberGasDial4);
+                                                                                                }
+                                                                                        //      while(phoneNumberGasDial4 != phoneNumberGas4);
+
+                                                                                                printf("\nIt rings for a couple of seconds . . . until a woman picks and asks \"911, What's your emergency?\". You tell her your situation and she tells you stay put since officers are on their way. The cashier asks if you want anything to eat or drink. But you decline, so he offers that you can rest in the breakroom while you wait for the police to come. You agree so he leads you to the back and you sit down on a small dirty couch. You take a sigh of relief knowing that everything is going to be okay but then you get hit in the head from behind and fall down. Everything is a blur but you are being tied to a chair. You then black out. You are awaken with cold water being splashed on you. You are tied to a chair in a dark room with two other people. They look as confused as you are and are struggling to unbound their hands. You see the cashier from earlier walking around the three of you. He says \"Let's play a small game, here is a revolver with three bullets. I'm going to give you guys 3 tries to gues a number 1 through 10 and if you fail well then you can figure out what's going to happen.\"\n\n");
+                                                                                               printf("\nAll three of you guys are pleading for each others life but he responds \"Guess now or I'll just shoot you all.\"\n\n");
+                                                                                               int gasNumberAnswer = 7;
+                                                                                               int gasNumberGuess;
+                                                                                               int gasTries = 0;
+                                                                                               int gasTriesLimit =0;
+                                                                                              // printf("What do you guys guess?\n");
+                                                                                              // scanf("%d", &gasNumberGuess);
+                                                                                              // while(gasNumberGuess != gasNumberAnswer)
+                                                                                               while(gasNumberGuess != gasNumberAnswer && gasTriesLimit == 0)
+                                                                                               {
+                                                                                                       if(gasTries < 3)
+                                                                                                       {
+                                                                                                               printf("\nWhat do you guys guess?\n");
+                                                                                                               scanf("%d", &gasNumberGuess);
+                                                                                                               gasTries++;
+                                                                                                               printf("You have %d guesses left.\n", 3 - gasTries);
+                                                                                                       }
+                                                                                                       else
+                                                                                                               gasTriesLimit = 1;
+
+                                                                                                      // printf("WRONG. GUESS AGAIN. \n");
+                                                                                                      // printf("You have %d guesses left.\n", 3 - gasTries);
+                                                                                               }
+
+                                                                                                       if(gasTriesLimit != 0)
+                                                                                                       {
+                                                                                                               printf("\nThe cashier picks up his gun and shoots you all.\n\n GAME OVER.\n\n");
+                                                                                                               exit(1);
+                                                                                                       }
+                                                                                                       else
+                                                                                                       {
+                                                                                                               printf("\nHe says \"Wow I'm surprised you guys actually got it. But did you really think I would let you off?\" He picks up his gun and cocks it back. You close your eyes awaiting death. But the sirens of a police car are heard outside. The cashier puts away his gun and whispers \"Y'all better not make any noise.\" He then goes through a door that leads to the main room of the gas station. You hear converstation going on between the police officers and cashier. You start screaming for help and then you can hear the cashier and police officers start raising their voices. A couple of shots go off. The gas station is dead silent. \n Then the two police officers appear through the door but seems wounded. They untie everyone and escort them outside. \n Backup is arriving and everything seems to finally be okay. \n\n You survived.\n\n");
+                                                                                                               exit(1);
+                                                                                                       }
+
+
+
+                                                                                        }
+                                                                                        else if(decision4 == 2)
+                                                                                        {
+                                                                                                printf("\nYou drive past the gas station and continue driving into the unknown. Quite some time has passed but in the horizon you can see buildings. You are happy knowing you are almost in civilization. *POP* Your front passenger tire has blew out. You pull over to the side to try to fix it. You step out of the car and notice a cop car is pulling off the highway behind you. Maybe he can help. You wave towards the officers and try to signal that the tire blew out. You see the police man talking into his radio.\n\nHe steps out of his car with gun pulled and aimed at you. You have a confused look on your face and try to ask the officer \"What's wrong?\" But he doesn't give you an answer. \"Get on the ground\" he yells. You get on the ground with fear. He walks slowly towards you and handcuffs you.\n\n\"We got him!\" he says into his radio. Confusion takes over you as you don't know what he is talking about. You try to explain your situation to him but he tells you \"Shutup and be silent.\" He walks to the driver seat and pops open the trunk. He looks into the trunk with disgust.\n\nYou try to catch a peek into the trunk but it's out of sight. \"We got a body and some weapons\" he says into his radio.\n\n Do you\n 1. stay on the ground?\n 2. try to get up and runaway?\n\n");
+                                                                                                scanf("%d", &decision4);
+                                                                                                if(decision4 == 1)
+                                                                                                {
+                                                                                                        printf("\nYou remain on the floor as more officers come to the area. You are found guilty of 1st degree murder due to the evidence found in the car and sentenced to death.\n\nThe last past weeks have been hell, sitting in a concrete room waiting for your death. Nothing you told them they would believe.\n\nTomorrow, is your last day.\n\nGAME OVER.\n\n");
+                                                                                                          exit(1);
+
+                                                        }
+                                                                                                else if(decision4 == 2)
+                                                                                                {
+                                                                                                        printf("\nYou get an adrenaline rush, wiggle yourself up onto two feet and run full speed at the officer. He hits his head on the trunk and knocks him out. You find the handcuff keys and take off the handcuffs. You run off into the forest. You see buildings nearby after a couple of minutes of running. You made it into the city.\n\nYou survived.\n\n");
+                                                                                                        exit(1);
+                                                                                                }
+                                                                                        }
+                                                                                }
+                                                                                else if(decision4 == 2)
+                                                                                {
+                                                                                        printf("\nYou stand to the side of the door. Getting ready to suprise attack the guy. He runs out a little but is confused on where you went. You lunge at him and tackle him to the floor. He is a equal match in strength and you are struggling to keep him down. You punch him in the face. He begins to try to reach for his hip and you notice he has a gun. You quickly try to stop his hand from grabbing it but it's too late, it's in his hands. You try your best to keep the gun pointed to the side but he gets a sudden burst of strength and overwhlems you. The gun is pointed at your face. BANG!\n\n");
+                                                                                        printf("\nGAME OVER.\n\n");
+                                                                                        exit(1);
+
+                                                                //                      return EXIT_SUCCESS;
+                                                                                }
+                                                                        }
+                                                                        else if(decision4 == 2)
+                                                                        {
+                                                                                printf("\n\"Let go of her!\" you yell. The man throws her head to the floor. \"Who even are you?\" he snarls. \"Just someone that doesn't want to see someone get hurt\" you respond. \"It's a little too late for that unless you want to reverse time and save all the people that came before her\" he says. \"What do you want in exchange for her life?\" you ask him. \"Your life\" he demands. The woman has now began to regain consciousness. Frighten is wrtitten all over her face. You think for a couple of seconds about the decision.\n\n Do you\n 1. give up your life for her's?\n 2. let him take her life?\n\n");
+                                                                                scanf("%d", &decision4);
+                                                                                if(decision4 == 1)
+                                                                                {
+                                                                                        printf("\n\"Wow how brave of you\" he chuckles. He picks her up and kicks her towards you. \"Scram! Tell anyone this and I'll hunt your whole linage down\" he screams. You walk towards him getting ready for your death. The woman is on the ground frozen in fear. You arrive infront of the man. You feel the cold metal of the pistol on your head. \"Your final words?\" he chuckles. You close your eyes embracing death knowing that you saved someone. You take a long breath in. The gun shot rings through the hallway. A body hits the floor. You open your eyes and see that the woman tackled the man down. They are now fighting each other strength to control the gun. You quickly jump in to help her. With her courage the both of you were able to take the gun off of the man. She takes the gun and shoots him once in each leg. The both of you leave the school out o breath. His car is parked in front and is running. The woman and you drive out of there to get help.\n\nYou survived.\n\n ");
+                                                                                        exit(1);
+                                                                                }
+                                                                                else if(decision4 == 2)
+                                                                                {
+                                                                                        printf("\n\"I figured you would, who would throw their life away for a nobody\" he says. He shoots two bullets in her head and then points it at you. \"You really thought you would live through this?\" he ask. You hear the sound of the gun and then you fade into nothingness.\n\nGAME OVER.\n\n");
+                                                                                        exit(1);
+                                                                                }
+
+                                                                        }
+                                                                }
+                                                                else if(decision4 == 2)
+                                                                {
+                                                                        printf("\nYou hide in the back of the classroom behind some desk. NOOO PLEASE DONT is heard from the hallway and then there is silence. You hear heavy footsteps from the hallway. You get ready for the situation if the door would swing open but it doesn't. The heavy footsteps get more distant then you hear the slam of a door.\n\n Do you\n 1. go out into the hallway since you believe it's safe?\n 2. do you continue to hide in the classroom.\n\n");
+                                                                        scanf("%d", &decision4);
+                                                                        if(decision4 == 1)
+                                                                        {
+                                                                                printf("\nYou walk into the hallway and see woman laying on the floor at the end of it. You run to her. You lay her onto her back and see that she is already dead. You immediately run towards the entrance of the school hoping to catch the person who did this to her. The door to the school is wide open. You peak out and see the man doing something in his trunk. His back is facing you. You decide to ambush him. You sneak up slowly and grab a rock while on your way to him. You swing with fury at his head. He hits the floor and blood begins to pour out from his head. You search his body for a phone and find one. You call 911. It takes awhile but they finally arrive.\n\nYou survived.\n\n");
+                                                                                exit(1);
+                                                                        }
+                                                                        else if(decision4 == 2)
+                                                                        {
+                                                                                printf("\nYou decide to hide a bit more. Quite some time has passed now and it's getting dark. You decide it's time to step out and see what has happened. A couple of wolves are hunched over what use to be a body. You step on a branch and make a noise that alerts the wolves. They snarl at you and creep slowly towards you. You start walking backwards, keeping your eye on them. You stumble over some debris and fall down. The wolves jump at you and start picking at you. You are their dinner tonight.\n\nGAME OVER.\n\n");
+                                                                                exit(1);
+                                                                        }
+                                                                }
+
+                                                        }
+                                                        else if(decision4 == 2)
+                                                        {
+                                                                printf("\nYou open the door hoping it will take you to back to where you came from. As you open the door you are greeted with angelic voices singing. It's so white you can't even see a couple of feet in front of you. You take a few steps out and it all changes. Fire and stone replace the white all around. The angelic voices are replaced with screaming. YOU FOOL! is heard in the distance.\n Do you\n 1. venture into the dark stone path infront of you?\n 2. do you stay where you are at?\n\n");
+                                                                scanf("%d", &decision4);
+                                                                if(decision4 == 1)
+                                                                {
+                                                                        printf("\nThe dark stone path is lit with fire scattered around it. Screaming and various noises can be heard in the distance but they seem to get closer with ever step taken. After about 10 mins of walking you arrive at a gate that reads WELCOME. It is wide open.\n\n Do you\n 1. enter?\n 2. do you go off the path and trying to find a different route?\n\n");
+                                                                        scanf("%d", &decision4);
+                                                                        if(decision4 == 1)
+                                                                        {
+                                                                                printf("\nYou see a huge castle infront of you. You walk towards it cautiously and feel like something is pulling you towards it. You get to the closed doors and knock. A man wearing a hoodie and sweatpants opens the door. \"Hello, would you like to come in?\" You agree and he guides you to the room on the left. He motions towards a big chair. You sit down and he sits in another chair across from you. \"What brings you here?\" he ask. \"I opened a door and was brought here\"you respond. \"Very well, I think I can get you back to where you came from\" he tells you. \"I would like that, how can you do that?\" you ask. \"Well, how lucky are you?\" he ask. \"Huh?\" you respond. \"Roll this dice\" he tells you. He hands you a black metal dice.\n\n Do you\n 1. roll the dice?\n 2. tell him no?\n\n" );
+                                                                                scanf("%d", &decision4);
+                                                                                if(decision4 == 1)
+                                                                                {
+                                                                                        printf("\n\"Roll me a 6 in 6 tries and I'll return you to your world. But if you don't then I guess you will find out what happens. The odds are in your favor\" he says.\n\n");
+                                                                                        int devilDiceRoll4;
+                                                                                        int devilDiceRollTry;
+
+                                                                                        while(devilDiceRoll4 != 6 || devilDiceRollTry > 6)
+                                                                                        {
+                                                                                        //for(i=0; i<6; i++)
+                                                                                        //{
+                                                                                                printf("\nYou shake the die in your hand and throw it on the table\n");
+                                                                                                devilDiceRoll4 = rand()%6 + 1;
+                                                                                                devilDiceRollTry++;
+                                                                                                switch(devilDiceRoll4)
+                                                                                                {
+                                                                                                        case 1:
+                                                                                                                printf("\nYou rolled a 1.\n\"Try your luck again. Come on it's not that hard just roll a 6.\"\n");
+                                                                                                                break;
+                                                                                                        case 2:
+                                                                                                                printf("\nYou rolled a 2\n\"Well maybe get two more twos and we got a deal.\"\n");
+                                                                                                                break;
+                                                                                                        case 3:
+                                                                                                                printf("\nYou rolled a 3\n\"Halfway there.\"\n");
+                                                                                                                break;
+                                                                                                        case 4:
+                                                                                                                printf("\nYou rolled a 4\n\"Yup that's a four.\"");
+                                                                                                                break;
+                                                                                                        case 5:
+                                                                                                                printf("\nYou rolled a 5\n\"Damn, your luck sucks.\"\n");
+                                                                                                                break;
+                                                                                                        case 6:
+                                                                                                                printf("\nYou rolled a 6\n\"Wow, you actually did it.\"");
+                                                                                                                break;
+                                                                                                }
+                                                                                        //}
+                                                                                        }
+                                                                                        if(devilDiceRoll4 == 6)
+                                                                                        {
+                                                                                                printf("\n\"Well, a deal is a deal. I guess you could make a bet with the devil. Have fun in the other hell.\" he says.\n\nYou survived.\n\n");
+                                                                                                exit(1);
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                                printf("\n\"Well, a deal is a deal. Take him away\" he commands to the air. A guard then appears out of thin air and drags you out of the house and to a treadmill where you will have to run for eternity.\n\nGAME OVER.\n\n");
+                                                                                                exit(1);
+                                                                                        }
+                                                                                }
+                                                                                else if(decision4 == 2)
+                                                                                {
+                                                                                        printf("\n\"Hmmm well if you do not want to then we shall not. Take him away\" he commmands to the air. A guard then appears out of thin air and drags you out of the house and to a treadmill where you will have to run for eternity.\n\nGAME OVER.\n\n");
+                                                                                }
+                                                                        }
+                                                                        else if(decision4 == 2)
+                                                                        {
+                                                                                printf("\nYou decide to go off the path into the unknown. You walk cautiously into the darkness. The screaming is louder now. A very large person appears infront of you out of the darkness. You are frozen in terror as he towers over you. You decide to try to make a run for it but he grabs your arm before you can make your second step. He lifts you in the air by your arm. He begins to tear you limb by limb. You scream for help but no one is there to save you. You slowly start to fade out of conscious.\n\n");
+                                                                                printf("\nGAME OVER.\n");
+                                                                                exit(1);
+                                                                //              return EXIT_SUCCESS;
+                                                                        }
+                                                                }
+                                                                else if(decision4 == 2)
+                                                                {
+                                                                        printf("\nYou decide to stay and sit in the area you arrived. Quite some time has passed and you are feeling exhausted. You decide to close your eyes and catch some sleep and hopefully you will have a solution to this when you awake.\n\n");
+                                                                        printf("\n\"*psssst* Wake up\" someone says in a whisper. You spring up, ready to take on whatever is around. You see a small person hunched over to the right of you. His face is slightly mangled and his clothes are tattered. \"Sorry, did not mean to frighten you.\" it says. \"Ah yes I apolgize. My name is Gevin\" it tells you. \"What brings you here?\" Gevin asks? \"A door. Not sure how it leads here but I just want to go back.\" you respond. \"Ahhhh-ha, another doorman. Well good thing I got the experience but it's quite the journey. Let's get going\" he tells you. Gevin motions to follow him as he hops forward. You follow him.\n\nYou have been following him for quite some time. He suddenly stops and turns around and tells you to be quiet. You see two large figures in the distance. They are guarding a portal that sparks with electricity every second.\n\n\"We aregoing to have to try to distract them and then you will into the portal which will get you back where you came from or some other place. I'm not sure I have not been through it.\" Gevin tells you. \"Well how are we going to distract them?\" you ask. \"Well I do not know but I got some stuff in my sack that can help\" he says as he opens a sack the size of a hand. He begins reaching in and starts pulling out weapons and various things. \"Pick your poison but do not pick the poison\" he tells you.\n\n");
+                                                                        printf("\n Do you\n 1. take the wood stick that has a crystal on the end of it?\n 2. take the sword and shield?\n 3. take the crystal clear ball?\n 4. take the bg rock?\n 5. take the poison\n 6. take the staff with a huge eye\n 7. throw Gevin out in the open and use him for distraction?\n\n");
+                                                                        scanf("%d", &decision4);
+                                                                        if(decision4 == 1)
+                                                                        {
+                                                                                printf("\nYou grab the wood stick with a crystal. \"That one shoots fire\" he says. You take aim and shoot some fire on the right side front of the guards. They are not bothered by it at all. \"Maybe shoot them\" he recommends. You aim at the guards and shoot the fire at them. They are not affected at all. But they notice you and start running at you. \"Welp, it's over for us\" he says. The guards come and rips the both of you limb by limb.\n\nGAME OVER.\n\n");
+                                                                                exit(1);
+                                                                        }
+                                                                        else if(decision4 == 2)
+                                                                        {
+                                                                                printf("\nYou grab the sword and shield. Gevin somehow pulls another one out of his bag equips himself with it. You nod at him, ready to charge at them. You scream \"GOOOO!\" and the both of you run full speed at the guards. There is a spark on the sword and shield and it transform Gevin and you into large warriors that easily tower over the guards. The guards prepare for the attack but yourguy's strength is too strong for them. You slice them in half with no effort. You can now enter the portal.\n\nYou survived.\n\n");
+                                                                                exit(1);
+                                                                        }
+                                                                        else if(decision4 == 3)
+                                                                        {
+                                                                                printf("\nYou grab the crystal clear ball. \"Just throw it and watch the show\" says Gevin. You throw the ball as far you can. It cracks on impact and a Chimera appears out of thin air. The guards are frightened by the creature but they run straight at it hoping to take it down. The portal is wide open to enter. Gevin says \"Farewell, doorman.\" You run to the portal while the guards are struggling to keep up with the Chimera\n\nYou survived.\n\n");
+                                                                                exit(1);
+                                                                        }
+                                                                        else if(decision4 == 4)
+                                                                        {
+                                                                                printf("\nYou grab the big rock. \"Well, goodluck with that\" he says. You throw it but it does not land that far infront of you. The guards notice that you threw the rock and begin running at you. \"Yeah, someone told me it did something. I guess they lied\" says Gevin. The guards grab the both of you and throw you into an eternal fire pit, where you will burn forever.\n\nGAME OVER.\n\n");
+                                                                                exit(1);
+                                                                        }
+                                                                        else if(decision4 == 5)
+                                                                        {
+                                                                                printf("\nYou grab the poison. \"Wait! Hold on.\" he tries to say. But you begin to melt due to coming in contact with the poison. You are now a puddle of liquid.\n\nGAME OVER.\n\n");
+                                                                                exit(1);
+                                                                        }
+                                                                        else if(decision4 == 6)
+                                                                        {
+                                                                                printf("\nYou grab the staff with a huge eye. \"Oh yeah that is a good one, hit the ground with it\" he tells you. You hit the ground with the staff and bubble forms around the both of you. You begin walking towards the guards and they notice and charge to attack you. They blow up instantly upon touching the bubble. \"This bubble pops you\" he says. You say your goodbye and enter through the portal.\n\nYou survived.\n\n");
+                                                                                exit(1);
+                                                                        }
+                                                                        else if(decision4 == 7)
+                                                                        {
+                                                                                printf("\nYou grab Gevin and throw him out in the open. \"Come on that is not cool!\" he screams. The guards charge at him. \"Damn it\" is his last words. The guards are distracted turning Gevin into mush, so you enter through the portal.\n\nYou survived.\n\n");
+                                                                                exit(1);
+                                                                        }
+                                                                }
+							}	
 					}
 					break;
 			}
@@ -850,24 +1144,31 @@ int main(void)
 			{
 					while(choice != 99)
 					{
-							puts("you open the door and find ........");
-							puts("A lottery machine?");
-							puts("Welcome to Fabian's room");
-							int n1,n2,n3,newrn1,newrn2,newrn3;
+						char ans = 'Y';
+						int count=0;						
+						int total=0;
+						int prize[4]={1000000,1000,100,10};
+						srand(time(NULL));
+							
+						do
+						{
+							int myNum[3];
+							int winNum[3]= {rand()%10,rand()%10,rand()%10};
+							int die = 1 + rand()%6; 
+							int death = 1 + rand()%6;
+							int roll;
 							bool checkNum1;
 							bool checkNum2;
 							bool checkNum3;
-							srand(time(NULL));
-	
+							puts("\nYou open the door and find ...");
+							puts("A lottery machine?");
+							puts("Welcome to Fabian's room");							
 							printf("Enter the lottery by entering three numbers. Each 1 digit\n");
-							scanf(" %d %d %d",&n1,&n2,&n3);
-							newrn1 = rand()%10;
-							newrn2 = rand()%10;
-							newrn3 = rand()%10;
-							printf("Your numbers are: %d, %d, %d\n",n1,n2,n3);
-							printf("The winning lottery numbers are: %d, %d, %d\n",newrn1,newrn2,newrn3);
+							scanf(" %d %d %d",&myNum[0],&myNum[1],&myNum[2]);
+							printf("Your numbers are: %d, %d, %d\n",myNum[0],myNum[1],myNum[2]);
+							printf("The winning lottery numbers are: %d, %d, %d\n",winNum[0],winNum[1],winNum[2]);
 		
-							if(n1==newrn1 || n1==newrn2 || n1==newrn3)
+							if(myNum[0]==winNum[0] || myNum[0]==winNum[1] || myNum[0]==winNum[2])
 							{
 								checkNum1= true;
 							}
@@ -875,23 +1176,22 @@ int main(void)
 							{
 								checkNum1=false;
 							}
-		
 							if(checkNum1)
 							{
-								if (n1==newrn1)
+								if (myNum[0]==winNum[0])
 								{
-									newrn1=420;
+									winNum[0]=420;
 								}
-								else if (n1==newrn2)
+								else if (myNum[0]==winNum[1])
 								{
-									newrn2=420;
+									winNum[1]=420;
 								}
 								else
 								{
-									newrn3=420;
+									winNum[2]=420;
 								}
 							}
-							if(n2==newrn1 || n2==newrn2 || n2==newrn3)
+							if(myNum[1]==winNum[0] || myNum[1]==winNum[1] || myNum[1]==winNum[2])
 							{
 								checkNum2= true;
 							}
@@ -901,20 +1201,20 @@ int main(void)
 							}
 							if(checkNum2)
 							{
-								if (n2==newrn1)
+								if (myNum[1]==winNum[0])
 								{
-									newrn1=420;
+									winNum[0]=420;
 								}
-								else if (n2==newrn2)
+								else if (myNum[1]==winNum[1])
 								{
-									newrn2=420;
+									winNum[1]=420;
 								}
 								else
 								{
-									newrn3=420;
+									winNum[2]=420;
 								}
 							}
-							if(n3==newrn1 || n3==newrn2 || n3==newrn3)
+							if(myNum[2]==winNum[0] || myNum[2]==winNum[1] || myNum[2]==winNum[2])
 							{
 								checkNum3= true;
 							}
@@ -924,46 +1224,123 @@ int main(void)
 							}
 							if(checkNum3)
 							{
-								if (n3==newrn1)
+								if (myNum[2]==winNum[0])
 								{
-									newrn1=420;
+									winNum[0]=420;
 								}
-								else if (n3==newrn2)
+								else if (myNum[2]==winNum[1])
 								{
-									newrn2=420;
+									winNum[1]=420;
 								}
 								else
 								{
-									newrn3=420;
+									winNum[2]=420;
 								}
 							}
 							if(checkNum1 && checkNum2 && checkNum3)
 							{
-								if(n1==newrn1 && n2==newrn2 && n3==newrn3)
+								if(myNum[0]==winNum[0] && myNum[1]==winNum[1] && myNum[2]==winNum[2])
 								{
-									printf("You've hit the jackpot of 1,000,000\n");
+									puts(" #####    #         ###     ###     ###         ###     ###     ###      ### ### ### ");
+									puts("#  #  #  ##        #   #   #   #   #   #       #   #   #   #   #   #     ### ### ### ");
+									puts("#  #    # #       #     # #     # #     #     #     # #     # #     #    ### ### ### ");
+									puts(" #####    #       #     # #     # #     #     #     # #     # #     #     #   #   #  ");
+									puts("   #  #   #   ### #     # #     # #     # ### #     # #     # #     #                ");
+									puts("#  #  #   #   ###  #   #   #   #   #   #  ###  #   #   #   #   #   #     ### ### ### ");
+									puts(" #####  #####  #    ###     ###     ###    #    ###     ###     ###      ### ### ### ");
+									puts("              #                           #                                          ");
+									puts("");
+									printf("You've hit the jackpot of 1,000,000!\n");
+									puts("WOW! incredible luck there buddy!");
+									total = total + prize[0];
 								}
 								else 
 								{
-									printf("You wont 1,000\n");
+									printf("You won $1,000\n");
+									puts("Go pay some bills of now!");
+									total = total + prize[1];
 								}
 							}
 							else if ((checkNum1 && checkNum2 || checkNum1 && checkNum3) || (checkNum2 && checkNum3))
 							{
 								printf("You've won $100\n");
+								printf("Go treat your mom to some lunch.");
+								total = total + prize[2];
 							}
 							else if (checkNum1 || checkNum2 || checkNum3) 
 							{
-								printf("You won $10\n");
+								puts("You won $10");
+								puts("You won a little bit of money but at least it's something right?");
+								total = total + prize[3];
 							}
 							else
 							{
-								printf("You won nothing sorry!\n");
+								printf("You won nothing...\n");
+								puts("Because you won nothing, you now have to roll a die to determine your fate...");
+								puts("Please choose a number from 1-6.If you roll your chosen number you are safe");
+								puts("if you don't there's a 1 in 6 chance you will die.");
+								puts("Please choose a number within the limits or it's automatic death");
+								scanf(" %d",&roll);
+								
+								if (die==roll)
+								{	
+									puts("\"You precede to roll your die in hopes you get a number in your favor\"");
+									printf("You rolled a %d\n",die);
+									printf("You are safe to live!");
+								}
+								else if(die== death || roll>6)
+								{          
+									if(die==death)
+									{
+										puts("\"You precede to roll your die in hopes you get a number in your favor\"");
+										printf("You rolled a %d\n",die);
+									}					                    
+									puts(" ______   _______  _______  _______  __   __ ");
+									puts("|      | |       ||   _   ||       ||  | |  |");
+									puts("|  _    ||    ___||  |_|  ||_     _||  |_|  |");
+									puts("| | |   ||   |___ |       |  |   |  |       |");
+									puts("| |_|   ||    ___||       |  |   |  |       |");
+									puts("|       ||   |___ |   _   |  |   |  |   _   |");
+									puts("|______| |_______||__| |__|  |___|  |__| |__|");
+									puts("");
+                                               			puts(""); 
+									puts(" ██████╗  █████╗ ███╗   ███╗███████╗     ██████╗ ██╗   ██╗███████╗██████╗     ██╗");
+									puts("██╔════╝ ██╔══██╗████╗ ████║██╔════╝    ██╔═══██╗██║   ██║██╔════╝██╔══██╗    ██║");
+									puts("██║  ███╗███████║██╔████╔██║█████╗      ██║   ██║██║   ██║█████╗  ██████╔╝    ██║");
+									puts("██║   ██║██╔══██║██║╚██╔╝██║██╔══╝      ██║   ██║╚██╗ ██╔╝██╔══╝  ██╔══██╗    ╚═╝");
+									puts("╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗    ╚██████╔╝ ╚████╔╝ ███████╗██║  ██║    ██╗");
+									puts(" ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝     ╚═════╝   ╚═══╝  ╚══════╝╚═╝  ╚═╝    ╚═╝");
+                                                             	puts("\nThe game will now exit. Better luck next time!");                          
+                                                              	if(roll>6||roll<1)
+                                                              	{
+                                                              		puts("I warned you about not choosing a number within the limits");
+                                                              	}
+                                                           		choice = 99;
+                                                           		count++;
+                                                           		break;                   
+								}
+								
+								else
+								{
+									puts("\"You precede to roll your die in hopes you get a number in your favor\"");
+									printf("You rolled a %d\n",die);
+									puts("");
+									puts("Oof, that was a close one. You may not have one the lottery, ");
+									puts("but you at least get to leave with your life.");							
+								}													
 							}
-							puts("choose a new room now if you dare... \n");
-							scanf("%d",&choice);
-					}
-					break;
+							printf("You have earned a total of %d so far\n",total);
+							printf("Would you like to try again at the lotto? Maybe you can win more money(Y/N)\n");
+							scanf(" %c",&ans);	
+							ans=toupper(ans);					
+						}
+					while (ans=='Y');
+					if(count<=0)
+					{
+						printf("Okay, go into the elevator and choose a new room\n");
+						scanf("%d",&choice);
+					}	
+					}			
 			}
 			case 11:
 			{
@@ -1083,6 +1460,18 @@ int main(void)
 			{
 					while(choice != 99)
 					{
+						
+       srand(time(NULL));
+				
+				int mn = 3;
+				
+				int response;
+				
+				int fish = 1 + rand()%10;
+				int a,b,c,d,f;
+
+					while(choice != 99)
+					{
 						puts("As your hand reaches for the 13th door you think about all the superstitions related to the number 13.");
                                                         puts("However, you open it anyways and you find yourself in a large dark room that is immedietly cold and nothing is visible.");
                                                         puts("Although the room is pitch black you cant even see your hands, you stop and look to your right when something catches your eye.");
@@ -1105,23 +1494,122 @@ int main(void)
                                                                         {
                                                                                 puts("Overcoming your curiosity once more, you continue walking towards the light,");
                                                                                 puts("As you get closer to the light you can now see a forest and wonder if this is the way out.");
-                                                                                puts("However, you once more hear this voice different from before.");
-                                                                        }
+                                                                                puts("You continue walking to what you believe to be a forest disregarding the voice behind you.");
+										   puts("As you enter the light a bright white flash obscures your vision.");
+										   puts("You can now see a small semi-transparent green orb on a tree stump.");
+									 	   puts("Do you pick it up or smash it with a nearby plank of wood");
+									 	   puts("1. Pick it up.");
+										   puts("2. Smash it.");
+										   scanf("%d", &choice);
+										   if(choice == 1)
+											{
+											puts("You pick it up an begin to feel your body tense, this feeling of tiny needles around your entire body.");
+											puts("Your vision goes dark.");
+											puts("The feeling of rising water surrounds you and when you open your eyes you realize you are back in the first room you started.");
+											break;
+											}
+											
+										
+									   
+									   	  else if(choice == 2)
+									   	  {
+									   	  	puts("You grab a nearby plank of wood and step towards the orb.");
+											puts("With a mighty swing, you manage to smash the orb into small shards of glass, and as you do.");
+											puts("Your vision goes dark.");
+                                                                                     puts("The feeling of rising water surrounds you and when you open your eyes you realize you are back in the first room you started.");
 
-                                                                        break;
+											}
+											break;
+									     }
+
+                                                                	  else if(choice == 2)
+                                                                	  {
+                                                                	  	puts("as you turn around and face this unknown entity, the ghoslty figure is now facing you.");
+                                                                                        puts("With the bit a of light the creature reveals its self and you see a hunched hooded humanoid figure.");
+                                                                                        puts("It has a sad zombie like face with a large mouth hanging low to its chest.");
+                                                                                        puts("This creature has no eyes and in its gaping mouth nothing but a void of darkness. As you stare at this creature your mind and body go blank unable to think or move.");
+                                                                                        puts("This creature has now taken over your body and the fear of never getting out overtakes you. Your are Dead.");
+                                                                                        
+                                                                                        exit(0);
+                                                                                        }
                                                                 }
+                                                                      
+
                                                         else if(choice == 2)
                                                                 {
                                                                         puts("Not knowing what this light could be you decide to turn around and head deeper into the unknown darkness.");
-                                                                        puts("...more to come...");
-
+                                                                        puts("You continue walking and stumble upon a conviently placed falsh light that can now help you see.");
+                                                                        puts("As you continue walking to come across a monolith that speaks to you in a loud deep voice, it asks you to guess a number between 1 through 10 if you want to survive.");
+                                                                        printf("Enter a number between 1 through 10\n");
+                                                                        scanf("%d", &response);
+						while(response < 1 || response > 10)
+						{
+							printf("NO!! A number between 1 through 10\n");
+							scanf("%d",&response);
+						}
+						printf("%d + magic number = %d\n",response,(response + mn));
+						printf("%d * magic number = %d\n",response,(response * mn));
+						printf("%d - magic number = %d\n",response,(response - mn));
+						printf("What is your guess? It says.\n");
+						scanf("%d",&response);
+						if(response == mn)
+						{
+							printf("You are correct! The monolith begins to glow with no issues.\n");
+							
+						} 
+						else
+						{
+							printf("NO, wrong number inferior human\n");
+							printf("A beam of light emits from the monolith which vaporizes you. \n");
+							printf("Only your boots remain. You Are Dead.\n");
+							exit(0);
+						}
+                                                 	puts("No you cant out smart me simple human");
+                                                 	puts("Fine then, lets see if you can figure this out HAHAHA");
+                                                 	printf("There is a tank of fish that can only hold 12 fish. At the moment it is empty\n");
+                                                 	printf("for every red fish there can be only 1 blue fish\n");
+                                                 	printf("but if there is more than 1 blue fish no yellow fish can be in the tank\n");
+                                                 	printf("The number of green fish in the tank can be any number\n");
+							printf("There are %d red fish\n", a = rand()%10);
+							printf("There are %d blue fish\n", b = rand()%10);
+							printf("There are %d green fish\n", c = rand()%10);
+							printf("There are %d yellow fish\n", d = rand()%10);
+							printf("How many fish will fit in this tank\n");
+							scanf("%d",&response);
+							if(response == (12))
+							{
+								puts("Dammit, you are smarter than you look human\n");
+								puts("The room begins to shake as the monolith in front of you begins to open up. Revealing a secret tunnel.\n");
+								puts("UGH FINE you win\n");
+								puts("The monolith glows and turns in to a man in a black tuxedo and black sunglasses\n");
+							        puts("He pulls out pen from his coat pocket and with out telling you he points it towards you and it flashes\n");
+								puts("You now find your self back in your home sitting at your computer not knowing how you got there\n");
+								puts("However this person sitting down looks familiar, ITS YOU.\n");
+								puts("You only see yourself for a few minutes before that person is sucked into the computer\n");
+								puts("It takes a moment for you to compose yourself but you sit back down on your chair close the game and never return to it.");
+								puts("Although you cant shake the feeling of someone watching you, the presence of someone is always behind you but everytime you turn they are gone.");
+								printf("At this point, the computer you shutdown turns back on and displays \"Thank you for playing %s, Good Bye................................for now\" \n",name);
+							exit(0);	
+							}
+							else
+							{
+								printf("Haha The answer was 12, only 12 fish can fit in the tank, your nothing but a simple human\n");
+								printf("A beam of light emits from the monolith which vaporizes you. \n");
+								printf("Only your boots remain. You Are Dead.\n");
+							exit(0);
+							}                      
+								  
 
                                                                         break;
                                                                 }
+                                                              
+                                                                
                                                         else
                                                         {
                                                                 puts("Wrong choice");
                                                         }
+					}
+					break;
 
 					}
 					break;
@@ -1360,12 +1848,47 @@ int main(void)
 					}
 					break;
 			}
-			case 18:			
+			case 18:
 			{
-					while(choice != 99)
+				while(choice != 99)
+				{
+					puts("you open the door and seem safe from the previous... ");
+					puts("you find a kitten in the room, along with some cabinets, and another door\n");
+					puts("With this you are left with some options, 3 to be exact:");
+					puts("1. Pet the kitten");
+					puts("2. Examine the room");
+					puts("3. Open the next door");
+					scanf("%d",&choice);
+					switch (choice)
 					{
+						case 1:
+							puts("you get closer to pet the kitten it enjoyed that");
+							break;
+						case 2:
+							puts("you decide to examine the cabinets, but they're all empty... why is that?");
+							break;
+						case 3:
+							puts("you decide to open the next door and see a long tunnel, you see a modified motorcycle aligned to a track with some pickaxes...");
+							puts("your curiosity is leaving you with 2 more choices");
+							puts("1. Walk and see where the tunnel leads");
+	                                                puts("2. Go back inside the room");
+							scanf("%d", &choice);
+							if(choice==1)
+							{
+								puts("you decide to journey along the tunnels path, you hear a faint meow behind you... you feel a bit empty...");
+								puts("\nEnter 99");
+								break;
+							}
+							else if(choice==2)
+							{
+								puts("you decided to investigate the room first before leaving");
+								break;
+							}
+
+						default:
+							puts("");
 					}
-					break;
+				}
 			}
 			case 19:
 			{
@@ -1869,104 +2392,706 @@ puts("");
 			}
 			case 24:
 			{
-				#include <time.h>
+				int charCounter = 0,
+					userChoice = 0,
+					turn = 0,
+					randomAlignment = 0,
+					bananaAmount = 0,
+					orangeAmount = 0;
 
-
-                                 int choice = 0,
-                                     turn = 0,
-                                     bananaAmount = 0,
-                                     orangeAmount = 0;
-
-
-                                 puts("As you open the door, you notice a sign reading: \"This is Phillip F. Aguilera's room\".\n"
-                                      "You enter the room and close the door behind you, noticing the choice of more doors. There are three more doors to choose.\n"
-                                      "A sheet of paper is lying on the floor. You pick it up and begin to read what has been written.\n"
-                                      "It states:\n");
-                                 printf("You have %d bananas and %d oranges.\n", bananaAmount, orangeAmount);
-                                 puts("Enter the rooms and try to escape with the highest amount of bananas and oranges as possible!\n");
-                                 puts("You must have XXX amount of bananas and oranges in XXX amount of turns or you lose!\n");
-
-
-                                 for (turn = 0; turn < 4; turn++)
-                                 {
-                                         puts("Main Menu:\n"
-                                              "1) Enter Room 1.\n"
-                                              "2) Enter Room 2.\n"
-                                              "3) Enter Room 3.\n");
-                                         printf("Enter the Room you wish to enter: ");
-                                         scanf("%d", &choice);
-
-                                         switch(choice)
-                                         {
-                                                 case 1:
-                                                         puts("You are in Room 1.\n");
-                                                         break;
-                                                 case 2:
-                                                         puts("You are in Room 2.\n");
-                                                         break;
-                                                 case 3:
-                                                         puts("You are in Room 3.\n");
-                                         }
-
-                                 }
-
-					while(choice != 99)
+				for (charCounter = 0; charCounter < 256; charCounter++)
+				{
+					if (islower(name[charCounter]))
 					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
+						name[charCounter] = toupper(name[charCounter]);
 					}
-					break;
+				}
+
+				puts("As you open the door, you notice a sign reading: \"This is Phillip F. Aguilera's room\".\n"
+					"You enter the room and close the door behind you, noticing the choice of more doors. There are three more doors to choose.\n"
+					"A sheet of paper is lying on the floor. You pick it up and begin to read what has been written.\n"
+					"It states:");
+				printf("%s, enter the rooms and try to escape with the highest amount of bananas and oranges as possible!\n", name);
+				puts("You must have at least 5 bananas and at least 5 oranges in 5 turns to win this game or you lose!\n");
+
+
+				for (turn = 0; turn < 5; turn++)
+				{
+					printf("You have %d bananas and %d oranges!\n", bananaAmount, orangeAmount);
+					roomPrompt(&userChoice);
+
+					randomAlignment = rand() % 2;
+
+					if (randomAlignment == 0)
+					{
+						switch (userChoice)
+						{
+							case 1:
+								gorillaRoom(&bananaAmount, &orangeAmount);
+								break;
+							case 2:
+								drawPicture();
+								break;
+							case 3:
+								caseRandomizer(name, &bananaAmount, &orangeAmount);
+						}
+					}
+					else
+					{
+						switch (userChoice)
+						{
+							case 1:
+								drawPicture();
+								break;
+							case 2:
+								caseRandomizer(name, &bananaAmount, &orangeAmount);
+								break;
+							case 3:
+								gorillaRoom(&bananaAmount, &orangeAmount);
+						}
+					}
+
+
+				}
+
+				printf("You have %d bananas and %d oranges!\n", bananaAmount, orangeAmount);
+
+				if ((bananaAmount >= 5) && (orangeAmount >= 5))
+				{
+					puts("Congratulations! You win the game!\n");
+				}
+				else
+				{
+					puts("Sorry, you lose.\n");
+				}
+
+				break;
 			}
 			case 25:
 			{
 					while(choice != 99)
 					{		printf("Room for Richmond Laureta AKA (rlaureta)\n");
-							/*ROUGH DRAFT OF MY GAME:
-							The title of my game is: "The King's Tyrant"
-							I will create an rpg game that will start in a 
-							ruined dungeon and you wake up from your sleep.
-						       	You then go and pick your class and weapon.
-							You can either be a warrior or mage class. 
-							Then you pick your weapon and your path.
-							You will also have skills and you will spend 
-							points to level them up when you gain experience.
-							My game will have a karma effect for good and bad. 
-							The more you choose to be bad the choices will 
-							be more bad. If you choose to be good then your path 
-							will be more good. Its up to you who you want to be.
-							At the end of the game you will see what you become.*/
+							srand(time((NULL)));
+	int choice;
+	
+	int powerWS = 0;
+	int randomForInt; 
+	randomForInt = 1 + rand()%4;
 
-							puts("You open the door and close it behind you.");
-							puts("After you overcome the panic from almost drowning, you look around and You find yourself in a cave, the air is damp and you smell mold.");
-							puts("You notice a skeleton at your feet with it's right hand clenched around something. The cave ahead leads to a tunnel and you see a door to your right.");
-							puts("At this point you have 3 choices:");
-							puts("1. Examine the skeleton.");
-							puts("2. Proceed further ahead in the cave.");
-							puts("3. Enter the door to your right.");
-							scanf("%d",&choice);
-							if(choice == 1)
-							{
-								puts("You reach down and pry open the skeleton's hand, a finger breaks loose and you place it in your pocket. Once you pry the opject free you look at it closely in the light and see it is a live grenade and the pin springs free. You drop the grenade and dash through the cave. You can hear the grenade explode, collapsing the tunnel behind you.");
-								puts("To be continued...");
-								break;
-							}
-							else if(choice == 2)
-							{
-								puts("You find yourself further ahead in the cave.");
-								puts("To be continued....");
-								break;
-							}
-							else if(choice == 3)
-							{
-								puts("You enter the and close the door behind you.");
-								printf("You hear an loud voice \" %s why do you disturb me? \" \n",name);
-                                                                puts("To be continued....");
-								break;
-							}
-							else
-							{
-								puts("wrong choice");
-							}
+	printf("You are in a pod sleeping for over a thousand years, oblivious to everything, \nwhen all of a sudden, earthquake struck and collapsed the dungeon you are in. \nYour pod remains in tact and then a lightning hit your pod.\n You are awakened... you got out of your pod to a ruined dungeon.");
+	printf("\n\nYou see two pathways with doors at the end: \n\n1. The left pathway: INTELLIGENCE eteched on the door(RANDOM POWER)). ");
+	printf("\n2. The right pathway: STRENGTH etched on the door.");
+	printf("\nWhich pathway you want to choose?(Press 0 to exit at anytime.) ");
+	scanf("%d", &choice);
+	while (choice != 0) {
+		//Intelligence
+		if (choice == 1) {
+			printf("\nYou open the door and see three staffs, set on a table in the middle of the room. You walk over to the table to see the choices of staffs.\n\n");
+			printf("1. This staff is red and can cast flame.\n");
+			printf("2. This staff is blue and can cast water blast.\n");
+			printf("You have to choose the elemental for your weapon: ");
+
+				
+					
+			//RED
+			if (choice == 1) {
+				printf("\nYou picked up the fire staff and your outfit changed into a fire red wizard.\n");
+				printf("You exit the collapsed dungeon and after exiting you see a woman being attacked by a goblin.\n\n");
+				printf("1. Help the woman and cast flame on the goblin.\n");
+				printf("2. Cast flame on both the goblin and the woman.\n");
+				printf("Which action do you want to take? ");
+				scanf("%d", &choice);
+				
+				printf("Power of the weapon: ");
+				weaponPower(randomForInt);
+			    //help the woman
+				if (choice == 1){
+					printf("\nYou run towards the goblin and cast your flame spell. The goblin attacked you, but also, the goblin died in flames.\n");
+					printf("The woman thanked you and gave you a health potion for healing.\n");
+					printf("The woman explained to you what happened to the village. The woman told you \nthat the village is being attacked by an evil sorcerer in the fortress castle.\n");
+					printf("It is up to you if you want to save the village with your  fire staff.\n\n"); 
+					printf("1. Face the evil sorcerer.\n");
+					printf("2. Ignore the woman.\n");
+					printf("What course of action would you like to take? ");
+					scanf("%d", &choice);
+					printf("Power of the weapon: ");
+					weaponPower(randomForInt);		
+					if (choice == 1){
+						printf("\nYou journeyed to the castle and battled many enemy then you face the evil sorcerer.\n");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						printf("Power of the weapon: ");
+						weaponPower(randomForInt);
+						if (choice == 1) {
+							printf("\nYou defeated the sorcerer and saved countless lives. \nThe village honored you and became the fire red KING WIZARD.\n");
+							printf("Game Completed.");
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+							break;
+						}
+						else if (choice == 2) {
+							printf("\nYou defeated the sorcerer but suffered loses. \nThe village honored you and became the fire red KING WIZARD.\n");
+							printf("Game Completed.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						}
+					}
+					else if (choice == 2) {
+						printf("You ignored the woman and still went to the castle and face the evil sorcerer.");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						printf("Power of the weapon: ");
+						weaponPower(randomForInt);
+						if (choice == 1) {
+							printf("\nYou defeated the sorcerer and ruled with iron fist. \nThe village honored you and became the fire red KING WIZARD.\n");
+							printf("Game Completed.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						} 
+						else if (choice == 2){
+							printf("You ruled with the evil sorcerer with an iron fist.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						}
+					}
+				}
+				//kill both
+				else if (choice == 2){
+					printf("You heartlessly cast the flame on the goblin and the woman killing them both.");
+					printf("The woman's soul was released and haunts you telling you that you need \nto kill the evil sorcerer that is invading the village living in the fortress castle.");
+					printf("It is up to you if you want to save the village with your fire staff.\n\n"); 
+					printf("1. Face the evil sorcerer.\n");
+					printf("2. Ignore the woman's soul\n");
+					printf("What course of action would you like to take? ");
+					scanf("%d", &choice);
+					printf("Power of the weapon: ");
+					weaponPower(randomForInt);
+					if (choice == 1){
+						printf("\nYou journeyed to the castle and battled many enemy then you face the evil sorcerer.\n");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						printf("Power of the weapon: ");
+						weaponPower(randomForInt);
+						if (choice == 1) {
+							printf("\nYou defeated the sorcerer but lost a lot of lives and the woman you killed haunts your mind forever. \nThe village honored you and you became the fire red KING WIZARD.\n");
+							printf("Game Completed.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						}
+						else if (choice == 2) {
+							printf("You made the pact with the evil sorcerer and ruled the village cruely for thousands of years."); 
+							printf("Game Completed.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						}
+					}
+					else if (choice == 2) {
+						printf("You ignored the soul and still went to the castle and face the evil sorcerer.");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						printf("Power of the weapon: ");
+						weaponPower(randomForInt);
+						if (choice == 1) {
+							printf("\nYou defeated the sorcerer but lost a lot of lives and the woman you killed haunts your mind forever. \nThe village honored you and you became the fire red KING WIZARD.\n");
+							printf("Game Completed.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						}
+						else if (choice == 2) {
+							printf("You made the pact with the evil sorcerer and ruled the village cruely for thousands of years."); 
+							printf("Game Completed.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						}
+					}
+				}
+			}
+			//BLUE
+			else if (choice == 2) {
+				printf("\nYou picked up the blue staff and your outfit changed into a blue wizard.\n");
+				printf("You exit the collapsed dungeon and after exiting you see a woman being attacked by a goblin.\n\n");
+				printf("1. Help the woman and cast water blast on the goblin.\n");
+				printf("2. Cast water blast on both the goblin and the woman to kill them.\n");
+				printf("Which action do you want to take? ");
+				scanf("%d", &choice);
+				printf("Power of the weapon: ");
+				weaponPower(randomForInt);
+				//woman alive
+				if (choice == 1){
+					printf("\nYou run towards the goblin and cast your water blast spell. The goblin attacked you, but also, the goblin died with the water blast.\n");
+					printf("The woman thanked you and gave you a health potion for healing.\n");
+					printf("The woman explained to you what happened to the village. The woman told you \nthat the village is being attacked by an evil sorcerer in the fortress castle.\n");
+					printf("\nIt is up to you if you want to save the village with your water staff.\n\n"); 
+					printf("1. Face the evil sorcerer.\n");
+					printf("2. Ignore the woman.\n");
+					printf("What course of action would you like to take? ");
+					scanf("%d", &choice);
+					printf("Power of the weapon: ");
+					weaponPower(randomForInt);
+					if (choice == 1){
+						printf("\nYou journeyed to the castle and battled many enemy then you face the evil sorcerer.\n");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						printf("Power of the weapon: ");
+						weaponPower(randomForInt);
+						if(choice == 1) {
+							printf("\nYou defeated the sorcerer and saved countless lives. \nThe village honored you and became the water blue KING WIZARD.\n");
+							printf("Game Completed.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						}
+						else if (choice ==2 ){
+							printf("You made the pact with the evil sorcerer and ruled the village with an iron fist.\n"); 
+							printf("Game Completed.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						}
+					}
+					else if (choice == 2) {
+						printf("You ignored the woman and still went to the castle and face the evil sorcerer.");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						printf("Power of the weapon: ");
+						weaponPower(randomForInt);
+						if(choice == 1) {
+							printf("\nYou defeated the sorcerer and saved countless lives. \nThe village honored you and became the water blue KING WIZARD.\n");
+							printf("Game Completed.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						}
+						else if (choice ==2 ){
+							printf("You made the pact with the evil sorcerer and ruled the village with an iron fist.\n"); 
+							printf("Game Completed.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						}
+					}
+				}
+				//woman killed
+				else if (choice == 2) {
+					printf("You heartlessly cast the water blast on the goblin and the woman killing them both.");
+					printf("The woman's soul was released and haunts you telling you that you need \nto kill the evil sorcerer that is invading the village living in the fortress castle.");
+					printf("It is up to you if you want to save the village with your water staff.\n\n"); 
+					printf("1. Face the evil sorcerer.\n");
+					printf("2. Ignore the woman's soul\n");
+					printf("What course of action would you like to take? ");
+					scanf("%d", &choice);
+					printf("Power of the weapon: ");
+					weaponPower(randomForInt);
+					if (choice == 1){
+						printf("\nYou journeyed to the castle and battled many enemy then you face the evil sorcerer.\n");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						printf("Power of the weapon: ");
+						weaponPower(randomForInt);
+						if (choice == 1) {
+							printf("\nYou defeated the sorcerer but lost a lot of lives and the woman you killed haunts your mind forever. \nThe village honored you and you became the water blue KING WIZARD.\n");
+							printf("Game Completed.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						}
+						else if (choice == 2) {
+							printf("You made the pact with the evil sorcerer and ruled the village cruely for thousands of years."); 
+							printf("Game Completed.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						}
+						
+					}
+					else if (choice == 2) {
+						printf("You ignored the woman's soul and still went to the castle and face the evil sorcerer.");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						printf("Power of the weapon: ");
+						weaponPower(randomForInt);
+						if (choice == 1) {
+							printf("\nYou defeated the sorcerer but lost a lot of lives and the woman you killed haunts your mind forever. \nThe village honored you and you became the water blue KING WIZARD.\n");
+							printf("Game Completed.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						}
+						else if (choice == 2) {
+							printf("You made the pact with the evil sorcerer and ruled the village cruely for thousands of years."); 
+							printf("Game Completed.");
+							break;
+							printf("Power of the weapon: ");
+							weaponPower(randomForInt);
+						}
+					}
+				}
+			}
+		}
+		//STRENGTH
+		else if (choice == 2) {
+			printf("\nYou open the door and you see two weapons, set on a table in the middle of the room. You walk over to the table to see the choices of weapon.\n\n");
+			printf("1. The first weapon is a katana\n");
+			printf("2. The second weapon is a lance\n");
+			printf("What is your weapon choice? ");
+			scanf("%d", &choice);
+			
+			//Katana
+			if (choice == 1) {
+				printf("\nYou picked up the katana blade and your outfit changed into a samurai warrior.\n");
+				printf("You exit the collapsed dungeon and after exiting you see a woman being attacked by a goblin.\n\n");
+				printf("1. Help the woman and attack the goblin with the katana.\n");
+				printf("2. Use the katana on both the goblin and the woman to kill them.\n");
+				printf("Which action do you want to take? ");
+				scanf("%d", &choice);
+				powerWS++;
+				printf("Weapon powered up: ");
+				weaponPower(powerWS);
+				//help the woman
+				if(choice == 1) {
+					printf("\nYou run towards the goblin and use your katana. The goblin attacked you, but also, the goblin died.\n");
+					printf("The woman thanked you and gave you a health potion for healing.\n");
+					printf("The woman explained to you what happened to the village. The woman told you \nthat the village is being attacked by an evil sorcerer in the fortress castle.\n");
+					printf("It is up to you if you want to save the village with your katana.\n\n"); 
+					printf("1. Face the evil sorcerer.\n");
+					printf("2. Ignore the woman.\n");
+					printf("What course of action would you like to take? ");
+					scanf("%d", &choice);	
+					powerWS++;
+					printf("Weapon powered up: ");
+					weaponPower(powerWS);
+					if (choice == 1) {
+						printf("\nYou journeyed to the castle and battled many enemy then you face the evil sorcerer.\n");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						powerWS++;
+						printf("Weapon powered up: ");
+						weaponPower(powerWS);
+						if (choice == 1) {
+							printf("You defeated the evil sorcerer saved countless lives. You were honored by the villagers and became an emperor shogun.\n");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+						else if (choice == 2) {
+							printf("You ruled the village with the evil with an iron fist.\n");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+					}
+					else if (choice == 2) {
+						printf("You ignored the woman and still went to the castle and face the evil sorcerer.");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						powerWS++;
+						printf("Weapon powered up: ");
+						weaponPower(powerWS);
+						if (choice == 1) {
+							printf("You defeated the evil sorcerer saved countless lives. You were honored by the villagers and became an emperor shogun.\n");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+						else if (choice == 2) {
+							printf("You ruled the village with the evil with an iron fist.\n");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+					}
+				}
+				//kill both
+				else if (choice == 2) {
+					printf("You heartlessly use the katana on the goblin and the woman killing them both.");
+					printf("The woman's soul was released and haunts you telling you that you need \nto kill the evil sorcerer that is invading the village living in the fortress castle.\n");
+					printf("It is up to you if you want to save the village with your katana.\n\n"); 
+					printf("1. Face the evil sorcerer.\n");
+					printf("2. Ignore the woman's soul\n");
+					printf("What course of action would you like to take? ");
+					scanf("%d", &choice);
+					powerWS++;
+					printf("Weapon powered up: ");
+					weaponPower(powerWS);
+					if (choice == 1) {
+						printf("\nYou journeyed to the castle and battled many enemy then you face the evil sorcerer.\n");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						powerWS++;
+						printf("Weapon powered up: ");
+						weaponPower(powerWS);
+						if (choice == 1) {
+							printf("You defeated the evil sorcerer but lost a lot of lives. You were honored by the villagers and became an emperor shogun.");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+						else if (choice == 2) {
+							printf("You ruled the village with the evil sorcerer and become tyranical.\n");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+					}
+					else if (choice == 2) {
+						printf("You ignored the woman's soul and still went to the castle and face the evil sorcerer.");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						powerWS++;
+						printf("Weapon powered up: ");
+						weaponPower(powerWS);
+						if (choice == 1) {
+							printf("You defeated the evil sorcerer but lost a lot of lives. You were honored by the villagers and became an emperor shogun.");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+						else if (choice == 2) {
+							printf("You ruled the village with the evil sorcerer and become tyranical.\n");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+						
+					}
+
+				}
+			}
+			//Lance
+			else if (choice == 2) {
+				
+				printf("\nYou picked up the lance and your costume changed to a Knight.\n");
+				printf("You exit the collapsed dungeon and after exiting you see a woman being attacked by a goblin.\n\n");
+				printf("1. Help the woman and use the lance on the goblin.\n");
+				printf("2. Use the lance on both the goblin and the woman to kill them.\n");
+				printf("Which action do you want to take? ");
+				scanf("%d", &choice);
+				
+				//help the woman
+				if(choice == 1) {
+					printf("\nYou run towards the goblin and use your lance. The goblin attacked you, but also, the goblin died.\n");
+					printf("The woman thanked you and gave you a health potion for healing.\n");
+					printf("The woman explained to you what happened to the village. The woman told you \nthat the village is being attacked by an evil sorcerer in the fortress castle.\n");
+					printf("It is up to you if you want to save the village with your lance.\n\n"); 
+					printf("1. Face the evil sorcerer.\n");
+					printf("2. Ignore the woman.\n");
+					printf("What course of action would you like to take? ");
+					scanf("%d", &choice);
+					powerWS++;
+					printf("Weapon powered up: ");
+					weaponPower(powerWS);	
+					if(choice == 1) {
+						printf("\nYou journeyed to the castle and battled many enemy then you face the evil sorcerer.\n");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						powerWS++;
+						printf("Weapon powered up: ");
+						weaponPower(powerWS);
+						if (choice == 1) {
+							printf("You defeated the evil sorcerer. The villager honored you and you became the knight KING.\n");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+						else if (choice == 2) {
+							printf("You ruled the land with the evil sorcerer with an iron fist.\n");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+						
+					}
+					else if (choice ==2 ){
+						printf("You ignored the woman and still went to the castle and face the evil sorcerer.");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						powerWS++;
+						printf("Weapon powered up: ");
+						weaponPower(powerWS);
+						if (choice == 1) {
+							printf("You defeated the evil sorcerer. The villager honored you and you became the knight KING.\n");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+						else if (choice == 2) {
+							printf("You ruled the land with the evil sorcerer with an iron fist.\n");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+					}
+				}
+				//kill both
+				else if (choice == 2) {
+					printf("You heartlessly use the lance on the goblin and the woman killing them both.");
+					printf("The woman's soul was released and haunts you telling you that you need \nto kill the evil sorcerer that is invading the village living in the fortress castle.");
+					printf("It is up to you if you want to save the village with your water staff.\n\n"); 
+					printf("1. Face the evil sorcerer.\n");
+					printf("2. Ignore the woman's soul\n");
+					printf("What course of action would you like to take? ");
+					scanf("%d", &choice);
+					powerWS++;
+					printf("Weapon powered up: ");
+					weaponPower(powerWS);
+					if(choice == 1) {
+						printf("\nYou journeyed to the castle and battled many enemy then you face the evil sorcerer.\n");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						powerWS++;
+						printf("Weapon powered up: ");
+						weaponPower(powerWS);
+						if (choice == 1) {
+							printf("You defeated the evil sorcerer but lost a lot of lives. The villager honored you and you became the knight KING.\n");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+						else if (choice == 2) {
+							printf("You ruled the village with the evil sorcerer and became tyranical.\n");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+						
+					}
+					else if (choice ==2 ){
+						printf("You ignored the woman's soul and still went to the castle and face the evil sorcerer.");
+						printf("He wants to make a deal with you. If you can help him take over the village.\n\n");
+						printf("1. Ignore him and defeat the evil sorcerer.\n");
+						printf("2. Accept the deal and rule the village with him.\n");
+						printf("What do you want to do? ");
+						scanf("%d", &choice);
+						powerWS++;
+						printf("Weapon powered up: ");
+						weaponPower(powerWS);
+					}
+						if (choice == 1) {
+							printf("You defeated the evil sorcerer but lost a lot of lives. The villager honored you and you became the knight KING.\n");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+							
+						}
+						else if (choice == 2) {
+							printf("You ruled the village with the evil sorcerer and became tyranical.\n");
+							printf("Game complete.");
+							break;
+							powerWS++;
+							printf("Weapon powered up: ");
+							weaponPower(powerWS);
+						}
+
+				}
+			}
+		}
+	
+	}
+int i; 
+printf("\nENDING CREDITS: \n");
+for(i = 0; i < 20; i++){
+	
+	printf("-");
+}
+char creatorName[8] = {"RICHMOND"};
+
+for (i = 0; i < strlen(creatorName); i++){
+	printf("\n%c", creatorName[i]);
+}
+
+
+
+FILE *writeToFile;
+FILE *writeToFile2;
+writeToFile = fopen("output25.txt", "w");
+writeToFile2 = fopen("output25.txt", "a");
+printf("\nCredits is written and saved on the output25.txt\n");
+fprintf(writeToFile2, "THIS game is created By RICHMOND LAURETA for CSC 251 for Garrett Poppe. Thank YOU PROFESSOR for this semester.");
+fclose(writeToFile2);
+fclose(writeToFile);
+break;
 					}
 					break;
 
@@ -2216,11 +3341,12 @@ puts("");
 			}
 			case 28:
 			{
-					//Room #28 for Shane Cortez
+
+				//Room #28 for Shane Cortez
 				while (choice != 99)
 				{
 					srand(time(NULL));
-					int randNum=rand()%2;
+					int randNum = rand() % 2;
 
 					puts("you enter the room marked 28");
 					puts("As the panic of drowning subsides you look up to notice that the room is shaking and the ground splitting in half revealing a pit to nothingness you have to act fast or risk missing the jump across!");
@@ -2229,6 +3355,12 @@ puts("");
 					puts("2. Quickly look around and reassess the situation");
 					puts("99. At any time to End Game");
 					scanf("%d", &choice);
+					while (choice > 2 || choice < 1)
+					{
+						puts("enter 1, 2 or 99");
+						scanf("%d", &choice);
+					}
+
 					if (choice == 1)
 					{
 						puts("in a panic you jump across the pit and make it safely to the other side.");
@@ -2239,6 +3371,11 @@ puts("");
 						puts("1. Try to jump across and jump back to grab the key");
 						puts("2. Check inventory");
 						scanf("%d", &choice);
+						while (choice > 2 || choice < 1)
+						{
+							puts("enter 1, 2 or 99");
+							scanf("%d", &choice);
+						}
 						if (choice == 1)
 						{
 							puts("You attempt the first jump and realize too late that the pit is far too wide to jump across, you fall into the darkness and are never seen again....");
@@ -2257,6 +3394,11 @@ puts("");
 							puts("1. inspect door.");
 							puts("2. open chest with key");
 							scanf("%d", &choice);
+							while (choice > 2 || choice < 1)
+							{
+								puts("enter 1, 2 or 99");
+								scanf("%d", &choice);
+							}
 							if (choice == 1)
 							{
 								puts("upon further inspection you notice that the vines appear flamable...");
@@ -2268,37 +3410,73 @@ puts("");
 								puts("3. earth");
 								puts("What will you write:");
 								scanf("%d", &choice);
-								if (choice == 1)
+								shanesFileWriter(choice);
+								if (choice == 1) //fire choice
 								{
 									puts("you write the ancient runes of fire onto the page.");
-									puts("The scroll flashes bright red with fiery power, suddenly your hands begin to feel hot, when suddenly they light ablaze! with this power you can shoot fire out of your hand!");
-									puts("You strike an agressive pose and engulf the vine covered door in flames.");
-									puts("As the fire and smoke subside, the door sits ajar with a light shining through.");
-									puts("What will you do:");
-									puts("1. walk through the door");
-									puts("2. Turn around and jump into the pit");
+									puts("you must now read the writings properly or it will not work. (Hint:try using the rm28-scroll.txt for guidance)");
+									puts("What will you mutter:");
+									puts("1. I harness the power of Fire!");
+									puts("2. Aprovecho el poder de Fuego!");
+									puts("3. Jeg utnytter kraften til Eldur!");
 									scanf("%d", &choice);
-
-									if (choice == 1)
+									while (choice > 3 || choice < 1)
 									{
-										//Victory!
-										puts("You open the door and are blinded by light, as your vision returns you realize you are in the middle of nowhere in the desert, and the door magically dissapears");
-										puts("You escaped, but now what?");
-										puts("Congrats you finished the game. Thank you for playing!");
-										choice = 99;
-										break;
+										puts("enter 1, 2, 3 or 99");
+										scanf("%d", &choice);
 									}
-									else if (choice == 2)
+									while (choice != 3)
 									{
-										puts("I'm not sure why you chose this, but you turn around and jump into the pit, you are never seen again....");
-										puts("Game Over...");
-										choice = 99;
-										break;
+										puts("nothing seems to happen... maybe another word...");
+										scanf("%d", &choice);
+									}
+									if (choice == 3)
+									{
+										puts("The scroll flashes bright red with fiery power, suddenly your hands begin to feel hot, when suddenly they light ablaze! with this power you can shoot fire out of your hand!");
+										puts("You strike an agressive pose and engulf the vine covered door in flames.");
+										puts("As the fire and smoke subside, the door sits ajar with a light shining through.");
+										puts("What will you do:");
+										puts("1. walk through the door");
+										puts("2. Turn around and jump into the pit");
+										scanf("%d", &choice);
+										if (choice == 1)
+										{
+											//Victory!
+											puts("You open the door and are blinded by light, as your vision returns you realize you are in the middle of nowhere in the desert, and the door magically dissapears");
+											puts("You escaped, but now what?");
+											puts("Congrats you finished the game. Thank you for playing!");
+											choice = 99;
+											break;
+										}
+										else if (choice == 2)
+										{
+											puts("I'm not sure why you chose this, but you turn around and jump into the pit, you are never seen again....");
+											puts("Game Over...");
+											choice = 99;
+											break;
+										}
 									}
 								}
-								else if (choice == 2)
+								else if (choice == 2) //water choice
 								{
 									puts("You write down the ancient runes of water onto the page.");
+									puts("you must now read the writings properly or it will not work. (Hint:try using the rm28-scroll.txt for guidance)");
+									puts("What will you mutter:");
+									puts("1. I harness the power of Water!");
+									puts("2. Jeg utnytter kraften til Laguz!");
+									puts("3. Aprovecho el poder de Aqua!");
+									scanf("%d", &choice);
+									while (choice > 3 || choice < 1)
+									{
+										puts("enter 1, 2, 3 or 99");
+										scanf("%d", &choice);
+									}
+									while (choice != 2)
+									{
+										puts("nothing seems to happen... maybe another word...");
+										scanf("%d", &choice);
+									}
+
 									puts("the scroll glows a conforting blue color, suddenly your hands feel damp, you can now use this on the door.");
 									puts("You ready yourself and shoot a powerful stream of water on the vines.");
 									puts("You stare at the vines as they grow greener and stronger from the water, the vines then grow at a rapid rate engulfing the narrow walkway that you stand on.");
@@ -2308,9 +3486,26 @@ puts("");
 									choice = 99;
 									break;
 								}
-								else if (choice == 3)
+								else if (choice == 3) //earth choice
 								{
 									puts("You write the ancient rune of earth.");
+									puts("you must now read the writings properly or it will not work. (Hint:try using the rm28-scroll.txt for guidance)");
+									puts("What will you mutter:");
+									puts("1. Jeg utnytter kraften til Midgard!");
+									puts("2. I harness the power of Earth!");
+									puts("3. Aprovecho el poder de Tierra!");
+									scanf("%d", &choice);
+									while (choice > 3 || choice < 1)
+									{
+										puts("enter 1, 2, 3 or 99");
+										scanf("%d", &choice);
+									}
+									while (choice != 1)
+									{
+										puts("nothing seems to happen... maybe another word...");
+										scanf("%d", &choice);
+									}
+
 									puts("suddenly the scroll glows emerald green, as your hands begin to feel one with the earth, you can use this on the door.");
 									puts("You ground yourself, and use your new powers on the vines.");
 									puts("To your suprise, the earth spell you wrote only makes the vines stronger, so much so that they begin to grow wildly out of control!");
@@ -2332,9 +3527,26 @@ puts("");
 								puts("3. earth");
 								puts("What will you write:");
 								scanf("%d", &choice);
-								if (choice == 1)
+								shanesFileWriter(choice);
+								if (choice == 1) //fire choice
 								{
-									puts("you write the ancient runes onto the page.");
+									puts("you write the ancient runes of fire onto the page.");
+									puts("you must now read the writings properly or it will not work. (Hint:try using the rm28-scroll.txt for guidance)");
+									puts("What will you mutter:");
+									puts("1. I harness the power of Fire!");
+									puts("2. Aprovecho el poder de Fuego!");
+									puts("3. Jeg utnytter kraften til Eldur!");
+									scanf("%d", &choice);
+									while (choice > 3 || choice < 1)
+									{
+										puts("enter 1, 2, 3 or 99");
+										scanf("%d", &choice);
+									}
+									while (choice != 3)
+									{
+										puts("nothing seems to happen... maybe another word...");
+										scanf("%d", &choice);
+									}
 									puts("The scroll flashes bright red with fiery power, suddenly your hands begin to feel hot, when suddenly they light ablaze! with this power you can shoot fire out of your hand!");
 									puts("You strike an agressive pose and engulf the vine covered door in flames.");
 									puts("As the fire and smoke subside, the door sits ajar with a light shining through.");
@@ -2342,6 +3554,11 @@ puts("");
 									puts("1. walk through the door");
 									puts("2. Turn around and jump into the pit");
 									scanf("%d", &choice);
+									while (choice > 2 || choice < 1)
+									{
+										puts("enter 1, 2 or 99");
+										scanf("%d", &choice);
+									}
 
 									if (choice == 1)
 									{
@@ -2360,9 +3577,26 @@ puts("");
 										break;
 									}
 								}
-								else if (choice == 2)
+								else if (choice == 2) //water choice
 								{
 									puts("You write down the ancient runes of water onto the page.");
+									puts("you must now read the writings properly or it will not work. (Hint:try using the rm28-scroll.txt for guidance)");
+									puts("What will you mutter:");
+									puts("1. I harness the power of Water!");
+									puts("2. Jeg utnytter kraften til Laguz!");
+									puts("3. Aprovecho el poder de Aqua!");
+									scanf("%d", &choice);
+									while (choice > 3 || choice < 1)
+									{
+										puts("enter 1, 2, 3 or 99");
+										scanf("%d", &choice);
+									}
+									while (choice != 2)
+									{
+										puts("nothing seems to happen... maybe another word...");
+										scanf("%d", &choice);
+									}
+
 									puts("the scroll glows a conforting blue color, suddenly your hands feel damp, you can now use this on the door.");
 									puts("You ready yourself and shoot a powerful stream of water on the vines.");
 									puts("You stare at the vines as they grow greener and stronger from the water, the vines then grow at a rapid rate engulfing the narrow walkway that you stand on.");
@@ -2372,9 +3606,26 @@ puts("");
 									choice = 99;
 									break;
 								}
-								else if (choice == 3)
+								else if (choice == 3) //earth choice
 								{
 									puts("You write the ancient rune of earth.");
+									puts("you must now read the writings properly or it will not work. (Hint:try using the rm28-scroll.txt for guidance)");
+									puts("What will you mutter:");
+									puts("1. Jeg utnytter kraften til Midgard!");
+									puts("2. I harness the power of Earth!");
+									puts("3. Aprovecho el poder de Tierra!");
+									scanf("%d", &choice);
+									while (choice > 3 || choice < 1 || choice == 99)
+									{
+										puts("enter 1, 2, 3 or 99");
+										scanf("%d", &choice);
+									}
+									while (choice != 1)
+									{
+										puts("nothing seems to happen... maybe another word...");
+										scanf("%d", &choice);
+									}
+
 									puts("suddenly the scroll glows emerald green, as your hands begin to feel one with the earth, you can use this on the door.");
 									puts("You ground yourself, and use your new powers on the vines.");
 									puts("To your suprise, the earth spell you wrote only makes the vines stronger, so much so that they begin to grow wildly out of control!");
@@ -2411,10 +3662,15 @@ puts("");
 							puts("1. Open the chest");
 							puts("2. Further inspect the door");
 							scanf("%d", &choice);
+							while (choice > 2 || choice < 1)
+							{
+								puts("enter 1, 2 or 99");
+								scanf("%d", &choice);
+							}
 							if (choice == 1)
 							{
-								puts("upon further inspection you notice that the vines appear flamable...");
-								puts("you then turn your attention to the chest, you pull out the key and unlock the chest, inside you find a scroll which reads:");
+
+								puts("you turn your attention to the chest, you pull out the key and unlock the chest, inside you find a scroll which reads:");
 								puts("write a spell and this scroll will grant you power...");
 								puts("Unfortunately you only studied one year of spellcasting in highschool and the only three spells you remember from back then are:");
 								puts("1. fire");
@@ -2422,9 +3678,26 @@ puts("");
 								puts("3. earth");
 								puts("What will you write:");
 								scanf("%d", &choice);
-								if (choice == 1)
+								shanesFileWriter(choice);
+								if (choice == 1) //fire choice
 								{
 									puts("you write the ancient runes of fire onto the page.");
+									puts("you must now read the writings properly or it will not work. (Hint:try using the rm28-scroll.txt for guidance)");
+									puts("What will you mutter:");
+									puts("1. I harness the power of Fire!");
+									puts("2. Aprovecho el poder de Fuego!");
+									puts("3. Jeg utnytter kraften til Eldur!");
+									scanf("%d", &choice);
+									while (choice > 3 || choice < 1)
+									{
+										puts("enter 1, 2, 3 or 99");
+										scanf("%d", &choice);
+									}
+									while (choice != 3)
+									{
+										puts("nothing seems to happen... maybe another word...");
+										scanf("%d", &choice);
+									}
 									puts("The scroll flashes bright red with fiery power, suddenly your hands begin to feel hot, when suddenly they light ablaze! with this power you can shoot fire out of your hand!");
 									puts("You strike an agressive pose and engulf the vine covered door in flames.");
 									puts("As the fire and smoke subside, the door sits ajar with a light shining through.");
@@ -2432,6 +3705,11 @@ puts("");
 									puts("1. walk through the door");
 									puts("2. Turn around and jump into the pit");
 									scanf("%d", &choice);
+									while (choice > 2 || choice < 1)
+									{
+										puts("enter 1, 2 or 99");
+										scanf("%d", &choice);
+									}
 
 									if (choice == 1)
 									{
@@ -2450,9 +3728,25 @@ puts("");
 										break;
 									}
 								}
-								else if (choice == 2)
+								else if (choice == 2) //water choice
 								{
 									puts("You write down the ancient runes of water onto the page.");
+									puts("you must now read the writings properly or it will not work. (Hint:try using the rm28-scroll.txt for guidance)");
+									puts("What will you mutter:");
+									puts("1. I harness the power of Water!");
+									puts("2. Jeg utnytter kraften til Laguz!");
+									puts("3. Aprovecho el poder de Aqua!");
+									scanf("%d", &choice);
+									while (choice > 3 || choice < 1)
+									{
+										puts("enter 1, 2, 3 or 99");
+										scanf("%d", &choice);
+									}
+									while (choice != 2)
+									{
+										puts("nothing seems to happen... maybe another word...");
+										scanf("%d", &choice);
+									}
 									puts("the scroll glows a conforting blue color, suddenly your hands feel damp, you can now use this on the door.");
 									puts("You ready yourself and shoot a powerful stream of water on the vines.");
 									puts("You stare at the vines as they grow greener and stronger from the water, the vines then grow at a rapid rate engulfing the narrow walkway that you stand on.");
@@ -2462,9 +3756,25 @@ puts("");
 									choice = 99;
 									break;
 								}
-								else if (choice == 3)
+								else if (choice == 3) //earth choice
 								{
 									puts("You write the ancient rune of earth.");
+									puts("you must now read the writings properly or it will not work. (Hint:try using the rm28-scroll.txt for guidance)");
+									puts("What will you mutter:");
+									puts("1. Jeg utnytter kraften til Midgard!");
+									puts("2. I harness the power of Earth!");
+									puts("3. Aprovecho el poder de Tierra!");
+									scanf("%d", &choice);
+									while (choice > 3 || choice < 1 || choice == 99)
+									{
+										puts("enter 1, 2, 3 or 99");
+										scanf("%d", &choice);
+									}
+									while (choice != 1)
+									{
+										puts("nothing seems to happen... maybe another word...");
+										scanf("%d", &choice);
+									}
 									puts("suddenly the scroll glows emerald green, as your hands begin to feel one with the earth, you can use this on the door.");
 									puts("You ground yourself, and use your new powers on the vines.");
 									puts("To your suprise, the earth spell you wrote only makes the vines stronger, so much so that they begin to grow wildly out of control!");
@@ -2486,9 +3796,26 @@ puts("");
 								puts("3. earth");
 								puts("What will you write:");
 								scanf("%d", &choice);
-								if (choice == 1)
+								shanesFileWriter(choice);
+								if (choice == 1) //fire choice
 								{
-									puts("you write the ancient runes onto the page.");
+									puts("you write the ancient runes of fire onto the page.");
+									puts("you must now read the writings properly or it will not work. (Hint:try using the rm28-scroll.txt for guidance)");
+									puts("What will you mutter:");
+									puts("1. I harness the power of Fire!");
+									puts("2. Aprovecho el poder de Fuego!");
+									puts("3. Jeg utnytter kraften til Eldur!");
+									scanf("%d", &choice);
+									while (choice > 3 || choice < 1)
+									{
+										puts("enter 1, 2, 3 or 99");
+										scanf("%d", &choice);
+									}
+									while (choice != 3)
+									{
+										puts("nothing seems to happen... maybe another word...");
+										scanf("%d", &choice);
+									}
 									puts("The scroll flashes bright red with fiery power, suddenly your hands begin to feel hot, when suddenly they light ablaze! with this power you can shoot fire out of your hand!");
 									puts("You strike an agressive pose and engulf the vine covered door in flames.");
 									puts("As the fire and smoke subside, the door sits ajar with a light shining through.");
@@ -2496,6 +3823,11 @@ puts("");
 									puts("1. walk through the door");
 									puts("2. Turn around and jump into the pit");
 									scanf("%d", &choice);
+									while (choice > 2 || choice < 1)
+									{
+										puts("enter 1, 2 or 99");
+										scanf("%d", &choice);
+									}
 
 									if (choice == 1)
 									{
@@ -2514,9 +3846,25 @@ puts("");
 										break;
 									}
 								}
-								else if (choice == 2)
+								else if (choice == 2) //water choice
 								{
 									puts("You write down the ancient runes of water onto the page.");
+									puts("you must now read the writings properly or it will not work. (Hint:try using the rm28-scroll.txt for guidance)");
+									puts("What will you mutter:");
+									puts("1. I harness the power of Water!");
+									puts("2. Jeg utnytter kraften til Laguz!");
+									puts("3. Aprovecho el poder de Aqua!");
+									scanf("%d", &choice);
+									while (choice > 3 || choice < 1)
+									{
+										puts("enter 1, 2, 3 or 99");
+										scanf("%d", &choice);
+									}
+									while (choice != 2)
+									{
+										puts("nothing seems to happen... maybe another word...");
+										scanf("%d", &choice);
+									}
 									puts("the scroll glows a conforting blue color, suddenly your hands feel damp, you can now use this on the door.");
 									puts("You ready yourself and shoot a powerful stream of water on the vines.");
 									puts("You stare at the vines as they grow greener and stronger from the water, the vines then grow at a rapid rate engulfing the narrow walkway that you stand on.");
@@ -2526,9 +3874,25 @@ puts("");
 									choice = 99;
 									break;
 								}
-								else if (choice == 3)
+								else if (choice == 3) //earth choice
 								{
 									puts("You write the ancient rune of earth.");
+									puts("you must now read the writings properly or it will not work. (Hint:try using the rm28-scroll.txt for guidance)");
+									puts("What will you mutter:");
+									puts("1. Jeg utnytter kraften til Midgard!");
+									puts("2. I harness the power of Earth!");
+									puts("3. Aprovecho el poder de Tierra!");
+									scanf("%d", &choice);
+									while (choice > 3 || choice < 1 || choice == 99)
+									{
+										puts("enter 1, 2, 3 or 99");
+										scanf("%d", &choice);
+									}
+									while (choice != 1)
+									{
+										puts("nothing seems to happen... maybe another word...");
+										scanf("%d", &choice);
+									}
 									puts("suddenly the scroll glows emerald green, as your hands begin to feel one with the earth, you can use this on the door.");
 									puts("You ground yourself, and use your new powers on the vines.");
 									puts("To your suprise, the earth spell you wrote only makes the vines stronger, so much so that they begin to grow wildly out of control!");
@@ -3140,7 +4504,7 @@ int choice1(int number)
 	
 	if(answer == guess)
 	{
-		puts("\nYou have guessed the anwer correctly. You may get the map to get out of the mansion...Good Job!\n");
+		puts("\nYou have guessed the anwer correctly. You may access the laptop to get out of the mansion...Good Job!\n");
 		return EXIT_SUCCESS;
 	}
 	else
@@ -3175,11 +4539,11 @@ int choice2(char *ptr)
 
 	if(!strcmp(copy, guess))
 	{
-		puts("Guessed correctly!\n");
+		puts("You guessed correctly! You may have access to the laptop!\n");
 	}
 	else
 	{
-		puts("Guess was incorrect!\n");
+		puts("Your guess was incorrect! Better luck next time!\n");
 	}
 	
 	return EXIT_SUCCESS;
@@ -3190,27 +4554,67 @@ int choice3(int number1)
 {
 	int answer = 0;
 
-	printf("magic number is : %d\n", number1);	
+//	printf("magic number is : %d\n", number1);	
 	
 	printf("10 + magic number = %d\n", (10 + number1));
 	printf("5 * magic number  = %d\n", (5 * number1));
 	printf("20 - magic number = %d\n", (20 - number1));
+	printf("(4^2) + magic Number = %.2f\n", ((pow(4, 2) + number1)));
 	
 	printf("What is your guess? ");
 	scanf(" %d", &answer);
 	
 	if(answer == number1)
 	{
-	puts("You guessed it correctly!"); 
+	printf("You guessed it correctly! Now you have access to the laptop!\n"); 
 	return EXIT_SUCCESS;
 	}
 	else
 	{
-	puts("You guessed it wrong!");
+	puts("You guessed it wrong! You are stuck in the room. \n");
 	return EXIT_SUCCESS;
 	}	
 	
 }	
+
+int choice4(int *ptr1)
+{
+	int i, j, k;
+	int sum = 0, guess = 0;
+
+	for(k = 0; k < 6; k++)
+	{
+		printf("Array[%d]= %d ",k+1, *ptr1);
+		sum += *ptr1;
+		ptr1++;
+	}
+	
+	printf("What is your guess: ");
+	scanf(" %d", &guess);
+		
+	if(guess == sum)
+	{
+	printf("\nSum: %d\n. You guessed it right! You have access to the laptop!\n", sum);
+	return EXIT_SUCCESS;
+	}
+	else
+	{
+	printf("\nSum: %d\n. You guessed it wrong! You are stuck in the room!\n", sum);
+	return EXIT_SUCCESS;
+	}
+}
+
+int choice5(void)
+{
+	printf("************************************\n");
+	printf("***************YOU******************\n");
+	printf("***************ARE******************\n");
+	printf("************FINISHED!***************\n");
+	printf("************************************\n");
+	
+	return EXIT_SUCCESS;
+}
+	
 
 
 void gameRules() //simple function that prints rules of game to user...
@@ -3276,6 +4680,7 @@ int randomint(int x, int y) //random integer function to work craps game
 
 	return rand()%(y - x + 1); //ensures random number is generated
 }
+
 
 
 char prompt(void)
@@ -3426,6 +4831,212 @@ void congratulations(void)
 
 
 
+///////////Shanes room methods///////////
+
+void shanesFileWriter(int choice)
+{
+	FILE *write;
+	char plaintext[256];
+	char fire[50];
+	char water[50];
+	char earth[50];
+
+	if (choice != 1 && choice != 2 && choice != 3 && choice != 99)
+	{
+		puts("Incorrect input try typing 1.Fire, 2.Water, or 3.Earth");
+		scanf("%d", &choice);
+	}else
+	{
+	write = fopen("rm28-scroll.txt","w");
+	char plaintext[256] = "write a spell and this scroll will grant you power...";
+	char fire[50] = "Jeg utnytter kraften til Eldur";
+	char water[50] = "Jeg utnytter kraften til Laguz";
+	char earth[50] = "Jeg utnytter kraften til Midgard";
+	}
+	
+	
+	switch (choice)
+	{
+	case 1:
+		//fire
+		puts("fire puts");
+		fprintf(write, "%s\n%s" ,plaintext,fire);
+
+		break;
+	case 2:
+		//water
+
+		fprintf(write, "%s\n%s", plaintext, water);
+
+		break;
+	case 3:
+		//earth
+
+		fprintf(write, "%s\n%s", plaintext, earth);
+		
+		break;
+	case 99:
+		return;
+	default:
+		shanesFileWriter(choice);
+		break;
+	}
+	fclose(write);
+}
+
+///////////Shanes room methods end/////////
+
+
+void caseRandomizer(char* name, int* bananaAmount, int* orangeAmount)
+{
+	int charCounter = 0,
+		randomCase = 0,
+		lowerAmount = 0,
+		upperAmount = 0,
+	    winLoseAmount = 0;
+	
+	puts("You have entered the case randomizer room ...\n"
+		 "Your name's letters' cases are randomized. If there are more capital letters, you are rewarded!\n"
+		 "Otherwise, there will be punishment ... ");
+
+
+
+	for (charCounter = 0; charCounter < 256; charCounter++)
+	{
+		randomCase = rand() % 2;
+
+		if (randomCase == 0)
+		{
+			name[charCounter] = toupper(name[charCounter]);
+		}
+		else
+		{
+			name[charCounter] = tolower(name[charCounter]);
+		}
+	}
+
+	for (charCounter = 0; charCounter < 256; charCounter++)
+	{
+		if (islower(name[charCounter]))
+		{
+			lowerAmount++;
+		}
+		else if (isupper(name[charCounter]))
+		{
+			upperAmount++;
+		}
+	}
+
+	if (upperAmount > lowerAmount)
+	{
+		winLoseAmount = 1 + rand() % 7;
+		*bananaAmount += winLoseAmount;
+		*orangeAmount += winLoseAmount;
+
+		printf("Congratulations! You have won %d bananas and oranges!\n", winLoseAmount);
+	}
+	else
+	{
+		winLoseAmount = 1 + rand() % 3;
+		*bananaAmount -= winLoseAmount;
+		*orangeAmount -= winLoseAmount;
+
+		printf("Unfortunately, you lost and lose %d bananas and oranges ... \n\n", winLoseAmount);
+	}
+}
+
+void drawPicture(void)
+{
+	puts("You enter the room and can faintly see a picture at the distance. As you walk closer to the image, you see ... \n");
+
+	puts("        _--~~--_");
+	puts("      /~/_|  |_\\~\\");
+	puts("     |____________|");
+	puts("     |[][][][][][]|");
+	puts("   __| __         |__");
+	puts("  |  ||. |   ==   |  |");
+	puts(" (|  ||__|   ==   |  |)");
+	puts("  |  |[] []  ==   |  |");
+	puts("  |  |____________|  |");
+	puts("  /__\\           /__\\");
+	puts("   ~~              ~~ ");
+	puts("");
+}
+
+void roomPrompt(int* userChoice)
+{
+	do
+	{
+		puts("Main Menu:\n"
+			"1) Enter Room 1.\n"
+			"2) Enter Room 2.\n"
+			"3) Enter Room 3.\n");
+		printf("Enter the Room you wish to enter: ");
+		scanf("%d", userChoice);
+	} while ((*userChoice < 1) || (*userChoice > 3));
+}
+
+void gorillaRoom(int* bananaAmount, int* orangeAmount)
+{
+	int userChoice = 0,
+		winLoseAmount = 0,
+		chanceToSteal = 0;
+
+	printf("You enter the room and on the far end of the room, your eyes easily catch a very large gorilla sleeping soundly.\n"
+		"Behind the gorilla, you see a large pile of bananas.\n"
+		"If you wish to steal the bananas from the gorilla, enter 1. Otherwise, enter 0 to exit: ");
+
+	scanf("%d", &userChoice);
+
+	userChoice = toupper(userChoice);
+
+	if (userChoice == 0)
+	{
+		puts("Better safe than sorry ...");
+	}
+	else if (userChoice == 1)
+	{
+		chanceToSteal = 1 + rand() % 100;
+		winLoseAmount = 1 + rand() % 10;
+
+		puts("You decide to attempt to steal the bananas from the gorilla ...");
+
+		if (chanceToSteal >= 60)
+		{
+			*bananaAmount += winLoseAmount;
+			printf("Success! You were able to successfully steal %d bananas from the gorilla and made a hasty escape back into the main room.\n\n", winLoseAmount);
+		}
+		else
+		{
+			*bananaAmount -= winLoseAmount;
+			printf("As you make your way to the other side of the room, you slip on a banana ...\n"
+				"In doing so, you fall and the imapact with the ground made a large enough noise to wake the gorilla!\n"
+				"Not daring to fight him, he steals %d bananas!\n"
+				"You make your way back to the Main Room ... \n\n", winLoseAmount);
+		}
+
+		chanceToSteal = 1 + rand() % 100;
+		
+		if (chanceToSteal > 85)
+		{
+			winLoseAmount = 1 + rand() & 5;
+
+			*orangeAmount += winLoseAmount;
+
+			puts("As you leave the room back into the Main Room, you notice some oranges in the dark corner!\n"
+				 "Before the gorilla can notice, you are able to snatch some and quickly leave through the door.\n");
+		}
+
+	}
+	else
+	{
+		puts("Incorrect input! You are returning to the Main Room ...\n");
+	}
+
+}
+
+
+
 void problem1(int math)
 {
 
@@ -3503,6 +5114,11 @@ int flip()
 }
 
 		
+void weaponPower(int p){
+	
+	printf("%d\n", p); //ROOM 25
+}
+
 
 
 
