@@ -2609,10 +2609,130 @@ puts("'How did that peguin get my back info and my phone number");
 							
 			case 23:
 			{
+				srand(time(NULL));
+				int c, nums = 0, totalVowel = 0, b=0;
+				int a = 1 + rand()%10;
+				int d = 1 + rand()%10;
+				char word, str;
 					while(choice != 99)
 					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
+						//Got my idea from Dragonball Z
+						//Nelly's door
+						puts("________________________________________________Background story______________________________________________________");
+						puts("Your birth planet is Venus, you were sent on a mission to explore Earth");
+						puts("As you were landing, your ship crashed and affected your brain, you are currently experencing a memory loss");
+						puts("You wake up in a room rising with water, all you can think about is how to escape");
+						puts("You chose room 23 but you're still not in a safe place");
+						puts("You suddenly hear a voice saying choose another door");
+						puts("---------Pick a door---------");
+						puts("door 1\ndoor 2\ndoor 3\n");
+						scanf("%d",&choice);
+
+						switch(choice)
+						{
+							//guessing FIRST letter
+							case 1:
+								{
+									puts("_________________________Welcome to door 1____________________________");
+									puts("Remember you are experiencing a memory loss");
+						                        puts("If you read the background story you will be fine");
+									puts("-----What is the FIRST letter of your birth planet's name-----");
+								        puts("HINT: Named after a Roman goddess of love and beauty");
+									scanf("%c", &word);
+									//Chose v or V
+									if(islower(word) && word == 'v')
+									{
+										puts("You are correct!");
+						                                puts("Earth is such a beautiful planet");
+										puts("I recommend hiking or going to amusement parks");
+										break;
+									}
+									else if(isupper(word) && word == 'V')
+									{
+										puts("You are correct!");
+										puts("Earth is such a beautiful planet");
+					                                        puts("I recommend visiting your local beach");
+								                puts("You can swim, surf, or relax");
+										break;
+									}
+									else
+									{
+										puts("You are wrong!");
+										puts("Play again or stay in this room for eternity");
+										puts("No one lives here and the random voices you hear are ghost");
+										puts("We have some board game, you are welcome to play");
+										break;
+									}
+							//play 21 card game
+							case 2:
+								{
+									puts("________________________________________Welcome to door 2_________________________________");
+									puts("In this room you will be playing 21 card game");
+									puts("Face values, jacks, queens, and kings are worth 10");
+									puts("You will be given two random card number between 1 - 10 ");
+									puts("------------You have to chose a number between 1 -10--------------------");
+									puts("If you score 21 or under you are free");
+									puts("HINT choose a low value number to avoid going over 21");
+									scanf("%d\n", &b);
+									printf("%d\n", c);
+									//c = a(random) + b(random) + c(input)
+									c = a + d + b;
+									if(c == 21 || c < 21)
+									{
+										puts("You score 21 or lower!");
+									        puts("Congrats, you are a brainiac or just lucky");
+									        puts("There are travel brochures near the exit");
+										break;
+									}
+									else
+									{
+										puts("You score over 21!");
+										puts("You are welcome to take a break and try again");
+										puts("Remember if you can't win, you will stay in door 2 forever");	
+										break;
+									}
+
+								}
+							//counting vowels
+							case 3:
+								{
+									puts("______________________________Welcome to door 3_______________________________________");
+									puts("In this room you will be playing couting vowels");
+						                        puts("You will be inserting a string that is up to 10 characters");
+									puts("-----------You need to have at least 4 vowels ------------");
+							 		puts("HINT vowels are a,e,i,o,u,y/uppercase or lowercase");
+
+									while((str == getchar()) != '\n')
+									{
+										if(str == 'a' || str == 'e' || str == 'i' || str == 'o' || str == 'u' || str == 'y'
+												|| str == 'A' || str == 'E' || str == 'I' || str == 'O' 
+												|| str == 'U' || str == 'Y')
+										{
+											totalVowel++;
+										}
+									}
+									puts("Number of Vowels: \n");
+			                                                printf("%d\n", totalVowel);
+
+									if(totalVowel == 4 || totalVowel > 4)
+									{
+										puts("Congrats, you have at least 4 vowels");
+										puts("I believed in you");
+										puts("Take care");
+										break;
+									}
+									else
+									{
+										puts("You have less than 4 vowels");
+										puts("You can view the hint");
+										puts("It's okay, you can try again!");
+										break;
+									}
+								}
+							default:
+									puts("EXIT");
+
+						}
 					}
 					break;
 			}
