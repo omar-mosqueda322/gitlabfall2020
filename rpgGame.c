@@ -24,6 +24,8 @@ void ignoreExtra(void);
 int choice1(int number);
 int choice2(char *ptr);
 int choice3(int number1);
+int choice4(int *ptr1);
+int choice5(void);
 
 void gameRules(); //function to explain rules of room 12 game
 void gameCraps(); //function to run room 12 game
@@ -106,12 +108,23 @@ int main(void)
 		{
 			case 1:
 			{	
+				srand(time(NULL));
+
 				int length = 0, num = 0, magicNum = 0;
 				char word[40] = "sacramento";
 				char *ptr;
 				ptr = word;
-								
-				srand(time(NULL));	
+
+				int array[6] = {0};
+				
+				for(i = 0; i < 6; i++)
+				{
+					array[i] = 1 + rand() % 10;		
+				}
+
+				int *numptr;
+
+				numptr = array;
 				
 				length = strlen(name);
 
@@ -125,14 +138,17 @@ int main(void)
 				
 				name[0] = toupper(name[0]);	//Making sure the name is written correctly with uppercase first letter
 				printf("Hello %s, you have entered the room 1.\n", name);
-				puts("You have survived the first part of your adventure..the Drowning.\n");
+				puts("You have survived the first part of your adventure..the Drowning.");
+				puts("You are in a dark room and see a small blue light in the middle of the room on top of the table.");
+				puts("You get close to it and realize that it is a laptop. You found a way to get out of the room.");
+				puts("But only way you can access the laptop is solving one of the 5 choices.");
 				puts("You have 5 choices to make in order to escape this horror adventure. \n");
 
 				printf(	"1. You have to solve a math problem for survival. \n"
 					"2. You have to guess the word for survival. \n"
 					"3. You have to find the magic number for survival. \n"
-					"4. Guess the word for survival. \n"
-					"5. Try to make a run for it. \n");
+					"4. Find the sum of a random integer array. \n"
+					"5. It's a surprise!. \n");
 
 				while(choice != 99)
 				{
@@ -143,7 +159,7 @@ int main(void)
 					{
 						case 1:
 						{
-						puts("You have chosen to solve the math problem. Don't forget you have one chance. Now choose a number between 1-10: ");
+						puts("You have chosen to solve the math problem. Don't forget you have one chance. Now choose a number between 1-10:");
 						scanf(" %d", &num);
 						choice1(num);
 						return EXIT_SUCCESS;
@@ -152,7 +168,7 @@ int main(void)
 				
 						case 2:
 						{
-						puts("You have chosen to guess the word. What is the capital of California?\n");
+						puts("You have chosen to guess the word. What is the capital of California?");
 						choice2(ptr);
 						return EXIT_SUCCESS;
 						break;
@@ -160,7 +176,7 @@ int main(void)
 			
 						case 3:
 						{
-						puts("Enter the magic number(between 1 - 20) from the following math problems: ");
+						puts("Enter the magic number(between 1 - 20) by solving the  math problems:");
 						magicNum = 1 + rand() % 20;
 						choice3(magicNum);
 						return EXIT_SUCCESS; 	
@@ -169,16 +185,19 @@ int main(void)
 
 						case 4:
 						{
-						puts("Choice 4.");
+						puts("You have chosen to calculate the average:");
+						choice4(numptr);
+						return EXIT_SUCCESS;			
 						break;
 						}
 
 						case 5:
 						{
 						puts("This was the wrong choice to be made. Now you have ended up in a room with nowhere to go....");
+						choice5();							
 						return EXIT_SUCCESS;
 						break;
-						}
+							}
 					}
 
 				}
@@ -4374,7 +4393,7 @@ int choice1(int number)
 	
 	if(answer == guess)
 	{
-		puts("\nYou have guessed the anwer correctly. You may get the map to get out of the mansion...Good Job!\n");
+		puts("\nYou have guessed the anwer correctly. You may access the laptop to get out of the mansion...Good Job!\n");
 		return EXIT_SUCCESS;
 	}
 	else
@@ -4409,11 +4428,11 @@ int choice2(char *ptr)
 
 	if(!strcmp(copy, guess))
 	{
-		puts("Guessed correctly!\n");
+		puts("You guessed correctly! You may have access to the laptop!\n");
 	}
 	else
 	{
-		puts("Guess was incorrect!\n");
+		puts("Your guess was incorrect! Better luck next time!\n");
 	}
 	
 	return EXIT_SUCCESS;
@@ -4424,27 +4443,67 @@ int choice3(int number1)
 {
 	int answer = 0;
 
-	printf("magic number is : %d\n", number1);	
+//	printf("magic number is : %d\n", number1);	
 	
 	printf("10 + magic number = %d\n", (10 + number1));
 	printf("5 * magic number  = %d\n", (5 * number1));
 	printf("20 - magic number = %d\n", (20 - number1));
+	printf("(4^2) + magic Number = %.2f\n", ((pow(4, 2) + number1)));
 	
 	printf("What is your guess? ");
 	scanf(" %d", &answer);
 	
 	if(answer == number1)
 	{
-	puts("You guessed it correctly!"); 
+	printf("You guessed it correctly! Now you have access to the laptop!\n"); 
 	return EXIT_SUCCESS;
 	}
 	else
 	{
-	puts("You guessed it wrong!");
+	puts("You guessed it wrong! You are stuck in the room. \n");
 	return EXIT_SUCCESS;
 	}	
 	
 }	
+
+int choice4(int *ptr1)
+{
+	int i, j, k;
+	int sum = 0, guess = 0;
+
+	for(k = 0; k < 6; k++)
+	{
+		printf("Array[%d]= %d ",k+1, *ptr1);
+		sum += *ptr1;
+		ptr1++;
+	}
+	
+	printf("What is your guess: ");
+	scanf(" %d", &guess);
+		
+	if(guess == sum)
+	{
+	printf("\nSum: %d\n. You guessed it right! You have access to the laptop!\n", sum);
+	return EXIT_SUCCESS;
+	}
+	else
+	{
+	printf("\nSum: %d\n. You guessed it wrong! You are stuck in the room!\n", sum);
+	return EXIT_SUCCESS;
+	}
+}
+
+int choice5(void)
+{
+	printf("************************************\n");
+	printf("***************YOU******************\n");
+	printf("***************ARE******************\n");
+	printf("************FINISHED!***************\n");
+	printf("************************************\n");
+	
+	return EXIT_SUCCESS;
+}
+	
 
 
 void gameRules() //simple function that prints rules of game to user...
