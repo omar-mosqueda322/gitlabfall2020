@@ -76,7 +76,13 @@ void problem2 (char *ptr);
 int flip();
 
 
+void oputmm21(int d1, int d2, int d3, int d4, int d5, int d6, int d7, int d8, int d9, int d10);
+int rollsmm21();
+int rollmm21();
+
+
 void weaponPower(int p); //room 25 for RICHMOND LAURETA
+
 
 
 
@@ -2298,12 +2304,232 @@ puts("");
 					while(choice != 99)
 					{
 							puts("you open the door and find ........");
-							puts("A penguin drinking a been");
+							puts("A penguin drinking a beer");
+							puts("To enter you must guess how many beers the peguin had drunk");
+							int j = 7;
+							int x = 0;
+							int l;
+							printf("Please enter a number between 1 and 10 \n");
+							scanf("%d",&y);
+								
+							x = j + y;
+							printf("%d + number of beers = %d \n",y,x);
+							x = j * y;
+							printf("%d * number of beers = %d \n",y,x);
+							x = y - j;
+							printf("%d - number of beers = %d \n",y,x);
+							printf("Guess the number of beers: \n");
+							scanf("%d",&z);
+							if(z == j)
+								{
+								printf("YOU WIN!! \n");
+								printf("Hi %s my names is Bob \n", name);
+								}
+								else
+									{
+									printf("you lose \n");
+									choice = 99;
+									break;
+									}
+								
+							puts("that's right I had seven lol");
+							puts("I just finished my classes and I can't figure out my GPA.");
+							puts("I found a program to tell me I can't enter my grades cause of the wings.");
+							puts("Can you put them in i got two A's one B two C's");
+							int A = 0, B = 0, C = 0, D = 0, F = 0, y = 0, i =0; //%d
+		double avg = 0, total = 0;          //%lf
+	float h;     //%f
+	char grade;
+	while(grade != 'z')
+	{
+		printf("enter the letter grade A-F (press z to finish):");
+		scanf(" %c", &grade);
+		
+		switch(grade)
+		{
+			case 'a':
+			case 'A':
+				puts("You entered A");
+				A++;
+				total += 4;
+				i++;
+				break;
+			case 'b':
+			case 'B':
+			        puts("You entered B");
+				B++;
+				total += 3;
+				i++;
+				break;
+			case 'c':
+			case 'C':
+				puts("You entered C");
+				C++;
+				total += 2;
+				i++;
+				break;
+			case 'd':
+			case 'D':
+				puts("You entered D");
+				D++;
+				total += 1;
+				i++;
+				break;
+			case 'f':
+			case 'F':
+				puts("You entered F");
+				F++;
+				i++;
+				break;
+			default:
+				puts("You entered an invalid letter grade");
 
-							scanf("%d",&choice);
-					}
-					break;
+		}
+	}
+
+	avg = total /  i;
+	printf("The gredes entered were: \n A = %d, B = %d, C = %d, D = %d, F = %d \n", A, B, C, D, F);
+	printf("The average was %.1lf.\n", avg);
+	
+	puts("YESH I GET TO KEEP MY SCHOLOROSHIP");
+	
+	puts("'This penguin seems really drunk', do you tell him.");
+	puts("1. Yes 2. No");
+	scanf("%d", &choice);
+	if(choice == 1)
+	{
+		puts("IM nto DRNUK YOU R!!!");
+	}
+	printf("%s, DO YOU WANT TO PLAY A GAME?\n", name);
+	puts("1. YES 2. NO");
+	scanf("%d",&choice);
+	puts("Great!!!");
+	puts("Okay you pick a number 1-10 and I'll pick a number I pick 7");
+	printf("%s you pick how many times we roll the dice.\n", name);
+	int die1 = 0, die2 = 0, die3 = 0, die4 = 0, die5 = 0, die6 = 0, die7 = 0,
+	    die8 = 0, die9 = 0, die10 = 0;
+
+
+	srand(time(NULL));
+
+	l = rollsmm21();
+	
+	for(i = 0; i < l ; i++)
+	{
+		x = rollmm21();
+
+		switch(x)
+		{
+			case 1:
+				++die1;
+				break;
+			case 2:
+				++die2;
+				break;
+
+			case 3:
+				++die3;
+				break;
+
+			case 4:
+				++die4;
+				break;
+
+			case 5:
+				++die5;
+				break;
+
+			case 6:
+				++die6;
+				break;
+			case 7:
+				++die7;
+				break;
+			case 8:
+				++die8;
+				break;
+			case 9:
+				++die9;
+				break;
+			case 10:
+				++die10;
+				break;
+
+		}
+	}
+	oputmm21(die1, die2, die3, die4, die5, die6, die7, die8, die9, die10);
+	
+	puts("Did I win? I can't see.");
+	puts("1. YES 1. NO");
+	scanf("%d",&choice);
+	
+		puts("The penguin pulls out a thumb drive and waves it menacingly at you.");
+		puts("DID I WIN?");
+		puts("1. YES 2. NO");
+		scanf("%d", &choice);
+		puts("fine. I need you back accout info so I can pay you for testing my homework.");
+		
+	
+		int account;
+	double balance;
+	char name[30];
+	
+	FILE *fptr;
+
+	fptr = fopen("mmbank.txt", "w");
+	
+	if(fptr == NULL)
+	{
+		puts("could not open file");
+	}
+	else
+	{
+		
+			
+			printf("Enter accont number: ");
+			scanf("%d", &account);
+			printf("Enter name: ");
+			scanf("%s", name);
+			printf("Enter price for checking Bob's work: ");
+			scanf("%lf", &balance);
+			
+			
+			fprintf(fptr,"%d %s %.lf \n", account, name, balance);
+			puts("thanks that's all I needed good bye");
+
+		
+	}
+
+
+	fclose(fptr);
+			
+	puts("You wake up in the bar and everyone is singing about the beer on the wall.");
+	printf("%s how long have you been out? your friend asks.\n", name);
+	puts("you suddenly get a message on you phone a download has started, you open it");
+	int c = 0;
+	FILE *fptr1;
+	fptr1 = fopen("mmbank.txt", "r"); 
+    if (fptr == NULL) 
+    { 
+        printf("Cannot open file \n"); 
+        exit(0); 
+    } 
+  
+    // Read contents from file 
+    c = fgetc(fptr1); 
+    while (c != EOF) 
+    { 
+        printf ("%c", c); 
+        c = fgetc(fptr1); 
+    } 
+  
+    fclose(fptr1); 
+ 
+
+puts("'How did that peguin get my back info and my phone number");
+			return EXIT_SUCCESS;
 			}
+		}
 			case 22:
 			{
 					while(choice != 99)
@@ -5112,7 +5338,30 @@ int flip()
 	else 
 		return 1;
 }
+int rollsmm21()
+{
 
+	int p =0;
+	puts("How many times would you like to roll the dice? ");
+	scanf("%d", &p);
+	return p;
+}
+int rollmm21()
+{
+	int p = 0;
+	p = 1 + rand() % 10;
+	printf("%d \n", p);
+
+	return p;
+}
+void oputmm21(int d1, int d2, int d3, int d4, int d5, int d6, int d7, int d8, int d9, int d10)
+{
+	printf("The resaults of the throes are ");
+	printf("1: %d, 2: %d, 3: %d, ", d1, d2, d3);
+	printf("4:  %d, 5: %d,", d4, d5);
+	printf("6: %d, 7: %d, 8: %d, ", d6, d7 +7, d8); 
+	printf("9: %d, 10: %d \n", d9, d10);
+}
 		
 void weaponPower(int p){
 	
