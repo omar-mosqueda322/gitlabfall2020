@@ -1900,9 +1900,42 @@ int main(void)
 			{
 					while(choice != 99)
 					{
-							puts("you open the door and find ........");
-                            printf("Mauro Badillo, the 1st test");
-							scanf("%d",&choice);
+                        int a1,b2,c3,rchoice=0;
+                        char x1[50];
+                        FILE *wptr;
+							puts("you open the door and find ........ 2 unknown gates \n Choose  Gate one or Gate Two");
+                            printf(" Enter 1 or 2 only \n");
+                            //printf("Mauro Badillo, the 1st test");
+							scanf("%d",&rchoice);
+                            wptr = fopen("choice.txt", "w");
+                        if (rchoice == 1)
+                        {
+                            puts("Gate  is white space. Say something\n");
+                            scanf(" %s",x1);
+                            //fprintf(wptr," %s", x1);
+                            
+                            fputs("you said something and survive",wptr);
+                            fclose(wptr);
+                            break;
+                        }
+                        else if (rchoice == 2)
+                        {
+                            fputs("Gate is black space. Cannot see anything",wptr);
+                            fclose(wptr);
+                            
+                            
+                        }
+                        else 
+                        {
+                           
+                            
+                             fputs("did not make any choice, you died ",wptr);
+                             fclose(wptr);
+                            
+                             
+                        }
+                        printf("\ncheck your  folder for final outcome\n. Choose 99 to exit out of game\n");
+                        
 					}
 					break;
 			}
