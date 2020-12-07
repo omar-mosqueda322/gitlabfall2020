@@ -1,6 +1,7 @@
 //Contributors
 //G. Poppe
 //Shane Cortez
+//Michael VanCleave-Lopez
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
@@ -26,6 +27,9 @@ int choice3(int number1);
 void gameRules(); //function to explain rules of room 12 game
 void gameCraps(); //function to run room 12 game
 
+char prompt(void);
+void randomFill(int *ptr);
+void room27Output(int z);
 
 void oddDeviceShenanigans(void);  // Room #7
 int drunkBehavior(void);  // Room #7
@@ -53,6 +57,21 @@ void woman(void);
 void congratulations(void);
 
 // End of Room 9 Functions
+
+
+void roomPrompt(int* userChoice);
+void gorillaRoom(int* bananaAmount, int* orangeAmount);
+void drawPicture(void);
+void caseRandomizer(char *name, int *bananaAmount, int *orangeAmount);
+
+void problem1(int math);
+void problem2 (char *ptr);
+int flip();
+
+
+
+
+
 
 int main(void)
 {
@@ -1353,12 +1372,47 @@ int main(void)
 					}
 					break;
 			}
-			case 18:			
+			case 18:
 			{
-					while(choice != 99)
+				while(choice != 99)
+				{
+					puts("you open the door and seem safe from the previous... ");
+					puts("you find a kitten in the room, along with some cabinets, and another door\n");
+					puts("With this you are left with some options, 3 to be exact:");
+					puts("1. Pet the kitten");
+					puts("2. Examine the room");
+					puts("3. Open the next door");
+					scanf("%d",&choice);
+					switch (choice)
 					{
+						case 1:
+							puts("you get closer to pet the kitten it enjoyed that");
+							break;
+						case 2:
+							puts("you decide to examine the cabinets, but they're all empty... why is that?");
+							break;
+						case 3:
+							puts("you decide to open the next door and see a long tunnel, you see a modified motorcycle aligned to a track with some pickaxes...");
+							puts("your curiosity is leaving you with 2 more choices");
+							puts("1. Walk and see where the tunnel leads");
+	                                                puts("2. Go back inside the room");
+							scanf("%d", &choice);
+							if(choice==1)
+							{
+								puts("you decide to journey along the tunnels path, you hear a faint meow behind you... you feel a bit empty...");
+								puts("\nEnter 99");
+								break;
+							}
+							else if(choice==2)
+							{
+								puts("you decided to investigate the room first before leaving");
+								break;
+							}
+
+						default:
+							puts("");
 					}
-					break;
+				}
 			}
 			case 19:
 			{
@@ -1372,15 +1426,93 @@ int main(void)
 			}
 			case 20:
 			{
+					bool realLooplmao = true;
+				
+				while(realLooplmao)
+				{
 					int level = 0,attack = 0,magic = 0,health = 0,defense = 0,totalHP = 0;
 					bool NEW = true;
 					srand(time(NULL));
+					int i = 0;
+puts("");			
+puts("                                      /|");
+puts("                                     |\\|");
+puts("                                     |||");
+puts("                                     |||");
+puts("                                     |||");
+puts("                                     |||");
+puts("                                     |||");
+puts("                                     |||");
+puts("                                  ~-[{o}]-~");
+puts("                                     |/|");
+puts("                                     |/|");
+puts("             ///~`     |\\_           `0'         =\\\\         . .");
+puts("            ,  |='  ,))\\_| ~-_                    _)  \\      _/_/|");
+puts("           / ,    ((((((    ~ \\                   ~~~\\-~-_ /~ _   |");
+puts("         /' -~/~)))))))'\\_   _/'                      \\_  /'  D   |");
+puts("        (       (((((( ~-/ ~-/                          ~-;  /    \\--_");
+puts("         ~~--|   ))''    ')  `                            `~~\\_    \\   )");
+puts("             :        (_  ~\\           ,                    /~~-     ./");
+puts("              \\        \\_   )--__  /(_/)                   |    )    )|");
+puts("    ___       |_     \\__/~-__    ~~   ,'      /,_;,   __--(   _/      |");
+puts("  //~~\\`\\    /' ~~~----|     ~~~~~~~~'        \\-  ((~~    __-~        |");
+puts("((()   `\\`\\_(_     _-~~-\\                      ``~~ ~~~~~~   \\_      /");
+puts(" )))     ~----'   /      \\                                   )       )");
+puts("  (         ;`~--'        :                                _-    ,;;(");
+puts("            |    `\\       |                             _-~    ,;;;;)");
+puts("            |    /'`\\     ;                          _-~          _/");
+puts("           /~   /    |    )                         /;;;''  ,;;:-~");
+puts("          |    /     / | /                         |;;'   ,''");
+puts("          /   /     |  \\|                         |   ,;(    -Tua Xiong");
+puts("        _/  /'       \\  \\_)                   .---__\\_    \\,--._______");
+puts("       ( )|'         (~-_|                   (;;'  ;;;~~~ ' `;;|   ;;; ");
+puts("        ) `|_         |-_;;--__               ~~~----__/'    /'_______/");
+puts("        `----'       (   `~--_ ~~~;;------------~~~~~ ;;;'_ '");
+puts("                     `~~~~~~~~'~~~-----....___;;;____---~~");
+puts("Here you will face a series of trials, make sure every choice counts.");
+puts("");
+puts("");
+					
+					bool askNameCAPS=true;
+					while(askNameCAPS)
+					{
+					int nameCAPS = 0;
+					puts("Would you like your name to be in all caps? 1:Yes 2:No");
+					scanf(" %d",&nameCAPS);
+					switch(nameCAPS)
+					{
+						case 1:
+							for(i; name[i]!='\0';i++)
+							{
+								name[i]=toupper(name[i]);
+							}
+							askNameCAPS=false;
+							break;
+							
+						case 2:
+							if(islower(name[0]))
+								name[0]=toupper(name[0]);
+							for(i=1; name[i]!='\0';i++)
+							{
+								name[i]=tolower(name[i]);
+							}
+							askNameCAPS=false;
+							break;
+							
+						default:
+							puts("Wrong entry, continuing.");
+							break;
+						
+						
+					};
+					}
+					
 					
 					while(choice != 99)
 					{
 							/*puts("you open the door and find ........");
 							scanf("%d",&choice);*/
-								
+							
 							bool gameLoop = false;
 							int option = 0;
 							int levelF = level;
@@ -1409,7 +1541,7 @@ int main(void)
 							while(NEW)
 							{
 								puts("Pick your class.");
-								puts("_________________________________________");
+								puts("________________________________________________________________");
 								puts("1. Warrior.");
 								puts("2. Magician.");
 								puts("3. Exit.");
@@ -1458,7 +1590,7 @@ int main(void)
 							if(gameLoop == true)
 								puts("You will be given 3 health potions that heal \"20%\" of your health.\nUse them wisely.");
 							
-							puts("_________________________________________");
+							puts("________________________________________________________________");
 							puts("");
 							
 							for(levelF; ((gameLoop == true)&&(levelF <= 5)); levelF++)
@@ -1473,14 +1605,14 @@ int main(void)
 									totalHP += multiplier;
 									health += multiplier;
 									attack += multiplier;
-									defense += (multiplier/3);
+									defense += (multiplier/2);
 								}
 								else if(magician == true)
 								{	
 									totalHP +=(3*(multiplier/2));
 									health +=(3*(multiplier/2));
 									magic += (multiplier+8);
-									defense += (multiplier/4);
+									defense += (multiplier/3);
 								}
 								else
 									puts("Something went wrong with warrior/magician boolean");
@@ -1506,7 +1638,7 @@ int main(void)
 										printf("Warrior: %s HP: %d DMG: %d \n",name,health,attack);
 									else
 										printf("Magician: %s HP: %d DMG: %d \n",name,health,magic);
-									puts("_________________________________________");
+									puts("________________________________________________________________");
 									puts("1. Attack.");
 									puts("2. Magic.");
 									puts("3. Health Potion.");
@@ -1582,8 +1714,30 @@ int main(void)
 
 									if(health<=0)
 									{
+										int lossCont = 0;
 										puts("You lose.");
 										loss=true;
+										bool lossChoice = true;
+										while(lossChoice)
+										{
+											puts("Would you like to continue? 1: Yes 2: No");
+											scanf(" %d",&lossCont);
+											switch(lossCont)
+											{
+												case 1:
+													puts("Continuing...");
+													lossChoice = false;
+													break;
+												case 2:
+													puts("Closing...");
+													lossChoice = false;
+													realLooplmao = false;
+													break;
+												default:
+													puts("Wrong choice, please enter 1 or 2.");
+													break;
+											};
+										}
 										break;
 									}
 									puts("________________________________________________________________");
@@ -1594,9 +1748,73 @@ int main(void)
 								level = levelF;
 							}
 						if(level==5&&health>0)
+						{
+							char line[30];
 							printf("Congratulations %s, you defeated all the bosses in Room 20!\n",name);
+							//int number;
+							printf("%s's stats were\n_______________\n",name);
+							printf("Level: %d\n",level);
+							printf("Attack: %d\n",attack);
+							printf("Magic: %d\n",magic);
+							printf("Health: %d\n",health);
+							printf("Defense: %d\n",defense);
+							printf("TotalHP: %d\n",totalHP);
+							int option = 0;
+							//int level = 0, attack = 0, magic = 0, health = 0, defense = 0,totalHP = 0;
+							//srand(time(NULL));
+							
+							FILE *rptr, *wptr;
+							bool inMenu = true;
+							while(inMenu)
+							{
+								puts("______________________________________");
+								puts("1. Start New Game");
+								puts("2. Save to Hall of Fame -stats.txt-");
+								puts("3. Read the Hall of Fame -stats.txt-");
+								puts("4. Exit Room 20");
+								
+								scanf(" %d", &option);
+								
+								switch(option)
+								{
+									case 1: //gameLoop(&level, &attack, &magic, &health, &defense,&totalHP,true);
+										inMenu = false;
+										
+										break;
+									case 2: puts("Saving stats to stats.txt...");
+										wptr = fopen("stats.txt","a");
+										fprintf(wptr,"Name: %s\n",name);
+										fprintf(wptr,"Level: %d\n",level);
+										fprintf(wptr,"Attack: %d\n",attack);
+										fprintf(wptr,"Magic: %d\n",magic);
+										fprintf(wptr,"Health: %d\n",health);
+										fprintf(wptr,"Defense: %d\n",defense);
+										fprintf(wptr,"TotalHP: %d\n",totalHP);
+										fprintf(wptr,"___________________\n");
+										fclose(wptr);
+										break;
+									case 3: puts("Reading stats from stats.txt...");
+										rptr = fopen("stats.txt","r");
+										
+										while(!feof(rptr))
+										{
+											fscanf(rptr,"%s",line);
+											printf("%s\n",line);			
+										}
+										fclose(rptr);
+										break;
+									case 4: puts("Thank you for playing, goodbye.");
+											inMenu = false;	
+											realLooplmao = false;
+										break;
+									default: puts("Wrong entry.");
+										 break;
+								};
+							}
+						}
 						puts("________________________________________________________________");
 					}
+				}
 					break;
 			}
 			case 21:  //Michael Morgan's room
@@ -1698,53 +1916,80 @@ int main(void)
 			}
 			case 24:
 			{
-				#include <time.h>
+				int charCounter = 0,
+					userChoice = 0,
+					turn = 0,
+					randomAlignment = 0,
+					bananaAmount = 0,
+					orangeAmount = 0;
 
-
-                                 int choice = 0,
-                                     turn = 0,
-                                     bananaAmount = 0,
-                                     orangeAmount = 0;
-
-
-                                 puts("As you open the door, you notice a sign reading: \"This is Phillip F. Aguilera's room\".\n"
-                                      "You enter the room and close the door behind you, noticing the choice of more doors. There are three more doors to choose.\n"
-                                      "A sheet of paper is lying on the floor. You pick it up and begin to read what has been written.\n"
-                                      "It states:\n");
-                                 printf("You have %d bananas and %d oranges.\n", bananaAmount, orangeAmount);
-                                 puts("Enter the rooms and try to escape with the highest amount of bananas and oranges as possible!\n");
-                                 puts("You must have XXX amount of bananas and oranges in XXX amount of turns or you lose!\n");
-
-
-                                 for (turn = 0; turn < 4; turn++)
-                                 {
-                                         puts("Main Menu:\n"
-                                              "1) Enter Room 1.\n"
-                                              "2) Enter Room 2.\n"
-                                              "3) Enter Room 3.\n");
-                                         printf("Enter the Room you wish to enter: ");
-                                         scanf("%d", &choice);
-
-                                         switch(choice)
-                                         {
-                                                 case 1:
-                                                         puts("You are in Room 1.\n");
-                                                         break;
-                                                 case 2:
-                                                         puts("You are in Room 2.\n");
-                                                         break;
-                                                 case 3:
-                                                         puts("You are in Room 3.\n");
-                                         }
-
-                                 }
-
-					while(choice != 99)
+				for (charCounter = 0; charCounter < 256; charCounter++)
+				{
+					if (islower(name[charCounter]))
 					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
+						name[charCounter] = toupper(name[charCounter]);
 					}
-					break;
+				}
+
+				puts("As you open the door, you notice a sign reading: \"This is Phillip F. Aguilera's room\".\n"
+					"You enter the room and close the door behind you, noticing the choice of more doors. There are three more doors to choose.\n"
+					"A sheet of paper is lying on the floor. You pick it up and begin to read what has been written.\n"
+					"It states:");
+				printf("%s, enter the rooms and try to escape with the highest amount of bananas and oranges as possible!\n", name);
+				puts("You must have at least 5 bananas and at least 5 oranges in 5 turns to win this game or you lose!\n");
+
+
+				for (turn = 0; turn < 5; turn++)
+				{
+					printf("You have %d bananas and %d oranges!\n", bananaAmount, orangeAmount);
+					roomPrompt(&userChoice);
+
+					randomAlignment = rand() % 2;
+
+					if (randomAlignment == 0)
+					{
+						switch (userChoice)
+						{
+							case 1:
+								gorillaRoom(&bananaAmount, &orangeAmount);
+								break;
+							case 2:
+								drawPicture();
+								break;
+							case 3:
+								caseRandomizer(name, &bananaAmount, &orangeAmount);
+						}
+					}
+					else
+					{
+						switch (userChoice)
+						{
+							case 1:
+								drawPicture();
+								break;
+							case 2:
+								caseRandomizer(name, &bananaAmount, &orangeAmount);
+								break;
+							case 3:
+								gorillaRoom(&bananaAmount, &orangeAmount);
+						}
+					}
+
+
+				}
+
+				printf("You have %d bananas and %d oranges!\n", bananaAmount, orangeAmount);
+
+				if ((bananaAmount >= 5) && (orangeAmount >= 5))
+				{
+					puts("Congratulations! You win the game!\n");
+				}
+				else
+				{
+					puts("Sorry, you lose.\n");
+				}
+
+				break;
 			}
 			case 25:
 			{
@@ -1905,12 +2150,119 @@ int main(void)
 			}
 			case 27:
 			{
-					while(choice != 99)
+				
+				int i,num;
+				char choose, letters;
+				int arr[5] = {0};				//array1 for random numbers
+				int arr2[5] = {0};				//array2 for user input
+				int *ptr;				
+				ptr = arr;
+				srand(time(NULL));
+				puts("\nRoom 27 (SM)");
+				puts("You have entered room 27");
+				puts("The room is empty, you turn back....");
+				puts("The door has magically disappeared");
+				puts("Suddenly you hear something fall");
+
+				while(choice != 99)
+				{
+					puts("what do you do?");
+					puts("1. Stop?");
+					puts("2. Look around the room?");
+					puts("3. Find out what made the noise?");
+					scanf("%d",&choice);
+					if(choice == 1)
 					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
+						puts("\nWhy did you stop?");
+						puts("Keep going");
+						puts("You are still in Room 27");
 					}
-					break;
+					else if(choice == 2)
+					{
+						puts("\nYou see numbers on the wall");
+						randomFill(ptr);			//gets random num from function prototype
+						for(i = 0; i < 5; i++)			//prints out numbers in array1
+						{
+							printf("%d",*ptr);
+							ptr++;
+						}
+						puts("\n\nYou find a keypad, do you?");
+						puts("1. Enter numbers? ");			//gives user choice to enter or not enter num
+						puts("2. Dont do anything");
+						scanf("%d", &choice);
+						if(choice == 1)
+						{
+							puts("\nEnter code");
+							for(i = 0; i < 5; i++)
+							{
+								scanf("%d", &arr2[i]);		//user enters num
+							}
+							for(i = 0; i < 5; i++)
+							{
+								if(arr[i] != arr2[i])		//checks if num are equal to each other
+								{
+									puts("\nYou didnt enter the correct numbers");
+									puts("The keypad breaks");
+									puts("There is no escape\n");
+									break;
+								}
+								else 
+								{
+									puts("\nYou entered the numbers from the wall");
+									puts("A door opens up\nyou walk out");
+							
+								puts("You survived the escape room\n");
+									break;
+								}
+							}	
+						}
+						
+						else
+						{
+						/*	puts("\nYou turn around and see a door that wasnt there before");
+							puts("Do you walk in?");
+							puts("y/n?");
+							scanf(" %c", &choose);*/			//gets choice from use
+							letters = prompt();
+							if(letters == 'y')
+							{
+								puts("\nYou have entered another room\n");
+								break;
+							}
+							else
+							{
+								puts("\nYou are still in Room 27");
+							}
+						}
+					}
+					else 
+					{
+						puts("\nThe item on the floor is a flashlight?");
+						puts("The lights go out.....");
+						puts("Do you....");
+						puts("1.Turn on flashlight?\n2.Do nothing");
+						scanf("%d", &choice);
+
+						/*if(choice == 1)
+						{
+							puts("\nYou are trapped in here with us");
+							puts("Game Over");
+							puts("Better Luck Next Time\n");
+							break;
+						}
+						else
+						{
+							puts("\nYou are sitting in the dark");
+							puts("Having fun?");
+							puts("Bye\n");
+							break;
+						}*/
+						room27Output(choice);
+						break;
+					}	
+				}	
+					
+				break;
 			}
 			case 28:
 			{
@@ -2885,14 +3237,141 @@ int main(void)
 					break;
 			}
 			case 36:
-			{
-					while(choice != 99)
+				{
+
+					char riddle[5] = { 'j','o','k','e','\0' };
+					char guess[6];
+					int math = 7;
+					char* ptr;
+					ptr = riddle;
+
+
+
+					while (choice != 99)
 					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
+						puts("You entered Room 36");
+						puts("you are now entering an Arena, Where you can see the Ruler telling you to step into the middle.");
+						puts("You can see three shadows walking to you, the Ruler askes you to choose one of the to fight them.");
+						puts(" What will you do?");
+						puts("1. Fight one of the Shadows");
+						puts("2. Try and talk to the Ruler");
+						puts("3. Try and run for your life");
+						scanf("%d", &choice);
+
+
+						switch (choice)
+						{
+						case 1:
+							puts("You chose to fight one of the shadows. Now chose with whom you will fight");
+							puts("1. shadow #1");
+							puts("2. shadow #2");
+							puts("3. shadow #3");
+							scanf("%d", &choice);
+
+							if (choice == 1)
+							{
+								puts(" You Chose Shadow 1, Shadow 1 is Albert Einstein");
+								puts("You are infront of Einstein stonished that you forgot ur fighting him.");
+								puts("Einstein: Instead of fighting with your hands lets fight with our brains. You need to solve this problem to beat me.");
+								problem1(math);
+								return EXIT_SUCCESS;
+								break;
+
+							}
+
+							if (choice == 2)
+							{
+								puts(" You Chose to fight Shadow #2.");
+								puts(" Shadow #2 is Thanos.");
+								puts(" Now you have done it. It's your time to try and fight the most powerful villain in the MCU. You are thinking 'how can i defeat him without any powers like the other Avengers?'");
+								puts(" A mysterious Person appers and tosses you a flask and tells you to drink it......");
+								puts("Will you drink it????");
+								puts(".......");
+								puts(".....");
+								puts("...");
+								puts("It was water it didnt do much for you.....  ");
+								puts("You died");
+								return EXIT_SUCCESS;
+								break;
+							}
+
+							if (choice == 3)
+							{
+								puts("You chose to fight Shadow #3");
+								puts("Shadow #3 is Yoda.");
+								puts(" Star wars Theme starts to play in the background");
+								puts(" before the fight starts Yoda speaks.");
+								puts("Yoda: In trouble you are, May the force be with you");
+								puts(" flip a coin we will, to see the force with whom it is.");
+								flip();
+
+								if (flip() == 0)
+								{
+									puts("Win the game I did, die you will");
+									return EXIT_SUCCESS;
+									break;
+								}
+								else
+								{
+									puts("Lose the game i did, reward you will get now.");
+									return EXIT_SUCCESS;
+									break;
+								}
+
+								break;
+
+							}
+
+							else
+							{
+								puts("Please try again");
+
+								break;
+							}
+
+
+						case 2:
+							puts("You tried to talk to the Ruler");
+							puts("He only wants entertainment and He tells you that if you solve this riddle you are free to go but if you fail you are dead.");
+							puts("I can be cracked, I can be made. I can be told, I can be played. What am I?");
+							problem2(ptr);
+							return EXIT_SUCCESS;
+							break;
+
+
+
+						case 3:
+							puts("You try to run");
+							puts("You start to run to the arc you came in once inside you lock the doorbehind you,after taking your breath back you notice that there are two alley ways and you dont remember which path you took.");
+							puts("Choose path 1 or path 2");
+							scanf("%d", &choice);
+
+							if (choice == 1)
+							{
+								puts("You chose poorly and got caught by the guards and they killed you.");
+								return EXIT_SUCCESS;
+								break;
+							}
+							if (choice == 2)
+							{
+								puts("A strange flying light guided you throughout the passage and you are now outside the cave");
+								puts(" You are outside and ran as far as you could from the cave to never return....");
+								return EXIT_SUCCESS;
+								break;
+							}
+							else
+								puts("please try again");
+
+							break;
+
+
+						}
 					}
+
 					break;
-			}
+
+				}
+
 			case 37:
 			{
 					while(choice != 99)
@@ -3087,7 +3566,44 @@ int randomint(int x, int y) //random integer function to work craps game
 	return rand()%(y - x + 1); //ensures random number is generated
 }
 
-<<<<<<< HEAD
+
+
+char prompt(void)
+{
+	char choose;
+	puts("\nYou turn around and see a door that wasnt there before");
+	puts("Do you walk in?");
+	puts("y/n?");
+	scanf(" %c", &choose);			//gets choice from use
+	
+	return choose;
+
+}
+void randomFill(int *ptr)		//function definition to fill array1 with random int 0-9:wq
+{
+	int i;
+	for(i = 0; i < 5; i++)
+	{
+		ptr[i] = rand()%10;
+	}
+}
+void room27Output(int z)
+{
+	if(z == 1)
+	{
+		puts("\nYou are trapped in here with us");
+		puts("Game Over");
+	}
+	else
+	{
+		puts("\nYou are sitting in the dark");
+		puts("Having fun?");
+		puts("Bye\n");
+	}
+	
+}
+
+
 
 void oddDeviceShenanigans(void) {
 	puts("");
@@ -3198,7 +3714,8 @@ void congratulations(void)
 	reset();
 }
 
-=======
+
+
 ///////////Shanes room methods///////////
 
 void shanesFileWriter(int choice)
@@ -3253,4 +3770,238 @@ void shanesFileWriter(int choice)
 }
 
 ///////////Shanes room methods end/////////
->>>>>>> ShanesRoom
+
+
+void caseRandomizer(char* name, int* bananaAmount, int* orangeAmount)
+{
+	int charCounter = 0,
+		randomCase = 0,
+		lowerAmount = 0,
+		upperAmount = 0,
+	    winLoseAmount = 0;
+	
+	puts("You have entered the case randomizer room ...\n"
+		 "Your name's letters' cases are randomized. If there are more capital letters, you are rewarded!\n"
+		 "Otherwise, there will be punishment ... ");
+
+
+
+	for (charCounter = 0; charCounter < 256; charCounter++)
+	{
+		randomCase = rand() % 2;
+
+		if (randomCase == 0)
+		{
+			name[charCounter] = toupper(name[charCounter]);
+		}
+		else
+		{
+			name[charCounter] = tolower(name[charCounter]);
+		}
+	}
+
+	for (charCounter = 0; charCounter < 256; charCounter++)
+	{
+		if (islower(name[charCounter]))
+		{
+			lowerAmount++;
+		}
+		else if (isupper(name[charCounter]))
+		{
+			upperAmount++;
+		}
+	}
+
+	if (upperAmount > lowerAmount)
+	{
+		winLoseAmount = 1 + rand() % 7;
+		*bananaAmount += winLoseAmount;
+		*orangeAmount += winLoseAmount;
+
+		printf("Congratulations! You have won %d bananas and oranges!\n", winLoseAmount);
+	}
+	else
+	{
+		winLoseAmount = 1 + rand() % 3;
+		*bananaAmount -= winLoseAmount;
+		*orangeAmount -= winLoseAmount;
+
+		printf("Unfortunately, you lost and lose %d bananas and oranges ... \n\n", winLoseAmount);
+	}
+}
+
+void drawPicture(void)
+{
+	puts("You enter the room and can faintly see a picture at the distance. As you walk closer to the image, you see ... \n");
+
+	puts("        _--~~--_");
+	puts("      /~/_|  |_\\~\\");
+	puts("     |____________|");
+	puts("     |[][][][][][]|");
+	puts("   __| __         |__");
+	puts("  |  ||. |   ==   |  |");
+	puts(" (|  ||__|   ==   |  |)");
+	puts("  |  |[] []  ==   |  |");
+	puts("  |  |____________|  |");
+	puts("  /__\\           /__\\");
+	puts("   ~~              ~~ ");
+	puts("");
+}
+
+void roomPrompt(int* userChoice)
+{
+	do
+	{
+		puts("Main Menu:\n"
+			"1) Enter Room 1.\n"
+			"2) Enter Room 2.\n"
+			"3) Enter Room 3.\n");
+		printf("Enter the Room you wish to enter: ");
+		scanf("%d", userChoice);
+	} while ((*userChoice < 1) || (*userChoice > 3));
+}
+
+void gorillaRoom(int* bananaAmount, int* orangeAmount)
+{
+	int userChoice = 0,
+		winLoseAmount = 0,
+		chanceToSteal = 0;
+
+	printf("You enter the room and on the far end of the room, your eyes easily catch a very large gorilla sleeping soundly.\n"
+		"Behind the gorilla, you see a large pile of bananas.\n"
+		"If you wish to steal the bananas from the gorilla, enter 1. Otherwise, enter 0 to exit: ");
+
+	scanf("%d", &userChoice);
+
+	userChoice = toupper(userChoice);
+
+	if (userChoice == 0)
+	{
+		puts("Better safe than sorry ...");
+	}
+	else if (userChoice == 1)
+	{
+		chanceToSteal = 1 + rand() % 100;
+		winLoseAmount = 1 + rand() % 10;
+
+		puts("You decide to attempt to steal the bananas from the gorilla ...");
+
+		if (chanceToSteal >= 60)
+		{
+			*bananaAmount += winLoseAmount;
+			printf("Success! You were able to successfully steal %d bananas from the gorilla and made a hasty escape back into the main room.\n\n", winLoseAmount);
+		}
+		else
+		{
+			*bananaAmount -= winLoseAmount;
+			printf("As you make your way to the other side of the room, you slip on a banana ...\n"
+				"In doing so, you fall and the imapact with the ground made a large enough noise to wake the gorilla!\n"
+				"Not daring to fight him, he steals %d bananas!\n"
+				"You make your way back to the Main Room ... \n\n", winLoseAmount);
+		}
+
+		chanceToSteal = 1 + rand() % 100;
+		
+		if (chanceToSteal > 85)
+		{
+			winLoseAmount = 1 + rand() & 5;
+
+			*orangeAmount += winLoseAmount;
+
+			puts("As you leave the room back into the Main Room, you notice some oranges in the dark corner!\n"
+				 "Before the gorilla can notice, you are able to snatch some and quickly leave through the door.\n");
+		}
+
+	}
+	else
+	{
+		puts("Incorrect input! You are returning to the Main Room ...\n");
+	}
+
+}
+
+
+
+void problem1(int math)
+{
+
+	int guess;
+
+
+	
+	printf("What is x in this equation? \n");
+
+	printf("5x + 6 = 3x - 8 \n");
+	puts("X is?");
+	scanf("%d", &guess);
+	if (guess == math)
+	{
+		puts("You are correct!");
+		puts("You win the challenge against Einstein, now you can ask the ruler to let you go.");
+												
+	}
+
+	else
+	{
+		puts("Your answer was wrong, better luck next time");										
+		
+	}
+}
+
+
+void problem2 (char *ptr)
+{
+	int size = 30;
+       char prob[size];
+	char guess[size];
+
+
+	strcpy(prob, ptr);
+
+
+	puts("Your Guess is?");
+	
+	scanf("%s", guess);
+
+	for (int i = 0; i < 0; i++)
+	{
+		if(isupper(guess[i]))
+		{
+			guess[i] = tolower(guess[i]);
+		}
+	}
+
+
+	if(!strcmp(prob, guess))
+	{	
+		puts(" Congratulations you have guessed Correctly");
+		
+	}
+	else
+	{
+		puts("Awwwwww You guessed Poorly");
+		puts("As promised Its time to die");
+	}
+	
+	
+}
+
+
+
+int flip()
+{
+	int i = rand() %2;
+
+	if(i ==0)
+		return 0;
+	else 
+		return 1;
+}
+
+		
+
+
+
+
+
+
