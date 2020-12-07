@@ -11,6 +11,12 @@
 #include <stdbool.h>
 #include <unistd.h>
 
+///////////Shanes room methods///////////
+
+void shanesFileWriter(int choice);
+
+///////////Shanes room methods end/////////
+
 void extraCredit(void);
 void ignoreExtra(void);
 
@@ -2260,11 +2266,12 @@ puts("");
 			}
 			case 28:
 			{
-					//Room #28 for Shane Cortez
+
+				//Room #28 for Shane Cortez
 				while (choice != 99)
 				{
 					srand(time(NULL));
-					int randNum=rand()%2;
+					int randNum = rand() % 2;
 
 					puts("you enter the room marked 28");
 					puts("As the panic of drowning subsides you look up to notice that the room is shaking and the ground splitting in half revealing a pit to nothingness you have to act fast or risk missing the jump across!");
@@ -2273,6 +2280,12 @@ puts("");
 					puts("2. Quickly look around and reassess the situation");
 					puts("99. At any time to End Game");
 					scanf("%d", &choice);
+					while (choice > 2 || choice < 1)
+					{
+						puts("enter 1, 2 or 99");
+						scanf("%d", &choice);
+					}
+
 					if (choice == 1)
 					{
 						puts("in a panic you jump across the pit and make it safely to the other side.");
@@ -2283,6 +2296,11 @@ puts("");
 						puts("1. Try to jump across and jump back to grab the key");
 						puts("2. Check inventory");
 						scanf("%d", &choice);
+						while (choice > 2 || choice < 1)
+						{
+							puts("enter 1, 2 or 99");
+							scanf("%d", &choice);
+						}
 						if (choice == 1)
 						{
 							puts("You attempt the first jump and realize too late that the pit is far too wide to jump across, you fall into the darkness and are never seen again....");
@@ -2301,6 +2319,11 @@ puts("");
 							puts("1. inspect door.");
 							puts("2. open chest with key");
 							scanf("%d", &choice);
+							while (choice > 2 || choice < 1)
+							{
+								puts("enter 1, 2 or 99");
+								scanf("%d", &choice);
+							}
 							if (choice == 1)
 							{
 								puts("upon further inspection you notice that the vines appear flamable...");
@@ -2312,37 +2335,73 @@ puts("");
 								puts("3. earth");
 								puts("What will you write:");
 								scanf("%d", &choice);
-								if (choice == 1)
+								shanesFileWriter(choice);
+								if (choice == 1) //fire choice
 								{
 									puts("you write the ancient runes of fire onto the page.");
-									puts("The scroll flashes bright red with fiery power, suddenly your hands begin to feel hot, when suddenly they light ablaze! with this power you can shoot fire out of your hand!");
-									puts("You strike an agressive pose and engulf the vine covered door in flames.");
-									puts("As the fire and smoke subside, the door sits ajar with a light shining through.");
-									puts("What will you do:");
-									puts("1. walk through the door");
-									puts("2. Turn around and jump into the pit");
+									puts("you must now read the writings properly or it will not work. (Hint:try using the rm28-scroll.txt for guidance)");
+									puts("What will you mutter:");
+									puts("1. I harness the power of Fire!");
+									puts("2. Aprovecho el poder de Fuego!");
+									puts("3. Jeg utnytter kraften til Eldur!");
 									scanf("%d", &choice);
-
-									if (choice == 1)
+									while (choice > 3 || choice < 1)
 									{
-										//Victory!
-										puts("You open the door and are blinded by light, as your vision returns you realize you are in the middle of nowhere in the desert, and the door magically dissapears");
-										puts("You escaped, but now what?");
-										puts("Congrats you finished the game. Thank you for playing!");
-										choice = 99;
-										break;
+										puts("enter 1, 2, 3 or 99");
+										scanf("%d", &choice);
 									}
-									else if (choice == 2)
+									while (choice != 3)
 									{
-										puts("I'm not sure why you chose this, but you turn around and jump into the pit, you are never seen again....");
-										puts("Game Over...");
-										choice = 99;
-										break;
+										puts("nothing seems to happen... maybe another word...");
+										scanf("%d", &choice);
+									}
+									if (choice == 3)
+									{
+										puts("The scroll flashes bright red with fiery power, suddenly your hands begin to feel hot, when suddenly they light ablaze! with this power you can shoot fire out of your hand!");
+										puts("You strike an agressive pose and engulf the vine covered door in flames.");
+										puts("As the fire and smoke subside, the door sits ajar with a light shining through.");
+										puts("What will you do:");
+										puts("1. walk through the door");
+										puts("2. Turn around and jump into the pit");
+										scanf("%d", &choice);
+										if (choice == 1)
+										{
+											//Victory!
+											puts("You open the door and are blinded by light, as your vision returns you realize you are in the middle of nowhere in the desert, and the door magically dissapears");
+											puts("You escaped, but now what?");
+											puts("Congrats you finished the game. Thank you for playing!");
+											choice = 99;
+											break;
+										}
+										else if (choice == 2)
+										{
+											puts("I'm not sure why you chose this, but you turn around and jump into the pit, you are never seen again....");
+											puts("Game Over...");
+											choice = 99;
+											break;
+										}
 									}
 								}
-								else if (choice == 2)
+								else if (choice == 2) //water choice
 								{
 									puts("You write down the ancient runes of water onto the page.");
+									puts("you must now read the writings properly or it will not work. (Hint:try using the rm28-scroll.txt for guidance)");
+									puts("What will you mutter:");
+									puts("1. I harness the power of Water!");
+									puts("2. Jeg utnytter kraften til Laguz!");
+									puts("3. Aprovecho el poder de Aqua!");
+									scanf("%d", &choice);
+									while (choice > 3 || choice < 1)
+									{
+										puts("enter 1, 2, 3 or 99");
+										scanf("%d", &choice);
+									}
+									while (choice != 2)
+									{
+										puts("nothing seems to happen... maybe another word...");
+										scanf("%d", &choice);
+									}
+
 									puts("the scroll glows a conforting blue color, suddenly your hands feel damp, you can now use this on the door.");
 									puts("You ready yourself and shoot a powerful stream of water on the vines.");
 									puts("You stare at the vines as they grow greener and stronger from the water, the vines then grow at a rapid rate engulfing the narrow walkway that you stand on.");
@@ -2352,9 +2411,26 @@ puts("");
 									choice = 99;
 									break;
 								}
-								else if (choice == 3)
+								else if (choice == 3) //earth choice
 								{
 									puts("You write the ancient rune of earth.");
+									puts("you must now read the writings properly or it will not work. (Hint:try using the rm28-scroll.txt for guidance)");
+									puts("What will you mutter:");
+									puts("1. Jeg utnytter kraften til Midgard!");
+									puts("2. I harness the power of Earth!");
+									puts("3. Aprovecho el poder de Tierra!");
+									scanf("%d", &choice);
+									while (choice > 3 || choice < 1)
+									{
+										puts("enter 1, 2, 3 or 99");
+										scanf("%d", &choice);
+									}
+									while (choice != 1)
+									{
+										puts("nothing seems to happen... maybe another word...");
+										scanf("%d", &choice);
+									}
+
 									puts("suddenly the scroll glows emerald green, as your hands begin to feel one with the earth, you can use this on the door.");
 									puts("You ground yourself, and use your new powers on the vines.");
 									puts("To your suprise, the earth spell you wrote only makes the vines stronger, so much so that they begin to grow wildly out of control!");
@@ -2376,9 +2452,26 @@ puts("");
 								puts("3. earth");
 								puts("What will you write:");
 								scanf("%d", &choice);
-								if (choice == 1)
+								shanesFileWriter(choice);
+								if (choice == 1) //fire choice
 								{
-									puts("you write the ancient runes onto the page.");
+									puts("you write the ancient runes of fire onto the page.");
+									puts("you must now read the writings properly or it will not work. (Hint:try using the rm28-scroll.txt for guidance)");
+									puts("What will you mutter:");
+									puts("1. I harness the power of Fire!");
+									puts("2. Aprovecho el poder de Fuego!");
+									puts("3. Jeg utnytter kraften til Eldur!");
+									scanf("%d", &choice);
+									while (choice > 3 || choice < 1)
+									{
+										puts("enter 1, 2, 3 or 99");
+										scanf("%d", &choice);
+									}
+									while (choice != 3)
+									{
+										puts("nothing seems to happen... maybe another word...");
+										scanf("%d", &choice);
+									}
 									puts("The scroll flashes bright red with fiery power, suddenly your hands begin to feel hot, when suddenly they light ablaze! with this power you can shoot fire out of your hand!");
 									puts("You strike an agressive pose and engulf the vine covered door in flames.");
 									puts("As the fire and smoke subside, the door sits ajar with a light shining through.");
@@ -2386,6 +2479,11 @@ puts("");
 									puts("1. walk through the door");
 									puts("2. Turn around and jump into the pit");
 									scanf("%d", &choice);
+									while (choice > 2 || choice < 1)
+									{
+										puts("enter 1, 2 or 99");
+										scanf("%d", &choice);
+									}
 
 									if (choice == 1)
 									{
@@ -2404,9 +2502,26 @@ puts("");
 										break;
 									}
 								}
-								else if (choice == 2)
+								else if (choice == 2) //water choice
 								{
 									puts("You write down the ancient runes of water onto the page.");
+									puts("you must now read the writings properly or it will not work. (Hint:try using the rm28-scroll.txt for guidance)");
+									puts("What will you mutter:");
+									puts("1. I harness the power of Water!");
+									puts("2. Jeg utnytter kraften til Laguz!");
+									puts("3. Aprovecho el poder de Aqua!");
+									scanf("%d", &choice);
+									while (choice > 3 || choice < 1)
+									{
+										puts("enter 1, 2, 3 or 99");
+										scanf("%d", &choice);
+									}
+									while (choice != 2)
+									{
+										puts("nothing seems to happen... maybe another word...");
+										scanf("%d", &choice);
+									}
+
 									puts("the scroll glows a conforting blue color, suddenly your hands feel damp, you can now use this on the door.");
 									puts("You ready yourself and shoot a powerful stream of water on the vines.");
 									puts("You stare at the vines as they grow greener and stronger from the water, the vines then grow at a rapid rate engulfing the narrow walkway that you stand on.");
@@ -2416,9 +2531,26 @@ puts("");
 									choice = 99;
 									break;
 								}
-								else if (choice == 3)
+								else if (choice == 3) //earth choice
 								{
 									puts("You write the ancient rune of earth.");
+									puts("you must now read the writings properly or it will not work. (Hint:try using the rm28-scroll.txt for guidance)");
+									puts("What will you mutter:");
+									puts("1. Jeg utnytter kraften til Midgard!");
+									puts("2. I harness the power of Earth!");
+									puts("3. Aprovecho el poder de Tierra!");
+									scanf("%d", &choice);
+									while (choice > 3 || choice < 1 || choice == 99)
+									{
+										puts("enter 1, 2, 3 or 99");
+										scanf("%d", &choice);
+									}
+									while (choice != 1)
+									{
+										puts("nothing seems to happen... maybe another word...");
+										scanf("%d", &choice);
+									}
+
 									puts("suddenly the scroll glows emerald green, as your hands begin to feel one with the earth, you can use this on the door.");
 									puts("You ground yourself, and use your new powers on the vines.");
 									puts("To your suprise, the earth spell you wrote only makes the vines stronger, so much so that they begin to grow wildly out of control!");
@@ -2455,10 +2587,15 @@ puts("");
 							puts("1. Open the chest");
 							puts("2. Further inspect the door");
 							scanf("%d", &choice);
+							while (choice > 2 || choice < 1)
+							{
+								puts("enter 1, 2 or 99");
+								scanf("%d", &choice);
+							}
 							if (choice == 1)
 							{
-								puts("upon further inspection you notice that the vines appear flamable...");
-								puts("you then turn your attention to the chest, you pull out the key and unlock the chest, inside you find a scroll which reads:");
+
+								puts("you turn your attention to the chest, you pull out the key and unlock the chest, inside you find a scroll which reads:");
 								puts("write a spell and this scroll will grant you power...");
 								puts("Unfortunately you only studied one year of spellcasting in highschool and the only three spells you remember from back then are:");
 								puts("1. fire");
@@ -2466,9 +2603,26 @@ puts("");
 								puts("3. earth");
 								puts("What will you write:");
 								scanf("%d", &choice);
-								if (choice == 1)
+								shanesFileWriter(choice);
+								if (choice == 1) //fire choice
 								{
 									puts("you write the ancient runes of fire onto the page.");
+									puts("you must now read the writings properly or it will not work. (Hint:try using the rm28-scroll.txt for guidance)");
+									puts("What will you mutter:");
+									puts("1. I harness the power of Fire!");
+									puts("2. Aprovecho el poder de Fuego!");
+									puts("3. Jeg utnytter kraften til Eldur!");
+									scanf("%d", &choice);
+									while (choice > 3 || choice < 1)
+									{
+										puts("enter 1, 2, 3 or 99");
+										scanf("%d", &choice);
+									}
+									while (choice != 3)
+									{
+										puts("nothing seems to happen... maybe another word...");
+										scanf("%d", &choice);
+									}
 									puts("The scroll flashes bright red with fiery power, suddenly your hands begin to feel hot, when suddenly they light ablaze! with this power you can shoot fire out of your hand!");
 									puts("You strike an agressive pose and engulf the vine covered door in flames.");
 									puts("As the fire and smoke subside, the door sits ajar with a light shining through.");
@@ -2476,6 +2630,11 @@ puts("");
 									puts("1. walk through the door");
 									puts("2. Turn around and jump into the pit");
 									scanf("%d", &choice);
+									while (choice > 2 || choice < 1)
+									{
+										puts("enter 1, 2 or 99");
+										scanf("%d", &choice);
+									}
 
 									if (choice == 1)
 									{
@@ -2494,9 +2653,25 @@ puts("");
 										break;
 									}
 								}
-								else if (choice == 2)
+								else if (choice == 2) //water choice
 								{
 									puts("You write down the ancient runes of water onto the page.");
+									puts("you must now read the writings properly or it will not work. (Hint:try using the rm28-scroll.txt for guidance)");
+									puts("What will you mutter:");
+									puts("1. I harness the power of Water!");
+									puts("2. Jeg utnytter kraften til Laguz!");
+									puts("3. Aprovecho el poder de Aqua!");
+									scanf("%d", &choice);
+									while (choice > 3 || choice < 1)
+									{
+										puts("enter 1, 2, 3 or 99");
+										scanf("%d", &choice);
+									}
+									while (choice != 2)
+									{
+										puts("nothing seems to happen... maybe another word...");
+										scanf("%d", &choice);
+									}
 									puts("the scroll glows a conforting blue color, suddenly your hands feel damp, you can now use this on the door.");
 									puts("You ready yourself and shoot a powerful stream of water on the vines.");
 									puts("You stare at the vines as they grow greener and stronger from the water, the vines then grow at a rapid rate engulfing the narrow walkway that you stand on.");
@@ -2506,9 +2681,25 @@ puts("");
 									choice = 99;
 									break;
 								}
-								else if (choice == 3)
+								else if (choice == 3) //earth choice
 								{
 									puts("You write the ancient rune of earth.");
+									puts("you must now read the writings properly or it will not work. (Hint:try using the rm28-scroll.txt for guidance)");
+									puts("What will you mutter:");
+									puts("1. Jeg utnytter kraften til Midgard!");
+									puts("2. I harness the power of Earth!");
+									puts("3. Aprovecho el poder de Tierra!");
+									scanf("%d", &choice);
+									while (choice > 3 || choice < 1 || choice == 99)
+									{
+										puts("enter 1, 2, 3 or 99");
+										scanf("%d", &choice);
+									}
+									while (choice != 1)
+									{
+										puts("nothing seems to happen... maybe another word...");
+										scanf("%d", &choice);
+									}
 									puts("suddenly the scroll glows emerald green, as your hands begin to feel one with the earth, you can use this on the door.");
 									puts("You ground yourself, and use your new powers on the vines.");
 									puts("To your suprise, the earth spell you wrote only makes the vines stronger, so much so that they begin to grow wildly out of control!");
@@ -2530,9 +2721,26 @@ puts("");
 								puts("3. earth");
 								puts("What will you write:");
 								scanf("%d", &choice);
-								if (choice == 1)
+								shanesFileWriter(choice);
+								if (choice == 1) //fire choice
 								{
-									puts("you write the ancient runes onto the page.");
+									puts("you write the ancient runes of fire onto the page.");
+									puts("you must now read the writings properly or it will not work. (Hint:try using the rm28-scroll.txt for guidance)");
+									puts("What will you mutter:");
+									puts("1. I harness the power of Fire!");
+									puts("2. Aprovecho el poder de Fuego!");
+									puts("3. Jeg utnytter kraften til Eldur!");
+									scanf("%d", &choice);
+									while (choice > 3 || choice < 1)
+									{
+										puts("enter 1, 2, 3 or 99");
+										scanf("%d", &choice);
+									}
+									while (choice != 3)
+									{
+										puts("nothing seems to happen... maybe another word...");
+										scanf("%d", &choice);
+									}
 									puts("The scroll flashes bright red with fiery power, suddenly your hands begin to feel hot, when suddenly they light ablaze! with this power you can shoot fire out of your hand!");
 									puts("You strike an agressive pose and engulf the vine covered door in flames.");
 									puts("As the fire and smoke subside, the door sits ajar with a light shining through.");
@@ -2540,6 +2748,11 @@ puts("");
 									puts("1. walk through the door");
 									puts("2. Turn around and jump into the pit");
 									scanf("%d", &choice);
+									while (choice > 2 || choice < 1)
+									{
+										puts("enter 1, 2 or 99");
+										scanf("%d", &choice);
+									}
 
 									if (choice == 1)
 									{
@@ -2558,9 +2771,25 @@ puts("");
 										break;
 									}
 								}
-								else if (choice == 2)
+								else if (choice == 2) //water choice
 								{
 									puts("You write down the ancient runes of water onto the page.");
+									puts("you must now read the writings properly or it will not work. (Hint:try using the rm28-scroll.txt for guidance)");
+									puts("What will you mutter:");
+									puts("1. I harness the power of Water!");
+									puts("2. Jeg utnytter kraften til Laguz!");
+									puts("3. Aprovecho el poder de Aqua!");
+									scanf("%d", &choice);
+									while (choice > 3 || choice < 1)
+									{
+										puts("enter 1, 2, 3 or 99");
+										scanf("%d", &choice);
+									}
+									while (choice != 2)
+									{
+										puts("nothing seems to happen... maybe another word...");
+										scanf("%d", &choice);
+									}
 									puts("the scroll glows a conforting blue color, suddenly your hands feel damp, you can now use this on the door.");
 									puts("You ready yourself and shoot a powerful stream of water on the vines.");
 									puts("You stare at the vines as they grow greener and stronger from the water, the vines then grow at a rapid rate engulfing the narrow walkway that you stand on.");
@@ -2570,9 +2799,25 @@ puts("");
 									choice = 99;
 									break;
 								}
-								else if (choice == 3)
+								else if (choice == 3) //earth choice
 								{
 									puts("You write the ancient rune of earth.");
+									puts("you must now read the writings properly or it will not work. (Hint:try using the rm28-scroll.txt for guidance)");
+									puts("What will you mutter:");
+									puts("1. Jeg utnytter kraften til Midgard!");
+									puts("2. I harness the power of Earth!");
+									puts("3. Aprovecho el poder de Tierra!");
+									scanf("%d", &choice);
+									while (choice > 3 || choice < 1 || choice == 99)
+									{
+										puts("enter 1, 2, 3 or 99");
+										scanf("%d", &choice);
+									}
+									while (choice != 1)
+									{
+										puts("nothing seems to happen... maybe another word...");
+										scanf("%d", &choice);
+									}
 									puts("suddenly the scroll glows emerald green, as your hands begin to feel one with the earth, you can use this on the door.");
 									puts("You ground yourself, and use your new powers on the vines.");
 									puts("To your suprise, the earth spell you wrote only makes the vines stronger, so much so that they begin to grow wildly out of control!");
@@ -3322,6 +3567,7 @@ int randomint(int x, int y) //random integer function to work craps game
 }
 
 
+
 char prompt(void)
 {
 	char choose;
@@ -3467,6 +3713,63 @@ void congratulations(void)
 	puts("                                                  /_/ ");
 	reset();
 }
+
+
+
+///////////Shanes room methods///////////
+
+void shanesFileWriter(int choice)
+{
+	FILE *write;
+	char plaintext[256];
+	char fire[50];
+	char water[50];
+	char earth[50];
+
+	if (choice != 1 && choice != 2 && choice != 3 && choice != 99)
+	{
+		puts("Incorrect input try typing 1.Fire, 2.Water, or 3.Earth");
+		scanf("%d", &choice);
+	}else
+	{
+	write = fopen("rm28-scroll.txt","w");
+	char plaintext[256] = "write a spell and this scroll will grant you power...";
+	char fire[50] = "Jeg utnytter kraften til Eldur";
+	char water[50] = "Jeg utnytter kraften til Laguz";
+	char earth[50] = "Jeg utnytter kraften til Midgard";
+	}
+	
+	
+	switch (choice)
+	{
+	case 1:
+		//fire
+		puts("fire puts");
+		fprintf(write, "%s\n%s" ,plaintext,fire);
+
+		break;
+	case 2:
+		//water
+
+		fprintf(write, "%s\n%s", plaintext, water);
+
+		break;
+	case 3:
+		//earth
+
+		fprintf(write, "%s\n%s", plaintext, earth);
+		
+		break;
+	case 99:
+		return;
+	default:
+		shanesFileWriter(choice);
+		break;
+	}
+	fclose(write);
+}
+
+///////////Shanes room methods end/////////
 
 
 void caseRandomizer(char* name, int* bananaAmount, int* orangeAmount)
