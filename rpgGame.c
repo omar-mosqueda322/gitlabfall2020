@@ -83,15 +83,18 @@ int rollmm21();
 
 void weaponPower(int p); //room 25 for RICHMOND LAURETA
 
-
+void bullets(int arr[]); //ROOM 32 OMAR MOSQUEDA
+void bandit(void);
 
 
 int main(void)
 {
 	int x,y,z,i,h,g,k,choice=0;
 	char decision; 
+	char gun;
 	char name[256];
 	int boxNum=0;
+	int arr[6];
 
 	int input,rando,rando2,score = 0,counter = 0;
 	double timetaken;
@@ -4247,33 +4250,52 @@ break;
 					}
 					break;
 			}
+			
+			
 			case 32:
 			{
-					while(choice != 99)
-					{
-						puts("Welcome to room 32 where I already know what is on your mind.");
-						puts("I bet I can guess what number your thinking of with just a couple of instructions.");
-						puts("Up for the challenge? y/n");
-						scanf("%c", &decision);
-						
-						if(decision == 'y')
-						{
-							puts("Pick a number, any number and make sure you remember that number.");
-							puts("Now double the number.");
-							puts("Now add 10 to the new number.");
-							puts("Divide it by 2");
-							puts("Now subtract that by the original number.");
-							puts("Your new number is now 5");
-							break;
-						}
-						else if(decision == 'n')
-							{
-								puts("I see you're in no mood for a little fun");
-								break;
-							}
-					}
-					break;
+				while(choice != 99)
+				{
+				printf("'Welcome to room 32 %s' a mysterious voice says.\n",name);
+				puts("Shivers run down your spine you look to your left, nothing there.");
+				puts("You look to your right, again nothing there.");
+				puts("Something taps your back and you turn around");
+				puts("Its a zombie ready to munch on some of your delicious brains.");
+				puts("You say to yourself 'Now is time to use my super quick reactions'.");
+				puts("There is a box to your left and inside there is a gun to kill the zombie.");
+				printf("What do you do grab the gun with 'g' or run with 'r'\n");
+				scanf("%c",&gun);
+
+				if(gun == 'g')
+				{
+					printf("\n. \n. \n.\nNice choice you shot and killed the zombie, *phew* that was close\n\n");
+				printf("\n\n\n'Nice shot someone says', you look and you find a girl sitting with her 48 revolver around her waist chewing on a piece of wheat, wait where did she get the wheat nevermind that, she says\n");
+				printf("'Well well well if it isnt the all talked about %s you're quite famous around these parts'\n",name);
+				puts("You look at her with a blank stare");
+				puts("She says 'well haven't you ever seen a pretty lady before you look so confused'");
+				puts("You stutter your words 'w w w well you sure are pretty but have we met before?'");
+				printf("'Sure we have' she says my name is Alicia\n");
+				printf("You let her know that you noticed the gun around her waist.\n");
+				puts("She shows you her gun and her ammo and this doesn't look like regular ammo, its silver and they're numbered");
+				puts("You ask her why they are numbered and she says that each bullet she carries are specific to a certain monster she kills today she is set to carry and kill numbers");
+				bullets(arr);
+				printf("\n\n\n");
+				puts("You continue to walk and talk with Alicia and she decides to ask you if you want to join her bandit, monster killing, crew.");
+				bandit();
+				break;
+				}
+		
+				else if(gun == 'r')
+				{
+				printf("\n. \n. \n. \nYou chose to run so you turn and start running full speed away from the zombie but you trip on your shoelace and the zombie gets to you and eats your brains, GG!!\n");
+				break;
+				}
+				}
+				break;
 			}
+			
+
+
 			case 33:
 			{
 					while(choice != 99)
@@ -5369,7 +5391,41 @@ void weaponPower(int p){
 }
 
 
+void bullets(int arr[]) //ROOM 32 OMAR MOSQUEDA 
+{
+	int i;
+	for(i=0;i<6;i++)
+	{
+		arr[i] = rand () % 100+1;
+	}
 
+	for(i=0;i<6;i++)
+	{
+		printf("%d \n",arr[i]);
+	}
+
+}
+void bandit(void)
+{
+
+	int join;
+	puts("Type '1' to join or '2' to not join");
+	scanf("%d",&join);
+				
+	switch(join)
+	{
+		case 1:
+			printf("\n\nWelcome to the crew cowboy.\n");
+			printf("..Too be countinued\n\n\n");
+				break;
+		case 2:
+			printf("\n\nFarewell then loser\n\nGAMEOVER\n");
+				break;
+		default:	
+			printf("\n\nType 'y' or 'n'.\n");
+	}
+
+}
 
 
 
